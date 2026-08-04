@@ -71,6 +71,12 @@ public class KeyboardInputHandler : MonoBehaviour
         OnInputTextChanged?.Invoke(RawInput);
     }
 
+    public void ClearInput()
+    {
+        m_RawInputBuffer.Clear();
+        OnInputTextChanged?.Invoke(RawInput);
+    }
+
     private void _HandleTextInput(char inputChar)
     {
         if (m_bIsInputLocked || char.IsControl(inputChar)) return;

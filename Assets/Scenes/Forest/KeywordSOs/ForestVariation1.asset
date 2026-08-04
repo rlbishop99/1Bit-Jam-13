@@ -18,3 +18,5 @@ MonoBehaviour:
   - fragment
   - collect
   - grab
+  - eyes
+  - open

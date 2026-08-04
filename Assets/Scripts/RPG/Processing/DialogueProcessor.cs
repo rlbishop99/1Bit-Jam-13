@@ -16,18 +16,24 @@ public class DialogueProcessor : MonoBehaviour
     [SerializeField, Tooltip("Every PromptResponses source active for the current Level/Variation. Index 0 is treated as the Level source (used for its FallbackResponse/IntroResponse); the rest are Variation sources.")]
     private List<PromptResponses> m_ActivePromptResponsesSources;
 
+    [SerializeField, Tooltip("Owns the Text-RPG to Spot-the-Difference mode swap triggered by an EyeOpenEntry.")]
+    private EyeModeController m_EyeModeController;
+
     private bool m_bHasPlayedIntro;
     private bool m_bPendingTransition;
     private GameEnums.eLevelID m_PendingTargetLevelID;
+    private bool m_bPendingEyeOpen;
 
     private void OnEnable()
     {
         m_InputHandler.OnInputSubmitted += _HandleInputSubmitted;
+        m_EyeModeController.OnEyesClosed += _HandleEyesClosed;
     }
 
     private void OnDisable()
     {
         m_InputHandler.OnInputSubmitted -= _HandleInputSubmitted;
+        m_EyeModeController.OnEyesClosed -= _HandleEyesClosed;
     }
 
     private void Start()
@@ -52,6 +58,7 @@ public class DialogueProcessor : MonoBehaviour
         string bestResponse = null;
         bool bFoundEligibleMatch = false;
         bool bBestIsTransition = false;
+        bool bBestIsEyeOpen = false;
         GameEnums.eLevelID bestTargetLevelID = default;
 
         foreach (PromptResponses source in m_ActivePromptResponsesSources)
@@ -65,6 +72,7 @@ public class DialogueProcessor : MonoBehaviour
                     bestResponse = entry.Response;
                     bFoundEligibleMatch = true;
                     bBestIsTransition = false;
+                    bBestIsEyeOpen = false;
                 }
             }
 
@@ -77,7 +85,21 @@ public class DialogueProcessor : MonoBehaviour
                     bestResponse = entry.Response;
                     bFoundEligibleMatch = true;
                     bBestIsTransition = true;
+                    bBestIsEyeOpen = false;
                     bestTargetLevelID = entry.TargetLevelID;
+                }
+            }
+
+            foreach (PromptResponses.EyeOpenEntry entry in source.EyeOpenEntries)
+            {
+                float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
+                if (score >= entry.RequiredIntentThreshold && score > bestScore)
+                {
+                    bestScore = score;
+                    bestResponse = entry.Response;
+                    bFoundEligibleMatch = true;
+                    bBestIsTransition = false;
+                    bBestIsEyeOpen = true;
                 }
             }
         }
@@ -88,6 +110,7 @@ public class DialogueProcessor : MonoBehaviour
 
         m_bPendingTransition = bFoundEligibleMatch && bBestIsTransition;
         m_PendingTargetLevelID = bestTargetLevelID;
+        m_bPendingEyeOpen = bFoundEligibleMatch && bBestIsEyeOpen;
 
         m_TypewriterDisplay.PlayTypewriter(chosenResponse, _OnResponseComplete);
     }
@@ -101,6 +124,24 @@ public class DialogueProcessor : MonoBehaviour
             return;
         }
 
+        if (m_bPendingEyeOpen)
+        {
+            m_bPendingEyeOpen = false;
+            m_EyeModeController.OpenEyes();
+            return;
+        }
+
+        m_InputHandler.UnlockInput();
+    }
+
+    private void _HandleEyesClosed()
+    {
+        m_InputHandler.ClearInput();
+        m_TypewriterDisplay.PlayTypewriter(m_EyeModeController.CurrentVariationSource.IntroResponse, _OnEyesClosedIntroComplete);
+    }
+
+    private void _OnEyesClosedIntroComplete()
+    {
         m_InputHandler.UnlockInput();
     }
 }

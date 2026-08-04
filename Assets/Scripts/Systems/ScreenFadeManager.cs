@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Plasmalot: Singleton that owns a full-screen CanvasGroup used to fade to/from black across Scene loads
-/// (e.g. Level transitions). Automatically fades back in whenever a new Scene finishes loading.
+/// Plasmalot: Singleton that owns a full-screen CanvasGroup used to fade to/from black across Scene loads.
+/// Automatically fades back in whenever a new Scene finishes loading.
 /// </summary>
 public class ScreenFadeManager : MonoBehaviour
 {
