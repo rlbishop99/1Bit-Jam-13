@@ -17,6 +17,8 @@ public class DialogueProcessor : MonoBehaviour
     private List<PromptResponses> m_ActivePromptResponsesSources;
 
     private bool m_bHasPlayedIntro;
+    private bool m_bPendingTransition;
+    private GameEnums.eLevelID m_PendingTargetLevelID;
 
     private void OnEnable()
     {
@@ -49,6 +51,8 @@ public class DialogueProcessor : MonoBehaviour
         float bestScore = -1.0f;
         string bestResponse = null;
         bool bFoundEligibleMatch = false;
+        bool bBestIsTransition = false;
+        GameEnums.eLevelID bestTargetLevelID = default;
 
         foreach (PromptResponses source in m_ActivePromptResponsesSources)
         {
@@ -60,6 +64,20 @@ public class DialogueProcessor : MonoBehaviour
                     bestScore = score;
                     bestResponse = entry.Response;
                     bFoundEligibleMatch = true;
+                    bBestIsTransition = false;
+                }
+            }
+
+            foreach (PromptResponses.TransitionEntry entry in source.TransitionEntries)
+            {
+                float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
+                if (score >= entry.RequiredIntentThreshold && score > bestScore)
+                {
+                    bestScore = score;
+                    bestResponse = entry.Response;
+                    bFoundEligibleMatch = true;
+                    bBestIsTransition = true;
+                    bestTargetLevelID = entry.TargetLevelID;
                 }
             }
         }
@@ -68,11 +86,21 @@ public class DialogueProcessor : MonoBehaviour
             ? bestResponse
             : m_ActivePromptResponsesSources[0].FallbackResponse;
 
+        m_bPendingTransition = bFoundEligibleMatch && bBestIsTransition;
+        m_PendingTargetLevelID = bestTargetLevelID;
+
         m_TypewriterDisplay.PlayTypewriter(chosenResponse, _OnResponseComplete);
     }
 
     private void _OnResponseComplete()
     {
+        if (m_bPendingTransition)
+        {
+            m_bPendingTransition = false;
+            LevelContext.Instance.TransitionToLevel(m_PendingTargetLevelID);
+            return;
+        }
+
         m_InputHandler.UnlockInput();
     }
 }

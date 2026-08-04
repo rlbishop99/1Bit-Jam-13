@@ -14,7 +14,7 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("Keywords (from the assigned KeywordsSO word bank) required to trigger this response.")]
         private List<string> m_Keywords;
 
-        [SerializeField, TextArea(2, 5), Tooltip("The response text printed to the screen when this Entry's Intent Threshold is met.")]
+        [SerializeField, TextArea(5, 15), Tooltip("The response text printed to the screen when this Entry's Intent Threshold is met.")]
         private string m_Response;
 
         [SerializeField, Range(0.0f, 100.0f), Tooltip("Minimum Intent Score (0-100) this Entry's own input must reach to be eligible to trigger. Lower this for easy/forgiving prompts, raise it for prompts that require a more specific/precise input.")]
@@ -25,11 +25,35 @@ public class PromptResponses : MonoBehaviour
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
     }
 
+    [Serializable]
+    public struct TransitionEntry
+    {
+        [SerializeField, Tooltip("Keywords (from the assigned KeywordsSO word bank) required to trigger this transition.")]
+        private List<string> m_Keywords;
+
+        [SerializeField, TextArea(3, 8), Tooltip("Response text printed before the Player transitions to the Target Level.")]
+        private string m_Response;
+
+        [SerializeField, Range(0.0f, 100.0f), Tooltip("Minimum Intent Score (0-100) this Entry's own input must reach to be eligible to trigger. Lower this for easy/forgiving prompts, raise it for prompts that require a more specific/precise input.")]
+        private float m_RequiredIntentThreshold;
+
+        [SerializeField, Tooltip("The Level the Player transitions to when this Entry triggers.")]
+        private GameEnums.eLevelID m_TargetLevelID;
+
+        public List<string> Keywords => m_Keywords;
+        public string Response => m_Response;
+        public float RequiredIntentThreshold => m_RequiredIntentThreshold;
+        public GameEnums.eLevelID TargetLevelID => m_TargetLevelID;
+    }
+
     [SerializeField, Tooltip("Word bank of keywords available for this Level/Variation.")]
     private KeywordsSO m_KeywordsSO;
 
     [SerializeField, Tooltip("Configurable list of Prompt -> Response mappings for this Level/Variation.")]
     private List<Entry> m_PromptResponseEntries = new List<Entry>();
+
+    [SerializeField, Tooltip("Configurable list of Prompt -> Level Transition mappings for this Level/Variation.")]
+    private List<TransitionEntry> m_TransitionEntries = new List<TransitionEntry>();
 
     [SerializeField, TextArea(2, 4), Tooltip("Response shown when no Entry meets the Intent Threshold.")]
     private string m_FallbackResponse = "Nothing happens.";
@@ -39,6 +63,7 @@ public class PromptResponses : MonoBehaviour
 
     public KeywordsSO KeywordsSO => m_KeywordsSO;
     public IReadOnlyList<Entry> PromptResponseEntries => m_PromptResponseEntries;
+    public IReadOnlyList<TransitionEntry> TransitionEntries => m_TransitionEntries;
     public string FallbackResponse => m_FallbackResponse;
     public string IntroResponse => m_IntroResponse;
 }
