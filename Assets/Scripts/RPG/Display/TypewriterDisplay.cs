@@ -17,6 +17,9 @@ public class TypewriterDisplay : MonoBehaviour
     [SerializeField, Tooltip("SFX played for each non-whitespace character printed during the typewriter effect.")]
     private AudioClip m_DigitalPromptTextClip;
 
+    [SerializeField, Tooltip("Play the SFX every N non-whitespace characters printed.")]
+    private int m_CharactersPerSFX = 3;
+
     private bool m_bIsTypewriting;
     private Coroutine m_TypewriterCoroutine;
 
@@ -38,13 +41,19 @@ public class TypewriterDisplay : MonoBehaviour
         m_OutputText.text = string.Empty;
 
         float secondsPerCharacter = 1.0f / Mathf.Max(m_CharactersPerSecond, 0.01f);
+        int charactersPerSFX = Mathf.Max(m_CharactersPerSFX, 1);
+        int printedNonWhitespaceCount = 0;
         foreach (char character in fullText)
         {
             m_OutputText.text += character;
 
-            if (!char.IsWhiteSpace(character) && m_DigitalPromptTextClip != null)
+            if (!char.IsWhiteSpace(character))
             {
-                AudioManager.Instance.PlaySFXOneShot(m_DigitalPromptTextClip);
+                printedNonWhitespaceCount++;
+                if (m_DigitalPromptTextClip != null && printedNonWhitespaceCount % charactersPerSFX == 0)
+                {
+                    AudioManager.Instance.PlaySFXOneShot(m_DigitalPromptTextClip);
+                }
             }
 
             yield return new WaitForSeconds(secondsPerCharacter);

@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField, Tooltip("Plays looping SFX and one-shot SFX. Volume is faded via DOTween.")]
     private AudioSource m_SFXSource;
 
+    [SerializeField, Tooltip("Plays looping SFX.")]
+    private AudioSource m_LoopingSFXSource;
+
     [SerializeField, Tooltip("Default duration (seconds) used for Play/Stop fades when no duration is specified.")]
     private float m_DefaultFadeDuration = 1f;
 
@@ -116,7 +119,11 @@ public class AudioManager : MonoBehaviour
         fadeDuration = fadeDuration >= 0f ? fadeDuration : m_DefaultFadeDuration;
 
         m_SFXFadeTween?.Kill();
-        m_SFXFadeTween = m_SFXSource.DOFade(0f, fadeDuration).OnComplete(m_SFXSource.Stop);
+        m_SFXFadeTween = m_SFXSource.DOFade(0f, fadeDuration).OnComplete(() =>
+        {
+            m_SFXSource.Stop();
+            m_SFXSource.volume = m_SFXVolume;
+        });
     }
 
     public void PauseSFX()
