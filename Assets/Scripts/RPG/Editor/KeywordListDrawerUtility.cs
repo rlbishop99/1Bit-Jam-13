@@ -12,9 +12,9 @@ public static class KeywordListDrawerUtility
     private const float m_kLineSpacing = 2.0f;
     private const string m_kAddKeywordLabel = "-- Add Keyword --";
 
-    public static float DrawKeywordList(Rect position, float y, SerializedProperty keywordsProp, KeywordsSO bank)
+    public static float DrawKeywordList(Rect position, float y, SerializedProperty keywordsProp, KeywordsSO bank, KeywordsSO baseBank = null)
     {
-        if (bank == null)
+        if (bank == null && baseBank == null)
         {
             Rect helpRect = new Rect(position.x, y, position.width, m_kLineHeight * 2.0f);
             EditorGUI.HelpBox(helpRect, "Assign a KeywordsSO on this PromptResponses component to pick keywords.", MessageType.Info);
@@ -38,11 +38,25 @@ public static class KeywordListDrawerUtility
         }
 
         List<string> options = new List<string> { m_kAddKeywordLabel };
-        foreach (string keyword in bank.Keywords)
+        HashSet<string> addedOptions = new HashSet<string>();
+        if (baseBank != null)
         {
-            if (!_EntryContainsKeyword(keywordsProp, keyword))
+            foreach (string keyword in baseBank.Keywords)
             {
-                options.Add(keyword);
+                if (addedOptions.Add(keyword) && !_EntryContainsKeyword(keywordsProp, keyword))
+                {
+                    options.Add(keyword);
+                }
+            }
+        }
+        if (bank != null)
+        {
+            foreach (string keyword in bank.Keywords)
+            {
+                if (addedOptions.Add(keyword) && !_EntryContainsKeyword(keywordsProp, keyword))
+                {
+                    options.Add(keyword);
+                }
             }
         }
 
@@ -59,9 +73,9 @@ public static class KeywordListDrawerUtility
         return y;
     }
 
-    public static float GetKeywordListHeight(SerializedProperty keywordsProp, KeywordsSO bank)
+    public static float GetKeywordListHeight(SerializedProperty keywordsProp, KeywordsSO bank, KeywordsSO baseBank = null)
     {
-        if (bank == null) return m_kLineHeight * 2.0f;
+        if (bank == null && baseBank == null) return m_kLineHeight * 2.0f;
 
         return ((m_kLineHeight + m_kLineSpacing) * keywordsProp.arraySize) + m_kLineHeight;
     }
@@ -69,6 +83,12 @@ public static class KeywordListDrawerUtility
     public static KeywordsSO ResolveKeywordsSO(SerializedProperty property)
     {
         SerializedProperty bankProp = property.serializedObject.FindProperty("m_KeywordsSO");
+        return bankProp != null ? bankProp.objectReferenceValue as KeywordsSO : null;
+    }
+
+    public static KeywordsSO ResolveBaseKeywordsSO(SerializedProperty property)
+    {
+        SerializedProperty bankProp = property.serializedObject.FindProperty("m_BaseKeywordsSO");
         return bankProp != null ? bankProp.objectReferenceValue as KeywordsSO : null;
     }
 

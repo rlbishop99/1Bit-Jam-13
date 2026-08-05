@@ -23,6 +23,8 @@ public class DialogueProcessor : MonoBehaviour
     private bool m_bPendingTransition;
     private GameEnums.eLevelID m_PendingTargetLevelID;
     private bool m_bPendingEyeOpen;
+    private bool m_bPendingLayerAdvance;
+    private int m_PendingLayerToAdvanceTo;
 
     private void OnEnable()
     {
@@ -53,16 +55,21 @@ public class DialogueProcessor : MonoBehaviour
     private void _HandleInputSubmitted(string rawInput)
     {
         string[] words = InputSanitizer.SanitizeAndSplit(rawInput);
+        int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
 
         float bestScore = -1.0f;
         string bestResponse = null;
         bool bFoundEligibleMatch = false;
         bool bBestIsTransition = false;
         bool bBestIsEyeOpen = false;
+        bool bBestAdvancesLayer = false;
         GameEnums.eLevelID bestTargetLevelID = default;
+        int bestLayerToAdvanceTo = default;
 
         foreach (PromptResponses source in m_ActivePromptResponsesSources)
         {
+            if (source.RequiredLayer > currentLayer) continue;
+
             foreach (PromptResponses.Entry entry in source.PromptResponseEntries)
             {
                 float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
@@ -73,6 +80,8 @@ public class DialogueProcessor : MonoBehaviour
                     bFoundEligibleMatch = true;
                     bBestIsTransition = false;
                     bBestIsEyeOpen = false;
+                    bBestAdvancesLayer = entry.AdvancesLayer;
+                    bestLayerToAdvanceTo = entry.LayerToAdvanceTo;
                 }
             }
 
@@ -87,6 +96,8 @@ public class DialogueProcessor : MonoBehaviour
                     bBestIsTransition = true;
                     bBestIsEyeOpen = false;
                     bestTargetLevelID = entry.TargetLevelID;
+                    bBestAdvancesLayer = false;
+                    bestLayerToAdvanceTo = default;
                 }
             }
 
@@ -100,6 +111,8 @@ public class DialogueProcessor : MonoBehaviour
                     bFoundEligibleMatch = true;
                     bBestIsTransition = false;
                     bBestIsEyeOpen = true;
+                    bBestAdvancesLayer = false;
+                    bestLayerToAdvanceTo = default;
                 }
             }
         }
@@ -111,12 +124,20 @@ public class DialogueProcessor : MonoBehaviour
         m_bPendingTransition = bFoundEligibleMatch && bBestIsTransition;
         m_PendingTargetLevelID = bestTargetLevelID;
         m_bPendingEyeOpen = bFoundEligibleMatch && bBestIsEyeOpen;
+        m_bPendingLayerAdvance = bFoundEligibleMatch && bBestAdvancesLayer;
+        m_PendingLayerToAdvanceTo = bestLayerToAdvanceTo;
 
         m_TypewriterDisplay.PlayTypewriter(chosenResponse, _OnResponseComplete);
     }
 
     private void _OnResponseComplete()
     {
+        if (m_bPendingLayerAdvance)
+        {
+            m_bPendingLayerAdvance = false;
+            GameProgressManager.Instance.AdvanceLayer(LevelContext.Instance.CurrentLevelID, m_PendingLayerToAdvanceTo);
+        }
+
         if (m_bPendingTransition)
         {
             m_bPendingTransition = false;

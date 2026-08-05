@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: CemeteryDefault
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
-  - look
-  - around
-  - area
   - tombstone
   - tombstones
   - graves
@@ -23,9 +20,6 @@ MonoBehaviour:
   - grave
   - gravestones
   - go
-  - travel
-  - transition
-  - move
   - bridge
   - tower
   - wizard

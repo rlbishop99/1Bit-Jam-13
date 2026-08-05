@@ -464,7 +464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1327
+      value: 1338.4
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -848,6 +848,63 @@ Transform:
   - {fileID: 1527785721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1220036952
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5289948064440458251, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_Name
+      value: GameProgressManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1396.5806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 841.2696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
 --- !u!1001 &1266837020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -980,7 +1037,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 8c18faa0ee9450dffa9b15813669b5b5, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: a6f6517ffee44a9184d46816533fe062, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
     - touch
@@ -1004,6 +1063,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - around
@@ -1019,6 +1080,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - pick
     - up
@@ -1036,6 +1099,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - chair
@@ -1054,6 +1119,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - chair
     - sit
@@ -1066,6 +1133,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - food
     - eat
@@ -1083,12 +1152,16 @@ MonoBehaviour:
       What
       do you do?'
     m_RequiredIntentThreshold: 75
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   m_TransitionEntries: []
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: "You enter the mouth of the Cave. It's dank, humid, and musty.\n\nInside
     you can see a small wooden table and chair, with a campfire slowly crackling
     nearby on a bed of rocks. \n\nThere is some food on the table.\n\nWhat do you
     do?"
+  m_VariationImage: {fileID: 0}
 --- !u!1 &1993061890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 8c18faa0ee9450dffa9b15813669b5b5, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: a6f6517ffee44a9184d46816533fe062, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
     - touch
@@ -1157,6 +1232,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - around
@@ -1172,6 +1249,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - pick
     - up
@@ -1189,6 +1268,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - chair
@@ -1207,6 +1288,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - chair
     - sit
@@ -1219,6 +1302,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - food
     - eat
@@ -1236,6 +1321,8 @@ MonoBehaviour:
       What
       do you do?'
     m_RequiredIntentThreshold: 75
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -1246,6 +1333,8 @@ MonoBehaviour:
     m_Response: You decide to exit the Cave and head to the Bridge.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 2
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - move
     - transition
@@ -1255,11 +1344,15 @@ MonoBehaviour:
     m_Response: You decide to exit the Cave and go back to the Glade.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 1
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: "You enter the mouth of the Cave. It's dank, humid, and musty.\n\nInside
     you can see a small wooden table and chair, with a campfire slowly crackling
     nearby on a bed of rocks. \n\nThere is some food on the table.\n\nWhat do you
     do?"
+  m_VariationImage: {fileID: 0}
 --- !u!1001 &2082806049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1338,6 +1431,7 @@ SceneRoots:
   - {fileID: 2082806049}
   - {fileID: 807606378}
   - {fileID: 1266837020}
+  - {fileID: 1220036952}
   - {fileID: 464055673}
   - {fileID: 1128068937}
   - {fileID: 305325898}

@@ -16,6 +16,7 @@ public class TransitionEntryDrawer : PropertyDrawer
         SerializedProperty thresholdProp = property.FindPropertyRelative("m_RequiredIntentThreshold");
         SerializedProperty targetLevelProp = property.FindPropertyRelative("m_TargetLevelID");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
+        KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
         float y = position.y;
 
@@ -32,7 +33,7 @@ public class TransitionEntryDrawer : PropertyDrawer
         EditorGUI.PropertyField(thresholdRect, thresholdProp, new GUIContent("Required Intent Threshold"));
         y += m_kLineHeight + m_kLineSpacing;
 
-        KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank);
+        KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank, baseBank);
 
         EditorGUI.EndProperty();
     }
@@ -42,11 +43,12 @@ public class TransitionEntryDrawer : PropertyDrawer
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
         SerializedProperty keywordsProp = property.FindPropertyRelative("m_Keywords");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
+        KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
         float height = m_kLineHeight + m_kLineSpacing;
         height += EditorGUI.GetPropertyHeight(responseProp) + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
-        height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank);
+        height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank, baseBank);
 
         return height;
     }

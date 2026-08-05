@@ -682,6 +682,73 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &435211025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435211026}
+  - component: {fileID: 435211027}
+  m_Layer: 0
+  m_Name: ForestLayer3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &435211026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435211025}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128068937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &435211027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435211025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 3
+  m_KeywordsSO: {fileID: 11400000, guid: 4fb576f81878e40098224581e0396fdb, type: 2}
+  m_BaseKeywordsSO: {fileID: 0}
+  m_PromptResponseEntries: []
+  m_TransitionEntries: []
+  m_EyeOpenEntries:
+  - m_Keywords:
+    - open
+    - eyes
+    m_Response: 
+    m_RequiredIntentThreshold: 100
+  m_FallbackResponse: Nothing happens.
+  m_IntroResponse: 'You arrive back into the Forest and look for the Fairy.
+
+
+    Unfortunately,
+    it seems like the Fairy has moved on and is no longer here. All you''re left
+    with is the sound of rustling leaves and a breeze on your face.
+
+
+    What do
+    you do?'
+  m_VariationImage: {fileID: 21300000, guid: cec6ce214d44e6179b02e02474b7d7a6, type: 3}
 --- !u!1 &500939715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1153,7 @@ GameObject:
   - component: {fileID: 1127491737}
   - component: {fileID: 1127491738}
   m_Layer: 0
-  m_Name: ForestDefault
+  m_Name: ForestDefaultLayer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1119,19 +1186,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 8f865d107aeaa46ed9ee01324dd7dc95, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: 94775bd3bea940228d8b295e9e16117f, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
     - look
     - tree
     - trees
     - inspect
-    m_Response: 'You thorougly inspect the Trees. They seem utterly unremarkable.
+    m_Response: 'You thorougly inspect the Trees. These Trees are old and strong
+      of bark.
 
 
-      What
-      do you do?'
-    m_RequiredIntentThreshold: 30
+      The layers of trees feel endless, yet there must be some way
+      through...right? Not that you can see from here though.
+
+
+      What do you
+      do?'
+    m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 34
   - m_Keywords:
     - look
     - flower
@@ -1143,6 +1219,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - stump
@@ -1155,6 +1233,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -1214,6 +1294,7 @@ Transform:
   m_Children:
   - {fileID: 1127491737}
   - {fileID: 1676374983}
+  - {fileID: 435211026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1223839985 stripped
@@ -1357,7 +1438,7 @@ GameObject:
   - component: {fileID: 1676374983}
   - component: {fileID: 1676374984}
   m_Layer: 0
-  m_Name: ForestVariation1
+  m_Name: ForestLayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1390,7 +1471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 2
   m_KeywordsSO: {fileID: 11400000, guid: 4fb576f81878e40098224581e0396fdb, type: 2}
+  m_BaseKeywordsSO: {fileID: 0}
   m_PromptResponseEntries: []
   m_TransitionEntries: []
   m_EyeOpenEntries:
@@ -1561,6 +1644,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035401022}
   m_CullTransparentMesh: 1
+--- !u!1001 &859325673337306169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5289948064440458251, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_Name
+      value: GameProgressManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1396.5806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 841.2696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
 --- !u!1001 &6204205007387498428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1707,6 +1847,10 @@ PrefabInstance:
       propertyPath: m_WalkingSFXClip
       value: 
       objectReference: {fileID: 8300000, guid: 5d8519ee34095c1918055f9aa5c05c64, type: 3}
+    - target: {fileID: 5173927124677763604, guid: a210a4dd1deefa5ab927450db4942d8e, type: 3}
+      propertyPath: m_CurrentVariationID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5577092758060423571, guid: a210a4dd1deefa5ab927450db4942d8e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1269.552
@@ -1761,6 +1905,7 @@ SceneRoots:
   - {fileID: 6913352174758167391}
   - {fileID: 8076890454265545676}
   - {fileID: 583996077}
+  - {fileID: 859325673337306169}
   - {fileID: 791556739}
   - {fileID: 224170610}
   - {fileID: 1128068937}

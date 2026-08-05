@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
   - pond
-  - look
-  - around
-  - area
   - examine
   - inspect
   - water
@@ -25,8 +22,5 @@ MonoBehaviour:
   - oak
   - cave
   - bridge
-  - travel
   - go
-  - transition
-  - move
   - forest

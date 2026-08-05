@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4e2083ac72bf150baa549c5c55b5c59, type: 3}
-  m_Name: FairyHouseDefault
+  m_Name: FairyHouseBaseKeywords
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
-  - house
-  - fairy
-  - flowers
-  - smell
-  - go
-  - forest
+  - move
+  - travel
+  - transition
+  - look
+  - around
+  - area
+  - open
+  - eye
+  - eyes

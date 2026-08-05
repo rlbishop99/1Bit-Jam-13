@@ -658,7 +658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 4ee6a0bca46449f539a2a25f447c0d23, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: c6eb54e555184674abca54db13b989d7, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
     - look
@@ -678,6 +680,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 60
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - tombstone
     - graves
@@ -706,6 +710,8 @@ MonoBehaviour:
       What
       do you do?'
     m_RequiredIntentThreshold: 25
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -717,6 +723,8 @@ MonoBehaviour:
       the Bridge.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 2
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - go
     - travel
@@ -728,12 +736,16 @@ MonoBehaviour:
       Tower.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 5
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: "You finally cross the Bridge and make it to the Cemetery which
     surrounds the Wizard's Tower.\n\nNo doubt all of these graves are for the countless
     Heroes that have attempted to vanquish the Wizard and failed in their quest.
     \n\nYou will not fail; the countless tombstones that litter the Cemetery are
     a grave reminder of why you're here.\n\nWhat do you do?"
+  m_VariationImage: {fileID: 0}
 --- !u!1 &1128068936
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +779,63 @@ Transform:
   - {fileID: 1676374983}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1224331028
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5289948064440458251, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_Name
+      value: GameProgressManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1396.5806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 841.2696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
 --- !u!1 &1308622344
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,11 +1049,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 0be17c2d14580f00a95108a45a88284b, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: c6eb54e555184674abca54db13b989d7, type: 2}
   m_PromptResponseEntries: []
   m_TransitionEntries: []
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 
+  m_VariationImage: {fileID: 0}
 --- !u!1001 &1707440705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1088,7 +1161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1327
+      value: 1338.4
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1183,6 +1256,7 @@ SceneRoots:
   - {fileID: 1559313647}
   - {fileID: 1477619776}
   - {fileID: 1707440705}
+  - {fileID: 1224331028}
   - {fileID: 1935531835}
   - {fileID: 1128068937}
   - {fileID: 305325898}

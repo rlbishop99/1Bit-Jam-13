@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1327
+      value: 1338.4
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -423,6 +423,63 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1001 &359053579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5289948064440458251, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_Name
+      value: GameProgressManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1396.5806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 841.2696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889791671377167659, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 7e5307754e938e51fbee82411b87c6b5, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: d8d488e67edf48099795e3d5f9fb4707, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
     - look
@@ -871,6 +930,8 @@ MonoBehaviour:
       What do
       you do?'
     m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - tree
@@ -882,6 +943,8 @@ MonoBehaviour:
       in a sea of Pine?\n\nYou briefly wonder about the ecological implications this
       has for the environment.\n\nWhat do you do?"
     m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - water
@@ -890,6 +953,8 @@ MonoBehaviour:
       see your helmet reflected in the water and are reminded of who you are and
       why you're here.\n\nWhat do you do?"
     m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -900,6 +965,8 @@ MonoBehaviour:
     m_Response: You decide to pivot back into the Forest.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 0
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - go
     - travel
@@ -909,6 +976,8 @@ MonoBehaviour:
     m_Response: You decide to exit the Glade and head towards the Bridge.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 2
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - go
     - travel
@@ -918,6 +987,9 @@ MonoBehaviour:
     m_Response: You decide to exit the Glade and brave the Cave.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 3
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 'After traveling through a maze of trees in the Forest, you finally
     get a moment of reprieve -- a clearing at the end of the Forest...it''s a beautiful
@@ -930,6 +1002,7 @@ MonoBehaviour:
 
     What
     do you do?'
+  m_VariationImage: {fileID: 0}
 --- !u!1 &1128068936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,11 +1248,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 0be17c2d14580f00a95108a45a88284b, type: 2}
+  m_BaseKeywordsSO: {fileID: 11400000, guid: d8d488e67edf48099795e3d5f9fb4707, type: 2}
   m_PromptResponseEntries: []
   m_TransitionEntries: []
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 
+  m_VariationImage: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1189,6 +1266,7 @@ SceneRoots:
   - {fileID: 614249487}
   - {fileID: 1254811072}
   - {fileID: 830152173}
+  - {fileID: 359053579}
   - {fileID: 184475697}
   - {fileID: 1128068937}
   - {fileID: 305325898}

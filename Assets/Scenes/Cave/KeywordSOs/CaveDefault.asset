@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: CaveDefault
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
-  - look
-  - around
-  - area
   - sit
   - chair
   - pick
@@ -26,9 +23,6 @@ MonoBehaviour:
   - eat
   - hands
   - hand
-  - travel
-  - transition
-  - move
   - go
   - glade
   - bridge

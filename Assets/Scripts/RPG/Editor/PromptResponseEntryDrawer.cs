@@ -14,7 +14,10 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
         SerializedProperty keywordsProp = property.FindPropertyRelative("m_Keywords");
         SerializedProperty thresholdProp = property.FindPropertyRelative("m_RequiredIntentThreshold");
+        SerializedProperty advancesLayerProp = property.FindPropertyRelative("m_bAdvancesLayer");
+        SerializedProperty layerToAdvanceToProp = property.FindPropertyRelative("m_LayerToAdvanceTo");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
+        KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
         float y = position.y;
         float responseHeight = EditorGUI.GetPropertyHeight(responseProp);
@@ -26,7 +29,18 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         EditorGUI.PropertyField(thresholdRect, thresholdProp, new GUIContent("Required Intent Threshold"));
         y += m_kLineHeight + m_kLineSpacing;
 
-        KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank);
+        Rect advancesLayerRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(advancesLayerRect, advancesLayerProp, new GUIContent("Advances Layer"));
+        y += m_kLineHeight + m_kLineSpacing;
+
+        if (advancesLayerProp.boolValue)
+        {
+            Rect layerToAdvanceToRect = new Rect(position.x, y, position.width, m_kLineHeight);
+            EditorGUI.PropertyField(layerToAdvanceToRect, layerToAdvanceToProp, new GUIContent("Layer To Advance To"));
+            y += m_kLineHeight + m_kLineSpacing;
+        }
+
+        KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank, baseBank);
 
         EditorGUI.EndProperty();
     }
@@ -35,11 +49,18 @@ public class PromptResponseEntryDrawer : PropertyDrawer
     {
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
         SerializedProperty keywordsProp = property.FindPropertyRelative("m_Keywords");
+        SerializedProperty advancesLayerProp = property.FindPropertyRelative("m_bAdvancesLayer");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
+        KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
         float height = EditorGUI.GetPropertyHeight(responseProp) + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
-        height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank);
+        height += m_kLineHeight + m_kLineSpacing;
+        if (advancesLayerProp.boolValue)
+        {
+            height += m_kLineHeight + m_kLineSpacing;
+        }
+        height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank, baseBank);
 
         return height;
     }

@@ -483,6 +483,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3038773575352968, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038773575352968, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038773575352968, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139355637378733012, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139355637378733012, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139355637378733012, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1355661521346616466, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_InputHandler
       value: 
@@ -497,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1327
+      value: 1338.4
       objectReference: {fileID: 0}
     - target: {fileID: 2000558684568638752, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -812,6 +836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 8f865d107aeaa46ed9ee01324dd7dc95, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
@@ -825,6 +850,8 @@ MonoBehaviour:
       What
       do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - flower
@@ -836,6 +863,8 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - look
     - stump
@@ -848,6 +877,10 @@ MonoBehaviour:
 
       What do you do?'
     m_RequiredIntentThreshold: 30
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+  m_TransitionEntries: []
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 'You find yourself in a densly wooded Forest. You know the Wizard
     lies ahead in his Tower, but he likely won''t make it easy for you to get there.
@@ -859,6 +892,7 @@ MonoBehaviour:
 
     What
     do you do?'
+  m_VariationImage: {fileID: 0}
 --- !u!1 &1128068936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1094,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+--- !u!1001 &1421898325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1396.5806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 841.2696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754576979048765338, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6669329658371288838, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_Name
+      value: DialogueProcessor (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
 --- !u!1 &1676374982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,10 +1195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
+  m_RequiredLayer: 1
   m_KeywordsSO: {fileID: 11400000, guid: 0be17c2d14580f00a95108a45a88284b, type: 2}
   m_PromptResponseEntries: []
+  m_TransitionEntries: []
+  m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 
+  m_VariationImage: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1117,6 +1212,7 @@ SceneRoots:
   - {fileID: 1390677566}
   - {fileID: 207405476}
   - {fileID: 720410323}
+  - {fileID: 1421898325}
   - {fileID: 610678224}
   - {fileID: 1128068937}
   - {fileID: 305325898}

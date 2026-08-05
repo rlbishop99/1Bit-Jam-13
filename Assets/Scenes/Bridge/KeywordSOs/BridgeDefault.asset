@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: BridgeDefault
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
-  - look
   - inspect
   - bridge
   - cross
@@ -21,17 +20,10 @@ MonoBehaviour:
   - across
   - climb
   - gulley
-  - open
-  - eyes
-  - around
-  - area
   - laughter
   - listen
   - valley
   - cemetery
   - cave
   - glade
-  - travel
-  - transition
-  - move
   - go

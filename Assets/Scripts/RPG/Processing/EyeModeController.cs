@@ -143,10 +143,12 @@ public class EyeModeController : MonoBehaviour
 
     private Sprite _ChooseVariationSprite()
     {
+        int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
+
         List<int> eligibleIndices = new List<int>();
         for (int i = 0; i < m_VariationSources.Count; i++)
         {
-            if (m_VariationSources[i].VariationImage != null)
+            if (m_VariationSources[i].VariationImage != null && m_VariationSources[i].RequiredLayer <= currentLayer)
             {
                 eligibleIndices.Add(i);
             }
