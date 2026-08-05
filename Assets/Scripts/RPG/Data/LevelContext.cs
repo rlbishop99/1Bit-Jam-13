@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,11 @@ public class LevelContext : MonoBehaviour
     public GameEnums.eLevelID CurrentLevelID => m_CurrentLevelID;
     public GameEnums.eVariationID CurrentVariationID => m_CurrentVariationID;
 
+    /// <summary>
+    /// Plasmalot: Fired synchronously at the start of TransitionToLevel, before the fade/load routine begins.
+    /// </summary>
+    public event Action<GameEnums.eLevelID> OnTransitionStarted;
+
     private void Awake()
     {
         m_Instance = this;
@@ -36,6 +42,7 @@ public class LevelContext : MonoBehaviour
 
     public void TransitionToLevel(GameEnums.eLevelID targetLevelID)
     {
+        OnTransitionStarted?.Invoke(targetLevelID);
         StartCoroutine(_TransitionRoutine(targetLevelID));
     }
 

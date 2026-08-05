@@ -16,6 +16,9 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty thresholdProp = property.FindPropertyRelative("m_RequiredIntentThreshold");
         SerializedProperty advancesLayerProp = property.FindPropertyRelative("m_bAdvancesLayer");
         SerializedProperty layerToAdvanceToProp = property.FindPropertyRelative("m_LayerToAdvanceTo");
+        SerializedProperty gatingObjectProp = property.FindPropertyRelative("m_GatingObject");
+        SerializedProperty presenceRequirementProp = property.FindPropertyRelative("m_PresenceRequirement");
+        SerializedProperty entrySFXProp = property.FindPropertyRelative("m_TriggerSFX");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
@@ -40,6 +43,21 @@ public class PromptResponseEntryDrawer : PropertyDrawer
             y += m_kLineHeight + m_kLineSpacing;
         }
 
+        Rect gatingObjectRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(gatingObjectRect, gatingObjectProp, new GUIContent("Gating Object"));
+        y += m_kLineHeight + m_kLineSpacing;
+
+        if (gatingObjectProp.objectReferenceValue != null)
+        {
+            Rect presenceRequirementRect = new Rect(position.x, y, position.width, m_kLineHeight);
+            EditorGUI.PropertyField(presenceRequirementRect, presenceRequirementProp, new GUIContent("Presence Requirement"));
+            y += m_kLineHeight + m_kLineSpacing;
+        }
+
+        Rect triggerSFXRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(triggerSFXRect, entrySFXProp, new GUIContent("Trigger SFX"));
+        y += m_kLineHeight + m_kLineSpacing;
+
         KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank, baseBank);
 
         EditorGUI.EndProperty();
@@ -50,6 +68,7 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
         SerializedProperty keywordsProp = property.FindPropertyRelative("m_Keywords");
         SerializedProperty advancesLayerProp = property.FindPropertyRelative("m_bAdvancesLayer");
+        SerializedProperty gatingObjectProp = property.FindPropertyRelative("m_GatingObject");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
@@ -60,6 +79,12 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         {
             height += m_kLineHeight + m_kLineSpacing;
         }
+        height += m_kLineHeight + m_kLineSpacing;
+        if (gatingObjectProp.objectReferenceValue != null)
+        {
+            height += m_kLineHeight + m_kLineSpacing;
+        }
+        height += m_kLineHeight + m_kLineSpacing;
         height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank, baseBank);
 
         return height;

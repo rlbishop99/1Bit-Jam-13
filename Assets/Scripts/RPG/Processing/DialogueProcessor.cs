@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class DialogueProcessor : MonoBehaviour
     [SerializeField, Tooltip("Types responses to the screen.")]
     private TypewriterDisplay m_TypewriterDisplay;
 
-    [SerializeField, Tooltip("Every PromptResponses source active for the current Level/Variation. Index 0 is treated as the Level source (used for its FallbackResponse/IntroResponse); the rest are Variation sources.")]
+    [SerializeField, Tooltip("Every PromptResponses source active for the current Level/Variation.")]
     private List<PromptResponses> m_ActivePromptResponsesSources;
 
     [SerializeField, Tooltip("Owns the Text-RPG to Spot-the-Difference mode swap triggered by an EyeOpenEntry.")]
@@ -25,6 +26,58 @@ public class DialogueProcessor : MonoBehaviour
     private bool m_bPendingEyeOpen;
     private bool m_bPendingLayerAdvance;
     private int m_PendingLayerToAdvanceTo;
+    private string m_EyesClosedResponseOverride;
+    private AudioClip m_EyesClosedResponseOverrideSFX;
+    private string m_NextResponseOverride;
+    private AudioClip m_NextResponseOverrideSFX;
+    private bool m_bSuppressNextUnlock;
+
+    /// <summary>
+    /// Plasmalot: Fired once the eyes-closed response (forced or default) has finished typing and input has
+    /// unlocked. Scripted sequences can use this as the safe point to arm the *next* eyes-closed/variation
+    /// override, since by now any override for the close that just happened has already been consumed.
+    /// </summary>
+    public event Action OnEyesClosedResponseComplete;
+
+    /// <summary>
+    /// Plasmalot: Fired just before input would normally unlock after a response with nothing pending. 
+    /// Scripted sequences can call SuppressNextUnlock() from a handler to keep input locked instead.
+    /// </summary>
+    public event Action OnBeforeInputUnlock;
+
+    /// <summary>
+    /// Plasmalot: If set, called after every submission is scoredbut before its outcome is committed. Return null to let the
+    /// resolved outcome through unchanged, or a fallback string to show that text instead and cancel any
+    /// transition/eye-open/layer-advance this submission would otherwise have triggered. 
+    /// Used by scripted sequences to restrict input to only the one action they're currently expecting.
+    /// </summary>
+    public Func<bool, bool, bool, string> ResponseGate { get; set; }
+
+    /// <summary>
+    /// Plasmalot: Overrides the single next "eyes closed" response with this text instead of
+    /// CurrentVariationSource.IntroResponse, optionally playing sfx the moment it's actually displayed.
+    /// Consumed by that one close. Used by scripted sequences.
+    /// </summary>
+    public void SetNextEyesClosedResponse(string overrideText, AudioClip sfx = null)
+    {
+        m_EyesClosedResponseOverride = overrideText;
+        m_EyesClosedResponseOverrideSFX = sfx;
+    }
+
+    /// <summary>
+    /// Plasmalot: Replaces the entire next input submission's handling - no keyword scoring runs, this text is
+    /// shown as the response instead (optionally playing sfx the moment it's actually displayed), and no
+    /// transition/eye-open/layer-advance can be triggered by it. Consumed by that one submission. Used by
+    /// scripted sequences to replace a prompt with forced dialogue.
+    /// </summary>
+    public void SetNextResponseOverride(string overrideText, AudioClip sfx = null)
+    {
+        m_NextResponseOverride = overrideText;
+        m_NextResponseOverrideSFX = sfx;
+    }
+
+    /// <summary>Suppresses the input unlock that would otherwise follow the OnBeforeInputUnlock this frame.</summary>
+    public void SuppressNextUnlock() => m_bSuppressNextUnlock = true;
 
     private void OnEnable()
     {
@@ -42,8 +95,33 @@ public class DialogueProcessor : MonoBehaviour
     {
         if (m_bHasPlayedIntro || m_ActivePromptResponsesSources == null || m_ActivePromptResponsesSources.Count == 0) return;
 
+        int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
+        PromptResponses activeLevelSource = _ResolveActiveLevelSource(currentLayer);
+
+        Debug.Log($"[DialogueProcessor] Start(): Level={LevelContext.Instance.CurrentLevelID}, Layer={currentLayer}, ActiveLevelSource={(activeLevelSource != null ? activeLevelSource.name : "NULL")}, RequiredLayer={(activeLevelSource != null ? activeLevelSource.RequiredLayer.ToString() : "-")}");
+
         m_InputHandler.LockInput();
-        m_TypewriterDisplay.PlayTypewriter(m_ActivePromptResponsesSources[0].IntroResponse, _OnIntroComplete);
+        m_TypewriterDisplay.PlayTypewriter(activeLevelSource.IntroResponse, _OnIntroComplete);
+    }
+
+    /// <summary>
+    /// Plasmalot: Picks whichever Is Level Source-flagged source has the highest Required Layer at or below
+    /// currentLayer - the same "highest Required Layer reached" rule EyeModeController uses to pick the active
+    /// Layer's Variations, so the Level's Intro/Fallback text always matches whichever Layer is actually active.
+    /// </summary>
+    private PromptResponses _ResolveActiveLevelSource(int currentLayer)
+    {
+        PromptResponses activeSource = null;
+        foreach (PromptResponses source in m_ActivePromptResponsesSources)
+        {
+            if (!source.IsLevelSource || source.RequiredLayer > currentLayer) continue;
+
+            if (activeSource == null || source.RequiredLayer > activeSource.RequiredLayer)
+            {
+                activeSource = source;
+            }
+        }
+        return activeSource;
     }
 
     private void _OnIntroComplete()
@@ -54,8 +132,25 @@ public class DialogueProcessor : MonoBehaviour
 
     private void _HandleInputSubmitted(string rawInput)
     {
+        if (m_NextResponseOverride != null)
+        {
+            string overrideResponse = m_NextResponseOverride;
+            m_NextResponseOverride = null;
+
+            m_bPendingTransition = false;
+            m_bPendingEyeOpen = false;
+            m_bPendingLayerAdvance = false;
+
+            AudioManager.Instance.PlaySFXOneShot(m_NextResponseOverrideSFX);
+            m_NextResponseOverrideSFX = null;
+
+            m_TypewriterDisplay.PlayTypewriter(overrideResponse, _OnResponseComplete);
+            return;
+        }
+
         string[] words = InputSanitizer.SanitizeAndSplit(rawInput);
         int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
+        PromptResponses activeLevelSource = _ResolveActiveLevelSource(currentLayer);
 
         float bestScore = -1.0f;
         string bestResponse = null;
@@ -121,7 +216,14 @@ public class DialogueProcessor : MonoBehaviour
 
         string chosenResponse = bFoundEligibleMatch
             ? bestResponse
-            : m_ActivePromptResponsesSources[0].FallbackResponse;
+            : activeLevelSource.FallbackResponse;
+
+        string gateFallback = ResponseGate?.Invoke(bFoundEligibleMatch, bBestIsTransition, bBestIsEyeOpen);
+        if (gateFallback != null)
+        {
+            chosenResponse = gateFallback;
+            bFoundEligibleMatch = false;
+        }
 
         m_bPendingTransition = bFoundEligibleMatch && bBestIsTransition;
         m_PendingTargetLevelID = bestTargetLevelID;
@@ -154,17 +256,30 @@ public class DialogueProcessor : MonoBehaviour
             return;
         }
 
-        m_InputHandler.UnlockInput();
+        OnBeforeInputUnlock?.Invoke();
+        if (!m_bSuppressNextUnlock)
+        {
+            m_InputHandler.UnlockInput();
+        }
+        m_bSuppressNextUnlock = false;
     }
 
     private void _HandleEyesClosed()
     {
         m_InputHandler.ClearInput();
-        m_TypewriterDisplay.PlayTypewriter(m_EyeModeController.CurrentVariationSource.IntroResponse, _OnEyesClosedIntroComplete);
+
+        string response = m_EyesClosedResponseOverride ?? m_EyeModeController.CurrentVariationSource.IntroResponse;
+        m_EyesClosedResponseOverride = null;
+
+        AudioManager.Instance.PlaySFXOneShot(m_EyesClosedResponseOverrideSFX);
+        m_EyesClosedResponseOverrideSFX = null;
+
+        m_TypewriterDisplay.PlayTypewriter(response, _OnEyesClosedIntroComplete);
     }
 
     private void _OnEyesClosedIntroComplete()
     {
         m_InputHandler.UnlockInput();
+        OnEyesClosedResponseComplete?.Invoke();
     }
 }

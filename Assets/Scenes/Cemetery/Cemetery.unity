@@ -659,6 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 1
+  m_bIsLevelSource: 0
   m_KeywordsSO: {fileID: 11400000, guid: 4ee6a0bca46449f539a2a25f447c0d23, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: c6eb54e555184674abca54db13b989d7, type: 2}
   m_PromptResponseEntries:
@@ -682,6 +683,8 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 60
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
   - m_Keywords:
     - tombstone
     - graves
@@ -712,6 +715,8 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 25
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -723,8 +728,6 @@ MonoBehaviour:
       the Bridge.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 2
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
   - m_Keywords:
     - go
     - travel
@@ -736,8 +739,6 @@ MonoBehaviour:
       Tower.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 5
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
   m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: "You finally cross the Bridge and make it to the Cemetery which
@@ -745,7 +746,7 @@ MonoBehaviour:
     Heroes that have attempted to vanquish the Wizard and failed in their quest.
     \n\nYou will not fail; the countless tombstones that litter the Cemetery are
     a grave reminder of why you're here.\n\nWhat do you do?"
-  m_VariationImage: {fileID: 0}
+  m_Variations: []
 --- !u!1 &1128068936
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +990,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 211880142}
     - target: {fileID: 5857888040257436050, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_EyeModeController
+      value: 
+      objectReference: {fileID: 2057950587}
+    - target: {fileID: 5857888040257436050, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
       propertyPath: m_TypewriterDisplay
       value: 
       objectReference: {fileID: 1935531836}
@@ -1050,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 1
+  m_bIsLevelSource: 0
   m_KeywordsSO: {fileID: 11400000, guid: 0be17c2d14580f00a95108a45a88284b, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: c6eb54e555184674abca54db13b989d7, type: 2}
   m_PromptResponseEntries: []
@@ -1057,7 +1063,7 @@ MonoBehaviour:
   m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 
-  m_VariationImage: {fileID: 0}
+  m_Variations: []
 --- !u!1001 &1707440705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1247,6 +1253,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf7582a1fd1d7c08a741126714caa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TypewriterDisplay
+--- !u!1 &1935531837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5524344914853214996, guid: 31960fc8542ed970e8d56bc84cb4ea18, type: 3}
+  m_PrefabInstance: {fileID: 1935531835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2057950586
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100384767547964146, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_InputHandler
+      value: 
+      objectReference: {fileID: 211880142}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_DialogueUIRoot
+      value: 
+      objectReference: {fileID: 1935531837}
+    - target: {fileID: 3972794148059128704, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Name
+      value: SpotDifferenceCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+--- !u!114 &2057950587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 2057950586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e03aba41de4c7f5887b2738e731c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EyeModeController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1258,5 +1385,6 @@ SceneRoots:
   - {fileID: 1707440705}
   - {fileID: 1224331028}
   - {fileID: 1935531835}
+  - {fileID: 2057950586}
   - {fileID: 1128068937}
   - {fileID: 305325898}

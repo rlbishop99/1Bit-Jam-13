@@ -21,6 +21,13 @@ public class GameProgressManager : MonoBehaviour
         }
 
         m_Instance = this;
+
+        if (transform.parent != null)
+        {
+            Debug.LogWarning($"[{name}] GameProgressManager was parented under '{transform.parent.name}'; unparenting so DontDestroyOnLoad actually persists it across scene loads.", this);
+            transform.SetParent(null);
+        }
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -32,6 +39,7 @@ public class GameProgressManager : MonoBehaviour
         if (newLayer > GetCurrentLayer(levelID))
         {
             m_CurrentLayerByLevel[levelID] = newLayer;
+            Debug.Log($"[GameProgressManager] {levelID} advanced to Layer {newLayer}.");
         }
     }
 }

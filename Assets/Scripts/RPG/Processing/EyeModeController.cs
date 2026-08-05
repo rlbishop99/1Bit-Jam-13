@@ -30,6 +30,9 @@ public class EyeModeController : MonoBehaviour
     [SerializeField, Tooltip("Lower eyelid panel; tweens down and off-screen to open.")]
     private RectTransform m_BottomLid;
 
+    [SerializeField, Tooltip("The GameObject that contains the X to close eyes prompt. Shown while eyes are open.")]
+    private GameObject m_CloseEyesPrompt;
+
     [SerializeField, Tooltip("Root GameObject of the dialogue UI, hidden while eyes are open.")]
     private GameObject m_DialogueUIRoot;
 
@@ -61,8 +64,15 @@ public class EyeModeController : MonoBehaviour
     private bool m_bIsInitialized;
     private List<GameObject> m_AllVariationObjects;
     private PromptResponses.LayerVariation m_PendingVariation;
+    private int? m_ForcedVariationIndexOverride;
 
     public event Action OnEyesClosed;
+
+    /// <summary>
+    /// Plasmalot: Forces the next OpenEyes() roll on the current Layer to pick this Variation index instead of
+    /// rolling randomly. Consumed (cleared) by that single roll. Used by scripted sequences like the Forest tutorial.
+    /// </summary>
+    public void SetForcedVariationOverride(int variationIndex) => m_ForcedVariationIndexOverride = variationIndex;
 
     public PromptResponses CurrentVariationSource => m_LayerSources[m_LastLayerIndex];
 
@@ -156,6 +166,7 @@ public class EyeModeController : MonoBehaviour
     {
         m_DialogueUIRoot.SetActive(false);
         m_VariationImageDisplay.enabled = true;
+        m_CloseEyesPrompt.SetActive(true);
         _EnableVariationObjects(m_PendingVariation);
 
         if (m_EyeOpenSFXClip != null)
@@ -179,6 +190,7 @@ public class EyeModeController : MonoBehaviour
     {
         m_SpotDifferenceCanvasRoot.SetActive(false);
         m_DialogueUIRoot.SetActive(true);
+        m_CloseEyesPrompt.SetActive(false);
 
         m_bIsTransitioning = false;
 
@@ -207,7 +219,12 @@ public class EyeModeController : MonoBehaviour
         int lastVariationIndex = m_LastVariationIndexPerLayer[activeLayerIndex];
 
         int chosenVariationIndex;
-        if (lastVariationIndex == -1 || variations.Count == 1)
+        if (m_ForcedVariationIndexOverride.HasValue)
+        {
+            chosenVariationIndex = m_ForcedVariationIndexOverride.Value;
+            m_ForcedVariationIndexOverride = null;
+        }
+        else if (lastVariationIndex == -1 || variations.Count == 1)
         {
             chosenVariationIndex = 0;
         }

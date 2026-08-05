@@ -38,6 +38,9 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("Whether the Gating Object must currently be present or absent for this Entry to be eligible. Ignored if Gating Object is unset.")]
         private ePresenceRequirement m_PresenceRequirement;
 
+        [SerializeField, Tooltip("The SFX that plays when this Entry is triggered. Optional.")]
+        private AudioClip m_TriggerSFX;
+
         public List<string> Keywords => m_Keywords;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
@@ -45,6 +48,7 @@ public class PromptResponses : MonoBehaviour
         public int LayerToAdvanceTo => m_LayerToAdvanceTo;
         public GameObject GatingObject => m_GatingObject;
         public ePresenceRequirement PresenceRequirement => m_PresenceRequirement;
+        public AudioClip TriggerSFX => m_TriggerSFX;
 
         public bool IsGateSatisfied()
         {
@@ -109,6 +113,9 @@ public class PromptResponses : MonoBehaviour
     [SerializeField, Min(1), Tooltip("The Layer this Level/Variation's Entries, Transitions, EyeOpenEntries, and Variation Image belong to. Only active once the Level's current Layer reaches this value.")]
     private int m_RequiredLayer = 1;
 
+    [SerializeField, Tooltip("Marks this as a Level source. DialogueProcessor sources its FallbackResponse/IntroResponse from whichever Level source has the highest Required Layer.")]
+    private bool m_bIsLevelSource;
+
     [SerializeField, Tooltip("Word bank of keywords available for this Level/Variation.")]
     private KeywordsSO m_KeywordsSO;
 
@@ -134,6 +141,7 @@ public class PromptResponses : MonoBehaviour
     private List<LayerVariation> m_Variations = new List<LayerVariation>();
 
     public int RequiredLayer => m_RequiredLayer;
+    public bool IsLevelSource => m_bIsLevelSource;
     public KeywordsSO KeywordsSO => m_KeywordsSO;
     public KeywordsSO BaseKeywordsSO => m_BaseKeywordsSO;
     public IReadOnlyList<Entry> PromptResponseEntries => m_PromptResponseEntries;
