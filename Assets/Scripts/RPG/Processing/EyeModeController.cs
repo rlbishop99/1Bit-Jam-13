@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
 /// Plasmalot: Owns the swap between Text-Based RPG mode and Spot-the-Difference mode for the current Level.
 /// Opening eyes fades in over the dialogue UI, then slides the eyelid panels off-screen (up/down) to reveal
 /// a Variation image; closing eyes (the only input read while eyes are open) reverses the sequence.
+/// Each open-eyes roll picks a Layer first (gated by RequiredLayer, no immediate repeat), then independently
+/// picks one of that Layer's Variations (no immediate repeat within that Layer).
 /// </summary>
 public class EyeModeController : MonoBehaviour
 {
@@ -30,8 +33,9 @@ public class EyeModeController : MonoBehaviour
     [SerializeField, Tooltip("Root GameObject of the dialogue UI, hidden while eyes are open.")]
     private GameObject m_DialogueUIRoot;
 
-    [SerializeField, Tooltip("Every PromptResponses source for the current Level/Variation. Index 0 is treated as the default Variation.")]
-    private List<PromptResponses> m_VariationSources;
+    [FormerlySerializedAs("m_VariationSources")]
+    [SerializeField, Tooltip("Every PromptResponses Layer source for the current Level. Index 0 is treated as the default Layer.")]
+    private List<PromptResponses> m_LayerSources;
 
     [SerializeField, Tooltip("Duration (seconds) of the Spot-the-Difference canvas fade in/out.")]
     private float m_CanvasFadeDuration = 0.5f;
@@ -50,21 +54,54 @@ public class EyeModeController : MonoBehaviour
     private Vector2 m_BottomLidClosedPos;
     private Vector2 m_BottomLidOpenPos;
 
-    private int m_LastVariationIndex = -1;
+    private int m_LastLayerIndex = -1;
+    private List<int> m_LastVariationIndexPerLayer;
     private bool m_bIsEyesOpen;
     private bool m_bIsTransitioning;
+    private bool m_bIsInitialized;
+    private List<GameObject> m_AllVariationObjects;
+    private PromptResponses.LayerVariation m_PendingVariation;
 
     public event Action OnEyesClosed;
 
-    public PromptResponses CurrentVariationSource => m_VariationSources[m_LastVariationIndex];
+    public PromptResponses CurrentVariationSource => m_LayerSources[m_LastLayerIndex];
 
     private void Awake()
     {
+        _EnsureInitialized();
+    }
+
+    // m_SpotDifferenceCanvasRoot (this component's own GameObject) starts inactive, so Awake is
+    // deferred until it's first activated. OpenEyes() needs these caches before that happens, so
+    // it calls this too; the flag makes re-entry from both call sites harmless.
+    private void _EnsureInitialized()
+    {
+        if (m_bIsInitialized) return;
+        m_bIsInitialized = true;
+
         m_TopLidClosedPos = m_TopLid.anchoredPosition;
-        m_TopLidOpenPos = m_TopLidClosedPos + Vector2.up * m_TopLid.rect.height * 15;
+        m_TopLidOpenPos = m_TopLidClosedPos + Vector2.up * -m_TopLid.rect.height * 1.5f;
 
         m_BottomLidClosedPos = m_BottomLid.anchoredPosition;
-        m_BottomLidOpenPos = m_BottomLidClosedPos + Vector2.down * m_BottomLid.rect.height * 15;
+        m_BottomLidOpenPos = m_BottomLidClosedPos + Vector2.down * -m_BottomLid.rect.height * 1.5f;
+
+        m_LastVariationIndexPerLayer = new List<int>();
+        m_AllVariationObjects = new List<GameObject>();
+        foreach (PromptResponses layer in m_LayerSources)
+        {
+            m_LastVariationIndexPerLayer.Add(-1);
+
+            foreach (PromptResponses.LayerVariation variation in layer.Variations)
+            {
+                foreach (GameObject obj in variation.VariationObjects)
+                {
+                    if (obj != null && !m_AllVariationObjects.Contains(obj))
+                    {
+                        m_AllVariationObjects.Add(obj);
+                    }
+                }
+            }
+        }
     }
 
     private void Update()
@@ -79,9 +116,15 @@ public class EyeModeController : MonoBehaviour
 
     public void OpenEyes()
     {
-        Sprite chosenSprite = _ChooseVariationSprite();
-        m_VariationImageDisplay.sprite = chosenSprite;
+        _EnsureInitialized();
+
+        m_PendingVariation = _ChooseVariation();
+        m_VariationImageDisplay.sprite = m_PendingVariation.VariationImage;
         m_VariationImageDisplay.enabled = false;
+
+        // Plasmalot: Disable every previous Variation's objects now, before the canvas becomes active, so none of them are momentarily visible during the fade-in. 
+        // The chosen Variation's objects are only enabled once the eyelids actually begin opening.
+        _DisableAllVariationObjects();
 
         m_bIsTransitioning = true;
         m_TopLid.anchoredPosition = m_TopLidClosedPos;
@@ -113,6 +156,7 @@ public class EyeModeController : MonoBehaviour
     {
         m_DialogueUIRoot.SetActive(false);
         m_VariationImageDisplay.enabled = true;
+        _EnableVariationObjects(m_PendingVariation);
 
         if (m_EyeOpenSFXClip != null)
         {
@@ -141,33 +185,62 @@ public class EyeModeController : MonoBehaviour
         OnEyesClosed?.Invoke();
     }
 
-    private Sprite _ChooseVariationSprite()
+    private PromptResponses.LayerVariation _ChooseVariation()
     {
         int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
 
-        List<int> eligibleIndices = new List<int>();
-        for (int i = 0; i < m_VariationSources.Count; i++)
+        // The active Layer is static until GameProgressManager advances it, so this is a direct
+        // lookup, not a roll: pick the highest-RequiredLayer source the Player has reached.
+        int activeLayerIndex = -1;
+        for (int i = 0; i < m_LayerSources.Count; i++)
         {
-            if (m_VariationSources[i].VariationImage != null && m_VariationSources[i].RequiredLayer <= currentLayer)
+            if (m_LayerSources[i].Variations.Count == 0 || m_LayerSources[i].RequiredLayer > currentLayer) continue;
+
+            if (activeLayerIndex == -1 || m_LayerSources[i].RequiredLayer > m_LayerSources[activeLayerIndex].RequiredLayer)
             {
-                eligibleIndices.Add(i);
+                activeLayerIndex = i;
             }
         }
+        m_LastLayerIndex = activeLayerIndex;
 
-        int chosenIndex;
-        if (m_LastVariationIndex == -1)
+        IReadOnlyList<PromptResponses.LayerVariation> variations = m_LayerSources[activeLayerIndex].Variations;
+        int lastVariationIndex = m_LastVariationIndexPerLayer[activeLayerIndex];
+
+        int chosenVariationIndex;
+        if (lastVariationIndex == -1 || variations.Count == 1)
         {
-            chosenIndex = eligibleIndices.Contains(0) ? 0 : eligibleIndices[0];
+            chosenVariationIndex = 0;
         }
         else
         {
-            List<int> repeatCandidates = eligibleIndices.FindAll(i => i != m_LastVariationIndex);
-            chosenIndex = repeatCandidates.Count > 0
-                ? repeatCandidates[UnityEngine.Random.Range(0, repeatCandidates.Count)]
-                : eligibleIndices[UnityEngine.Random.Range(0, eligibleIndices.Count)];
+            List<int> repeatCandidates = new List<int>();
+            for (int i = 0; i < variations.Count; i++)
+            {
+                if (i != lastVariationIndex) repeatCandidates.Add(i);
+            }
+            chosenVariationIndex = repeatCandidates[UnityEngine.Random.Range(0, repeatCandidates.Count)];
         }
+        m_LastVariationIndexPerLayer[activeLayerIndex] = chosenVariationIndex;
 
-        m_LastVariationIndex = chosenIndex;
-        return m_VariationSources[chosenIndex].VariationImage;
+        return variations[chosenVariationIndex];
+    }
+
+    private void _DisableAllVariationObjects()
+    {
+        foreach (GameObject obj in m_AllVariationObjects)
+        {
+            obj.SetActive(false);
+        }
+    }
+
+    private void _EnableVariationObjects(PromptResponses.LayerVariation chosenVariation)
+    {
+        foreach (GameObject obj in chosenVariation.VariationObjects)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(true);
+            }
+        }
     }
 }

@@ -8,6 +8,12 @@ using UnityEngine;
 /// </summary>
 public class PromptResponses : MonoBehaviour
 {
+    public enum ePresenceRequirement
+    {
+        MustBePresent,
+        MustBeAbsent,
+    }
+
     [Serializable]
     public struct Entry
     {
@@ -26,11 +32,27 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Min(1), Tooltip("The Layer the current Level advances to when this Entry triggers. Only used if Advances Layer is true.")]
         private int m_LayerToAdvanceTo;
 
+        [SerializeField, Tooltip("If set, this Entry is only eligible when this object's presence (last rolled when eyes were opened) matches Presence Requirement. Leave unset for an ungated Entry.")]
+        private GameObject m_GatingObject;
+
+        [SerializeField, Tooltip("Whether the Gating Object must currently be present or absent for this Entry to be eligible. Ignored if Gating Object is unset.")]
+        private ePresenceRequirement m_PresenceRequirement;
+
         public List<string> Keywords => m_Keywords;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
         public bool AdvancesLayer => m_bAdvancesLayer;
         public int LayerToAdvanceTo => m_LayerToAdvanceTo;
+        public GameObject GatingObject => m_GatingObject;
+        public ePresenceRequirement PresenceRequirement => m_PresenceRequirement;
+
+        public bool IsGateSatisfied()
+        {
+            if (m_GatingObject == null) return true;
+
+            bool bIsPresent = m_GatingObject.activeSelf;
+            return m_PresenceRequirement == ePresenceRequirement.MustBePresent ? bIsPresent : !bIsPresent;
+        }
     }
 
     [Serializable]
@@ -52,6 +74,19 @@ public class PromptResponses : MonoBehaviour
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
         public GameEnums.eLevelID TargetLevelID => m_TargetLevelID;
+    }
+
+    [Serializable]
+    public struct LayerVariation
+    {
+        [SerializeField, Tooltip("The Spot-the-Difference image shown when this Variation is rolled. Typically the same base image shared across every Variation on this Layer.")]
+        private Sprite m_VariationImage;
+
+        [SerializeField, Tooltip("Decorative objects enabled when this Variation is rolled. Every object referenced by any Variation on any Layer is disabled first, so only these remain active.")]
+        private List<GameObject> m_VariationObjects;
+
+        public Sprite VariationImage => m_VariationImage;
+        public IReadOnlyList<GameObject> VariationObjects => m_VariationObjects;
     }
 
     [Serializable]
@@ -95,8 +130,8 @@ public class PromptResponses : MonoBehaviour
     [SerializeField, TextArea(2, 5), Tooltip("Text shown the first time the Player enters this Level/Variation.")]
     private string m_IntroResponse;
 
-    [SerializeField, Tooltip("The Spot-the-Difference image shown for this Level/Variation when the Player opens their eyes.")]
-    private Sprite m_VariationImage;
+    [SerializeField, Tooltip("Every Variation available on this Layer. One is randomly rolled (excluding the previous roll on this Layer) each time eyes open while this Layer is active.")]
+    private List<LayerVariation> m_Variations = new List<LayerVariation>();
 
     public int RequiredLayer => m_RequiredLayer;
     public KeywordsSO KeywordsSO => m_KeywordsSO;
@@ -106,7 +141,7 @@ public class PromptResponses : MonoBehaviour
     public IReadOnlyList<EyeOpenEntry> EyeOpenEntries => m_EyeOpenEntries;
     public string FallbackResponse => m_FallbackResponse;
     public string IntroResponse => m_IntroResponse;
-    public Sprite VariationImage => m_VariationImage;
+    public IReadOnlyList<LayerVariation> Variations => m_Variations;
 
     private void OnValidate()
     {

@@ -72,6 +72,8 @@ public class DialogueProcessor : MonoBehaviour
 
             foreach (PromptResponses.Entry entry in source.PromptResponseEntries)
             {
+                if (!entry.IsGateSatisfied()) continue;
+
                 float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
                 if (score >= entry.RequiredIntentThreshold && score > bestScore)
                 {
