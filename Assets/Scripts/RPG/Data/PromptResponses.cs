@@ -41,6 +41,9 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("The SFX that plays when this Entry is triggered. Optional.")]
         private AudioClip m_TriggerSFX;
 
+        [SerializeField, Tooltip("If set, triggering this Entry grants this Item to the Player's inventory and removes this Entry from future consideration, so it can only be granted once. Leave unset for an Entry with no reward.")]
+        private ItemSO m_RewardItem;
+
         public List<string> Keywords => m_Keywords;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
@@ -49,6 +52,7 @@ public class PromptResponses : MonoBehaviour
         public GameObject GatingObject => m_GatingObject;
         public ePresenceRequirement PresenceRequirement => m_PresenceRequirement;
         public AudioClip TriggerSFX => m_TriggerSFX;
+        public ItemSO RewardItem => m_RewardItem;
 
         public bool IsGateSatisfied()
         {
@@ -150,6 +154,11 @@ public class PromptResponses : MonoBehaviour
     public string FallbackResponse => m_FallbackResponse;
     public string IntroResponse => m_IntroResponse;
     public IReadOnlyList<LayerVariation> Variations => m_Variations;
+
+    /// <summary>
+    /// Plasmalot: Removes the Entry at index from PromptResponseEntries so it can't be re-triggered.
+    /// </summary>
+    public void RemoveEntryAt(int index) => m_PromptResponseEntries.RemoveAt(index);
 
     private void OnValidate()
     {

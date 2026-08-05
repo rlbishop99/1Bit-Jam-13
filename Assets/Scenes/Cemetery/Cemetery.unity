@@ -614,6 +614,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 305325898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &881067109
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5350538181166099910, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_Name
+      value: ItemsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 414.4246
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 304.10995
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666238177220319338, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0f5125a830248beb576ee48e01e132b, type: 3}
 --- !u!1 &1127491736
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +742,8 @@ MonoBehaviour:
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
   - m_Keywords:
     - tombstone
     - graves
@@ -717,6 +776,8 @@ MonoBehaviour:
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -1384,6 +1445,7 @@ SceneRoots:
   - {fileID: 1477619776}
   - {fileID: 1707440705}
   - {fileID: 1224331028}
+  - {fileID: 881067109}
   - {fileID: 1935531835}
   - {fileID: 2057950586}
   - {fileID: 1128068937}

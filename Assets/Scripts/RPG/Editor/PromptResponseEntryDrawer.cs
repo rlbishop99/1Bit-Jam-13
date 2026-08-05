@@ -19,6 +19,7 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty gatingObjectProp = property.FindPropertyRelative("m_GatingObject");
         SerializedProperty presenceRequirementProp = property.FindPropertyRelative("m_PresenceRequirement");
         SerializedProperty entrySFXProp = property.FindPropertyRelative("m_TriggerSFX");
+        SerializedProperty rewardItemProp = property.FindPropertyRelative("m_RewardItem");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
@@ -58,6 +59,10 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         EditorGUI.PropertyField(triggerSFXRect, entrySFXProp, new GUIContent("Trigger SFX"));
         y += m_kLineHeight + m_kLineSpacing;
 
+        Rect rewardItemRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(rewardItemRect, rewardItemProp, new GUIContent("Reward Item"));
+        y += m_kLineHeight + m_kLineSpacing;
+
         KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank, baseBank);
 
         EditorGUI.EndProperty();
@@ -84,6 +89,7 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         {
             height += m_kLineHeight + m_kLineSpacing;
         }
+        height += m_kLineHeight + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
         height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank, baseBank);
 

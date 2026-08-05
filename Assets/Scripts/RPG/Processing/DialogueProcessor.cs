@@ -26,6 +26,9 @@ public class DialogueProcessor : MonoBehaviour
     private bool m_bPendingEyeOpen;
     private bool m_bPendingLayerAdvance;
     private int m_PendingLayerToAdvanceTo;
+    private ItemSO m_PendingRewardItem;
+    private PromptResponses m_PendingRewardItemSource;
+    private int m_PendingRewardItemEntryIndex;
     private string m_EyesClosedResponseOverride;
     private AudioClip m_EyesClosedResponseOverrideSFX;
     private string m_NextResponseOverride;
@@ -140,6 +143,8 @@ public class DialogueProcessor : MonoBehaviour
             m_bPendingTransition = false;
             m_bPendingEyeOpen = false;
             m_bPendingLayerAdvance = false;
+            m_PendingRewardItem = null;
+            m_PendingRewardItemSource = null;
 
             AudioManager.Instance.PlaySFXOneShot(m_NextResponseOverrideSFX);
             m_NextResponseOverrideSFX = null;
@@ -160,13 +165,19 @@ public class DialogueProcessor : MonoBehaviour
         bool bBestAdvancesLayer = false;
         GameEnums.eLevelID bestTargetLevelID = default;
         int bestLayerToAdvanceTo = default;
+        ItemSO bestRewardItem = null;
+        PromptResponses bestRewardItemSource = null;
+        int bestRewardItemEntryIndex = default;
+        AudioClip bestTriggerSFX = null;
 
         foreach (PromptResponses source in m_ActivePromptResponsesSources)
         {
             if (source.RequiredLayer > currentLayer) continue;
 
-            foreach (PromptResponses.Entry entry in source.PromptResponseEntries)
+            IReadOnlyList<PromptResponses.Entry> entries = source.PromptResponseEntries;
+            for (int i = 0; i < entries.Count; i++)
             {
+                PromptResponses.Entry entry = entries[i];
                 if (!entry.IsGateSatisfied()) continue;
 
                 float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
@@ -179,6 +190,10 @@ public class DialogueProcessor : MonoBehaviour
                     bBestIsEyeOpen = false;
                     bBestAdvancesLayer = entry.AdvancesLayer;
                     bestLayerToAdvanceTo = entry.LayerToAdvanceTo;
+                    bestRewardItem = entry.RewardItem;
+                    bestRewardItemSource = source;
+                    bestRewardItemEntryIndex = i;
+                    bestTriggerSFX = entry.TriggerSFX;
                 }
             }
 
@@ -195,6 +210,9 @@ public class DialogueProcessor : MonoBehaviour
                     bestTargetLevelID = entry.TargetLevelID;
                     bBestAdvancesLayer = false;
                     bestLayerToAdvanceTo = default;
+                    bestRewardItem = null;
+                    bestRewardItemSource = null;
+                    bestTriggerSFX = null;
                 }
             }
 
@@ -210,8 +228,26 @@ public class DialogueProcessor : MonoBehaviour
                     bBestIsEyeOpen = true;
                     bBestAdvancesLayer = false;
                     bestLayerToAdvanceTo = default;
+                    bestRewardItem = null;
+                    bestRewardItemSource = null;
+                    bestTriggerSFX = null;
                 }
             }
+        }
+
+        GlobalCommandContext globalCommandContext = new GlobalCommandContext(m_ActivePromptResponsesSources, currentLayer);
+        if (GlobalCommandManager.TryFindBestMatch(words, bestScore, globalCommandContext, out string globalCommandResponse, out float globalCommandScore))
+        {
+            bestScore = globalCommandScore;
+            bestResponse = globalCommandResponse;
+            bFoundEligibleMatch = true;
+            bBestIsTransition = false;
+            bBestIsEyeOpen = false;
+            bBestAdvancesLayer = false;
+            bestLayerToAdvanceTo = default;
+            bestRewardItem = null;
+            bestRewardItemSource = null;
+            bestTriggerSFX = null;
         }
 
         string chosenResponse = bFoundEligibleMatch
@@ -230,6 +266,14 @@ public class DialogueProcessor : MonoBehaviour
         m_bPendingEyeOpen = bFoundEligibleMatch && bBestIsEyeOpen;
         m_bPendingLayerAdvance = bFoundEligibleMatch && bBestAdvancesLayer;
         m_PendingLayerToAdvanceTo = bestLayerToAdvanceTo;
+        m_PendingRewardItem = bFoundEligibleMatch ? bestRewardItem : null;
+        m_PendingRewardItemSource = bFoundEligibleMatch ? bestRewardItemSource : null;
+        m_PendingRewardItemEntryIndex = bestRewardItemEntryIndex;
+
+        if (bFoundEligibleMatch && bestTriggerSFX != null)
+        {
+            AudioManager.Instance.PlaySFXOneShot(bestTriggerSFX);
+        }
 
         m_TypewriterDisplay.PlayTypewriter(chosenResponse, _OnResponseComplete);
     }
@@ -240,6 +284,20 @@ public class DialogueProcessor : MonoBehaviour
         {
             m_bPendingLayerAdvance = false;
             GameProgressManager.Instance.AdvanceLayer(LevelContext.Instance.CurrentLevelID, m_PendingLayerToAdvanceTo);
+        }
+
+        if (m_PendingRewardItem != null)
+        {
+            ItemSO rewardItem = m_PendingRewardItem;
+            PromptResponses rewardItemSource = m_PendingRewardItemSource;
+            int rewardItemEntryIndex = m_PendingRewardItemEntryIndex;
+            m_PendingRewardItem = null;
+            m_PendingRewardItemSource = null;
+
+            ItemsManager.Instance.GrantItem(rewardItem);
+            rewardItemSource.RemoveEntryAt(rewardItemEntryIndex);
+
+            Debug.Log($"[DialogueProcessor] Granted Reward Item '{rewardItem.ItemName}' from PromptResponses source '{rewardItemSource.name}' at Entry index {rewardItemEntryIndex}.");
         }
 
         if (m_bPendingTransition)
