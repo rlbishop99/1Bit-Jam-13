@@ -22,3 +22,7 @@ MonoBehaviour:
   - open
   - eye
   - eyes
+  - examine
+  - inspect
+  - go
+  - talk
