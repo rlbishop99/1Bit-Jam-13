@@ -119,6 +119,103 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &239020837
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048149522119916545, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Name
+      value: ScreenFadeManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
 --- !u!1 &305325897
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,13 +400,93 @@ PrefabInstance:
       propertyPath: m_InputHandler
       value: 
       objectReference: {fileID: 549124971}
+    - target: {fileID: 254014047845354943, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a88c7d94f7be9ae7897e0a78c511c25, type: 3}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1566399
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1566399
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1566399
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 970
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -69
+      objectReference: {fileID: 0}
     - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_DialogueUIRoot
       value: 
       objectReference: {fileID: 464055675}
+    - target: {fileID: 2380025603971431600, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    - target: {fileID: 2801221603991218921, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057213119069071671, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3972794148059128704, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Name
       value: SpotDifferenceCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3972794148059128704, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Name
+      value: CaveStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.0132425
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0833379
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2037088
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 278
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985240767529007237, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115900193634999308, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Name
+      value: CaveMeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115900193634999308, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Pivot.x
@@ -391,9 +568,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5837892509929926947, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 555231022bda0d12e8b2ef214fa9364c, type: 3}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2333677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7242177
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9634
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -351
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 382
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417449992742104951, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a633ed7399baf9d9bb5bba30e2d7d2e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1227296303}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
 --- !u!114 &398167485 stripped
@@ -407,6 +615,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e03aba41de4c7f5887b2738e731c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeModeController
+--- !u!224 &398167486 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 398167484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &398167487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5115900193634999308, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 398167484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &398167488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 398167484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1249,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf1c06b1b1ebd6d5f906a59105178d6c, type: 3}
+--- !u!1 &1227296302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1227296303}
+  - component: {fileID: 1227296305}
+  - component: {fileID: 1227296304}
+  m_Layer: 0
+  m_Name: CaveBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1227296303
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227296302}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2695582, y: 2.328321, z: 1.6043556}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 398167486}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -414.9, y: -106.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1227296304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227296302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 33af1911ba61779b99751a93dd01dceb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1227296305
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227296302}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1266837020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1168,6 +1466,15 @@ MonoBehaviour:
     - fire
     - hands
     - hand
+    m_KeywordGroups:
+    - m_Synonyms:
+      - touch
+    - m_Synonyms:
+      - fire
+    - m_Synonyms:
+      - hands
+    - m_Synonyms:
+      - hand
     m_Response: 'You stick your hands in the fire. You''re wearing armor, so your
       metal gauntlets quickly begin to heat up and singe your skin.
 
@@ -1195,6 +1502,13 @@ MonoBehaviour:
     - look
     - around
     - area
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+    - m_Synonyms:
+      - around
+    - m_Synonyms:
+      - area
     m_Response: 'You get a better look around. The fire is still burning brightly,
       like it has recently been tended to.
 
@@ -1216,6 +1530,13 @@ MonoBehaviour:
     - pick
     - up
     - food
+    m_KeywordGroups:
+    - m_Synonyms:
+      - pick
+    - m_Synonyms:
+      - up
+    - m_Synonyms:
+      - food
     m_Response: 'You grab some of the food and attempt to put it in your pocket.
 
 
@@ -1238,6 +1559,11 @@ MonoBehaviour:
   - m_Keywords:
     - look
     - chair
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+    - m_Synonyms:
+      - chair
     m_Response: 'You look closer at the wooden chair. It''s rather plain, not carpented
       by a skilled worker. Perhaps this was crafted as a hobby?
 
@@ -1262,6 +1588,11 @@ MonoBehaviour:
   - m_Keywords:
     - chair
     - sit
+    m_KeywordGroups:
+    - m_Synonyms:
+      - chair
+    - m_Synonyms:
+      - sit
     m_Response: 'You sit down in the chair.
 
 
@@ -1280,6 +1611,11 @@ MonoBehaviour:
   - m_Keywords:
     - food
     - eat
+    m_KeywordGroups:
+    - m_Synonyms:
+      - food
+    - m_Synonyms:
+      - eat
     m_Response: 'You pick up some of the food and attempt to eat it.
 
 
@@ -1415,67 +1751,29 @@ MonoBehaviour:
   m_BaseKeywordsSO: {fileID: 11400000, guid: a6f6517ffee44a9184d46816533fe062, type: 2}
   m_PromptResponseEntries:
   - m_Keywords:
-    - touch
-    - fire
-    - hands
-    - hand
-    m_Response: 'You stick your hands in the fire. You''re wearing armor, so your
-      metal gauntlets quickly begin to heat up and singe your skin.
-
-
-      It hurts
-      terribly, so you pull your hands out and sadly ponder your choice.
-
-
-      .........
-
-
-      .........why
-      would you do that?
-
-
-      What do you do?'
-    m_RequiredIntentThreshold: 50
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-  - m_Keywords:
     - look
     - around
     - area
-    m_Response: 'You get a better look around. The fire is still burning brightly,
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - move
+      - around
+    - m_Synonyms:
+      - area
+      - cave
+      - room
+    m_Response: 'You get a better look around. The Fire is still burning brightly,
       like it has recently been tended to.
 
 
-      There are various bits of food
-      on the table; meats, cheeses, fruits, and more. Why would someone need all
-      of this food?
+      The Chair is nestled close to
+      the Fire, someone was likely sitting here recently, warming their hands.
 
 
-      What do you do?'
-    m_RequiredIntentThreshold: 30
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-  - m_Keywords:
-    - pick
-    - up
-    - food
-    m_Response: 'You grab some of the food and attempt to put it in your pocket.
-
-
-      Silly
-      you, Plate Mail doesn''t have pockets.
-
-
-      You sadly put the food back
-      down on the table.
+      You
+      get a faint whiff of some Food -- maybe various Meats? It smells bad though,
+      like it is rotten.
 
 
       What do you do?'
@@ -1489,6 +1787,16 @@ MonoBehaviour:
   - m_Keywords:
     - look
     - chair
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - move
+      - go
+      - inspect
+      - examine
+    - m_Synonyms:
+      - chair
+      - stool
     m_Response: 'You look closer at the wooden chair. It''s rather plain, not carpented
       by a skilled worker. Perhaps this was crafted as a hobby?
 
@@ -1513,6 +1821,11 @@ MonoBehaviour:
   - m_Keywords:
     - chair
     - sit
+    m_KeywordGroups:
+    - m_Synonyms:
+      - sit
+    - m_Synonyms:
+      - chair
     m_Response: 'You sit down in the chair.
 
 
@@ -1531,6 +1844,15 @@ MonoBehaviour:
   - m_Keywords:
     - food
     - eat
+    m_KeywordGroups:
+    - m_Synonyms:
+      - pick
+      - up
+      - eat
+      - look
+    - m_Synonyms:
+      - food
+      - meat
     m_Response: 'You pick up some of the food and attempt to eat it.
 
 
@@ -1539,17 +1861,96 @@ MonoBehaviour:
       your mouth.
 
 
-      Sadly, you put the food back down on the table.
+      Probably for the best though, this meat is rancid. You
+      decide to put it in your pocket for later.
 
 
-      What
-      do you do?'
+      ROTTEN MEAT was added to
+      your ITEMS.
+
+
+      What do you do?'
     m_RequiredIntentThreshold: 75
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 398167487}
+    m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
+    m_RewardItem: {fileID: 11400000, guid: 85067f37249db60c692d851a3e3095a9, type: 2}
+  - m_Keywords:
+    - touch
+    - fire
+    - hands
+    - hand
+    m_KeywordGroups:
+    - m_Synonyms:
+      - touch
+      - hand
+      - hands
+    - m_Synonyms:
+      - fire
+      - flames
+      - campfire
+    m_Response: 'You notice a tiny little Rock tucked behind some crates that you
+      could easily have missed. You pick it up.
+
+
+      Upon closer inspection, you
+      can see that it has some text etched into it, but the text is fragmented and
+      impossible to decipher.
+
+
+      Perhaps it is a small piece of a larger stone?
+
+
+      ETCHED
+      STONE was added to your ITEMS.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 398167488}
+    m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
+    m_RewardItem: {fileID: 11400000, guid: 36386064f1873c1cea24663897dd884f, type: 2}
+  - m_Keywords:
+    - touch
+    - fire
+    - hands
+    - hand
+    m_KeywordGroups:
+    - m_Synonyms:
+      - touch
+      - hand
+      - hands
+    - m_Synonyms:
+      - fire
+      - flames
+      - campfire
+    m_Response: 'You stick your hands in the fire. You''re wearing armor, so your
+      metal gauntlets quickly begin to heat up and singe your skin.
+
+
+      It hurts
+      terribly, so you pull your hands out and sadly ponder your choice.
+
+
+      .........
+
+
+      .........why
+      would you do that?
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 50
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
-    m_TriggerSFX: {fileID: 0}
+    m_TriggerSFX: {fileID: 8300000, guid: c66e3741f9a2846de86a4facf9dea026, type: 3}
     m_RewardItem: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
@@ -1558,6 +1959,17 @@ MonoBehaviour:
     - transition
     - move
     - bridge
+    m_KeywordGroups:
+    - m_Synonyms:
+      - go
+    - m_Synonyms:
+      - travel
+    - m_Synonyms:
+      - transition
+    - m_Synonyms:
+      - move
+    - m_Synonyms:
+      - bridge
     m_Response: You decide to exit the Cave and head to the Bridge.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 2
@@ -1567,6 +1979,17 @@ MonoBehaviour:
     - travel
     - go
     - glade
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+    - m_Synonyms:
+      - transition
+    - m_Synonyms:
+      - travel
+    - m_Synonyms:
+      - go
+    - m_Synonyms:
+      - glade
     m_Response: You decide to exit the Cave and go back to the Glade.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 1
@@ -1661,6 +2084,7 @@ SceneRoots:
   - {fileID: 1266837020}
   - {fileID: 1220036952}
   - {fileID: 1948658895}
+  - {fileID: 239020837}
   - {fileID: 464055673}
   - {fileID: 398167484}
   - {fileID: 1128068937}

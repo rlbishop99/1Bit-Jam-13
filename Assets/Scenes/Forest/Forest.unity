@@ -618,6 +618,11 @@ MonoBehaviour:
   - m_Keywords:
     - open
     - eyes
+    m_KeywordGroups:
+    - m_Synonyms:
+      - open
+    - m_Synonyms:
+      - eyes
     m_Response: 
     m_RequiredIntentThreshold: 100
   m_FallbackResponse: Nothing happens.
@@ -753,7 +758,7 @@ MonoBehaviour:
 
 
     As it just
-    so happens though, I''m carrying one of the Fragment you''ll be needing. Did
+    so happens though, I''m carrying one of the Fragments you''ll be needing. Did
     you see it before? Maybe not. Try opening your eyes again, maybe you''ll see
     it this time."
 
@@ -994,123 +999,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 305325898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &791556735
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 791556739}
-  - component: {fileID: 791556738}
-  - component: {fileID: 791556737}
-  - component: {fileID: 791556736}
-  - component: {fileID: 791556740}
-  m_Layer: 5
-  m_Name: ScreenFadeManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &791556736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791556735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &791556737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791556735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &791556738
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791556735}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 100
-  m_TargetDisplay: 0
---- !u!224 &791556739
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791556735}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1472234211}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &791556740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791556735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2a959de78d422d83cc48fe3b0f3e2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScreenFadeManager
-  m_FadeCanvasGroup: {fileID: 1472234214}
-  m_DefaultFadeDuration: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,7 +1113,15 @@ MonoBehaviour:
     - tree
     - trees
     - inspect
-    m_Response: 'You thorougly inspect the Trees. These Trees are old and strong
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+    - m_Synonyms:
+      - tree
+      - trees
+    m_Response: 'You thoroughly inspect the Trees. These Trees are old and strong
       of bark.
 
 
@@ -1235,7 +1131,7 @@ MonoBehaviour:
 
       What do you
       do?'
-    m_RequiredIntentThreshold: 50
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 34
     m_GatingObject: {fileID: 0}
@@ -1247,12 +1143,20 @@ MonoBehaviour:
     - flower
     - flowers
     - inspect
-    m_Response: 'You thorougly inspect the Flowers. They''re extraordinarily pretty,
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+    - m_Synonyms:
+      - flower
+      - flowers
+    m_Response: 'You thoroughly inspect the Flowers. They''re extraordinarily pretty,
       but don''t seem to be anything special.
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 30
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
@@ -1264,13 +1168,21 @@ MonoBehaviour:
     - stump
     - stumps
     - inspect
-    m_Response: 'You thorougly inspect the Stumps. In the right Carpenter''s hands,
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+    - m_Synonyms:
+      - stump
+      - stumps
+    m_Response: 'You thoroughly inspect the Stumps. In the right Carpenter''s hands,
       these would make for some fine chairs. However, to You they''re just normal
       Stumps.
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 30
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
@@ -1281,6 +1193,13 @@ MonoBehaviour:
     - fragment
     - grab
     - take
+    m_KeywordGroups:
+    - m_Synonyms:
+      - take
+      - grab
+    - m_Synonyms:
+      - fairy
+      - fragment
     m_Response: 'You tenderly take the Fragment from the Fairy.
 
 
@@ -1289,9 +1208,9 @@ MonoBehaviour:
       cube as flawless as this one. Touching it feels like pure marble.
 
 
-      [CUBE
-      FRAGMENT] was added to your ITEMS.'
-    m_RequiredIntentThreshold: 60
+      CUBE
+      FRAGMENT was added to your ITEMS.'
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 289454281}
@@ -1302,6 +1221,16 @@ MonoBehaviour:
   - m_Keywords:
     - move
     - glade
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - go
+      - further
+      - venture
+      - transition
+    - m_Synonyms:
+      - glade
     m_Response: You decide to venture deeper into the forest towards the Glade.
     m_RequiredIntentThreshold: 100
     m_TargetLevelID: 1
@@ -1309,10 +1238,16 @@ MonoBehaviour:
   - m_Keywords:
     - eyes
     - open
+    m_KeywordGroups:
+    - m_Synonyms:
+      - open
+    - m_Synonyms:
+      - eye
+      - eyes
     m_Response: 
     m_RequiredIntentThreshold: 100
   m_FallbackResponse: Nothing happens.
-  m_IntroResponse: 'You find yourself in a densly wooded Forest. You know the Wizard
+  m_IntroResponse: 'You find yourself in a densly wooded Forest. You know the Illusionist
     lies ahead in his Tower, but he likely won''t make it easy for you to get there.
 
 
@@ -1420,94 +1355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6fd01182b4183ea84d8bf339253f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueProcessor
---- !u!1 &1472234210
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1472234211}
-  - component: {fileID: 1472234213}
-  - component: {fileID: 1472234212}
-  - component: {fileID: 1472234214}
-  m_Layer: 5
-  m_Name: FadeCanvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1472234211
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472234210}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 26.260244, y: 16.0875, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 791556739}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1472234212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472234210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1472234213
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472234210}
-  m_CullTransparentMesh: 1
---- !u!225 &1472234214
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472234210}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &1676374982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1409,11 @@ MonoBehaviour:
   - m_Keywords:
     - open
     - eyes
+    m_KeywordGroups:
+    - m_Synonyms:
+      - open
+    - m_Synonyms:
+      - eyes
     m_Response: 
     m_RequiredIntentThreshold: 100
   m_FallbackResponse: Nothing happens.
@@ -1865,6 +1717,103 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d534e131d0821177bd8159def9181f1, type: 3}
+--- !u!1001 &6510490409855201973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048149522119916545, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Name
+      value: ScreenFadeManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
 --- !u!1001 &6913352174758167391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2026,7 +1975,7 @@ SceneRoots:
   - {fileID: 583996077}
   - {fileID: 859325673337306169}
   - {fileID: 439321448}
-  - {fileID: 791556739}
+  - {fileID: 6510490409855201973}
   - {fileID: 224170610}
   - {fileID: 3512539336334808075}
   - {fileID: 1128068937}

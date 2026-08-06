@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: CaveBaseKeywords
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
+  - go
   - move
   - travel
   - transition
+  - inspect
+  - examine
   - look
   - around
   - area
   - open
   - eye
   - eyes
+  - cave
+  - room

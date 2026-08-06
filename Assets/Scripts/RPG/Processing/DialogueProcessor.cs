@@ -180,7 +180,7 @@ public class DialogueProcessor : MonoBehaviour
                 PromptResponses.Entry entry = entries[i];
                 if (!entry.IsGateSatisfied()) continue;
 
-                float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
+                float score = IntentScorer.CalculateIntentScore(words, entry.KeywordGroups);
                 if (score >= entry.RequiredIntentThreshold && score > bestScore)
                 {
                     bestScore = score;
@@ -199,7 +199,7 @@ public class DialogueProcessor : MonoBehaviour
 
             foreach (PromptResponses.TransitionEntry entry in source.TransitionEntries)
             {
-                float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
+                float score = IntentScorer.CalculateIntentScore(words, entry.KeywordGroups);
                 if (score >= entry.RequiredIntentThreshold && score > bestScore)
                 {
                     bestScore = score;
@@ -218,7 +218,7 @@ public class DialogueProcessor : MonoBehaviour
 
             foreach (PromptResponses.EyeOpenEntry entry in source.EyeOpenEntries)
             {
-                float score = IntentScorer.CalculateIntentScore(words, entry.Keywords);
+                float score = IntentScorer.CalculateIntentScore(words, entry.KeywordGroups);
                 if (score >= entry.RequiredIntentThreshold && score > bestScore)
                 {
                     bestScore = score;

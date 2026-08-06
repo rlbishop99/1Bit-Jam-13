@@ -12,13 +12,21 @@ public class TransitionEntryDrawer : PropertyDrawer
         EditorGUI.BeginProperty(position, label, property);
 
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
-        SerializedProperty keywordsProp = property.FindPropertyRelative("m_Keywords");
+        SerializedProperty keywordGroupsProp = property.FindPropertyRelative("m_KeywordGroups");
         SerializedProperty thresholdProp = property.FindPropertyRelative("m_RequiredIntentThreshold");
         SerializedProperty targetLevelProp = property.FindPropertyRelative("m_TargetLevelID");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
         float y = position.y;
+        bool bExpanded = KeywordListDrawerUtility.DrawEntryFoldoutHeader(position, y, property, KeywordListDrawerUtility.SummarizeForHeader(responseProp.stringValue));
+        y += KeywordListDrawerUtility.GetFoldoutHeaderHeight();
+
+        if (!bExpanded)
+        {
+            EditorGUI.EndProperty();
+            return;
+        }
 
         Rect targetLevelRect = new Rect(position.x, y, position.width, m_kLineHeight);
         EditorGUI.PropertyField(targetLevelRect, targetLevelProp, new GUIContent("Target Level"));
@@ -33,22 +41,25 @@ public class TransitionEntryDrawer : PropertyDrawer
         EditorGUI.PropertyField(thresholdRect, thresholdProp, new GUIContent("Required Intent Threshold"));
         y += m_kLineHeight + m_kLineSpacing;
 
-        KeywordListDrawerUtility.DrawKeywordList(position, y, keywordsProp, bank, baseBank);
+        KeywordListDrawerUtility.DrawKeywordGroupList(position, y, keywordGroupsProp, bank, baseBank);
 
         EditorGUI.EndProperty();
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
+        float height = KeywordListDrawerUtility.GetFoldoutHeaderHeight();
+        if (!property.isExpanded) return height;
+
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
-        SerializedProperty keywordsProp = property.FindPropertyRelative("m_Keywords");
+        SerializedProperty keywordGroupsProp = property.FindPropertyRelative("m_KeywordGroups");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
-        float height = m_kLineHeight + m_kLineSpacing;
+        height += m_kLineHeight + m_kLineSpacing;
         height += EditorGUI.GetPropertyHeight(responseProp) + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
-        height += KeywordListDrawerUtility.GetKeywordListHeight(keywordsProp, bank, baseBank);
+        height += KeywordListDrawerUtility.GetKeywordGroupListHeight(keywordGroupsProp, bank, baseBank);
 
         return height;
     }

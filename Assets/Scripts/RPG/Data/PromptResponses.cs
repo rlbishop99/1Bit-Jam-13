@@ -15,10 +15,13 @@ public class PromptResponses : MonoBehaviour
     }
 
     [Serializable]
-    public struct Entry
+    public struct Entry : ISerializationCallbackReceiver
     {
-        [SerializeField, Tooltip("Keywords (from the assigned KeywordsSO word bank) required to trigger this response.")]
+        [SerializeField, Tooltip("Legacy flat keyword list, kept only so old data can be migrated into Keyword Groups on load. No longer edited directly.")]
         private List<string> m_Keywords;
+
+        [SerializeField, Tooltip("Groups of interchangeable keywords required to trigger this response. Every group must have at least one matching word present.")]
+        private List<KeywordGroup> m_KeywordGroups;
 
         [SerializeField, TextArea(5, 15), Tooltip("The response text printed to the screen when this Entry's Intent Threshold is met.")]
         private string m_Response;
@@ -44,7 +47,7 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("If set, triggering this Entry grants this Item to the Player's inventory and removes this Entry from future consideration, so it can only be granted once. Leave unset for an Entry with no reward.")]
         private ItemSO m_RewardItem;
 
-        public List<string> Keywords => m_Keywords;
+        public List<KeywordGroup> KeywordGroups => m_KeywordGroups;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
         public bool AdvancesLayer => m_bAdvancesLayer;
@@ -61,13 +64,23 @@ public class PromptResponses : MonoBehaviour
             bool bIsPresent = m_GatingObject.activeSelf;
             return m_PresenceRequirement == ePresenceRequirement.MustBePresent ? bIsPresent : !bIsPresent;
         }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            KeywordGroupMigration.MigrateLegacyKeywords(m_Keywords, ref m_KeywordGroups);
+        }
     }
 
     [Serializable]
-    public struct TransitionEntry
+    public struct TransitionEntry : ISerializationCallbackReceiver
     {
-        [SerializeField, Tooltip("Keywords (from the assigned KeywordsSO word bank) required to trigger this transition.")]
+        [SerializeField, Tooltip("Legacy flat keyword list, kept only so old data can be migrated into Keyword Groups on load. No longer edited directly.")]
         private List<string> m_Keywords;
+
+        [SerializeField, Tooltip("Groups of interchangeable keywords required to trigger this transition. Every group must have at least one matching word present.")]
+        private List<KeywordGroup> m_KeywordGroups;
 
         [SerializeField, TextArea(3, 8), Tooltip("Response text printed before the Player transitions to the Target Level.")]
         private string m_Response;
@@ -78,10 +91,17 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("The Level the Player transitions to when this Entry triggers.")]
         private GameEnums.eLevelID m_TargetLevelID;
 
-        public List<string> Keywords => m_Keywords;
+        public List<KeywordGroup> KeywordGroups => m_KeywordGroups;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
         public GameEnums.eLevelID TargetLevelID => m_TargetLevelID;
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            KeywordGroupMigration.MigrateLegacyKeywords(m_Keywords, ref m_KeywordGroups);
+        }
     }
 
     [Serializable]
@@ -98,10 +118,13 @@ public class PromptResponses : MonoBehaviour
     }
 
     [Serializable]
-    public struct EyeOpenEntry
+    public struct EyeOpenEntry : ISerializationCallbackReceiver
     {
-        [SerializeField, Tooltip("Keywords (from the assigned KeywordsSO word bank) required to trigger opening the Player's eyes.")]
+        [SerializeField, Tooltip("Legacy flat keyword list, kept only so old data can be migrated into Keyword Groups on load. No longer edited directly.")]
         private List<string> m_Keywords;
+
+        [SerializeField, Tooltip("Groups of interchangeable keywords required to trigger opening the Player's eyes. Every group must have at least one matching word present;")]
+        private List<KeywordGroup> m_KeywordGroups;
 
         [SerializeField, TextArea(3, 8), Tooltip("Response text printed before the Player's eyes open and the Spot-the-Difference image is revealed.")]
         private string m_Response;
@@ -109,9 +132,16 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Range(0.0f, 100.0f), Tooltip("Minimum Intent Score (0-100) this Entry's own input must reach to be eligible to trigger. Lower this for easy/forgiving prompts, raise it for prompts that require a more specific/precise input.")]
         private float m_RequiredIntentThreshold;
 
-        public List<string> Keywords => m_Keywords;
+        public List<KeywordGroup> KeywordGroups => m_KeywordGroups;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            KeywordGroupMigration.MigrateLegacyKeywords(m_Keywords, ref m_KeywordGroups);
+        }
     }
 
     [SerializeField, Min(1), Tooltip("The Layer this Level/Variation's Entries, Transitions, EyeOpenEntries, and Variation Image belong to. Only active once the Level's current Layer reaches this value.")]

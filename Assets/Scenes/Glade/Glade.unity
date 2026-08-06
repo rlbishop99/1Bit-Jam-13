@@ -318,11 +318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4106953166059656262, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1187
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4106953166059656262, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Name
@@ -1333,22 +1333,33 @@ MonoBehaviour:
     - around
     - examine
     - area
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - move
+      - examine
+    - m_Synonyms:
+      - glade
+      - area
+      - around
     m_Response: 'You walk a lap around the Glade.
 
 
-      The pond is filled with
-      crystal clear water and the sapling smells like nature incarnate. It''s barely
-      as tall as you are, and you''re a tall Hero.
+      The Pond is filled with
+      crystal clear water. You grab one of the cattails and eat it like a hot dog....
 
 
-      You can see there are
-      multiple pathways you could take, one seems to lead to an open dry area with
-      a bridge, and the other pathways leads to a cave entrance.
+      Your
+      mouth is instantly filled with hundreds of fluffy seeds. It certainly does
+      not taste like a hot dog.
 
 
-      What do
-      you do?'
-    m_RequiredIntentThreshold: 50
+      You leave the cattails alone, all the hungrier
+      for it.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
@@ -1359,11 +1370,51 @@ MonoBehaviour:
     - look
     - water
     - pond
-    m_Response: "You take a closer look at the small pond. \n\nIt looks to be about
-      4 feet deep with nothing at the bottom save for water as clear as glass.\n\nYou
-      see your helmet reflected in the water and are reminded of who you are and
-      why you're here.\n\nWhat do you do?"
-    m_RequiredIntentThreshold: 50
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - go
+      - examine
+      - inspect
+      - move
+    - m_Synonyms:
+      - pond
+    m_Response: "You take a closer look at the small Pond. \n\nIt looks to be about
+      4 feet deep with nothing at the bottom; you're only met with your reflection.\n\nAs
+      you see your helmet reflected in the water staring back at you, you are reminded
+      of who you are and why you're here.\n\nWhat do you do?"
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+  - m_Keywords:
+    - unicorn
+    - date
+    m_KeywordGroups:
+    - m_Synonyms:
+      - drink
+      - sip
+    - m_Synonyms:
+      - pond
+      - water
+    m_Response: 'You scoop up a handful of water in your greaves and take a drink.
+
+
+      It
+      is ice cold and crisp; you feel the cold water travel down your throat and
+      through your body. That''s always a fun feeling.
+
+
+      Feeling refreshed
+      and re-energized, you stand up and prepare to keep charging forward.
+
+
+      What
+      do you do?'
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 0}
@@ -1372,7 +1423,15 @@ MonoBehaviour:
     m_RewardItem: {fileID: 0}
   - m_Keywords:
     - stump
-    m_Response: 'You sit down on the stump and take a quick breather.
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+      - move
+    - m_Synonyms:
+      - stump
+    m_Response: 'You sit down on the Stump and take a quick breather.
 
 
       The
@@ -1380,12 +1439,42 @@ MonoBehaviour:
       anywhere else for that matter.
 
 
-      Better get up, before you fall asleep.
+      .....better get up, before you fall
+      asleep.
 
 
-      What
-      do you do?'
+      What do you do?'
     m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 1297066990}
+    m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+  - m_Keywords:
+    - unicorn
+    - date
+    m_KeywordGroups:
+    - m_Synonyms:
+      - up
+      - stump
+    - m_Synonyms:
+      - stand
+    m_Response: 'You stand up off of the Stump and stretch your weary bones.
+
+
+      You
+      hardly ever stretch, but every time you do it feels amazing. You think that
+      you REALLY need to stretch more.
+
+
+      With a few streches you''re feeling
+      nimble and alert again. The Illusionist is screwed, once you finally reach
+      him.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 50
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 1297066990}
@@ -1395,6 +1484,15 @@ MonoBehaviour:
   - m_Keywords:
     - fairy
     - talk
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - examine
+      - inspect
+      - go
+      - talk
+    - m_Synonyms:
+      - fairy
     m_Response: 'You hear a small voice in your head....
 
 
@@ -1403,12 +1501,12 @@ MonoBehaviour:
 
 
       Did one of my
-      sisters help you through the Forest? Probably, can''t imagine you made it here
-      one your own.
+      sisters help you through the Forest? Probably, I can''t imagine you made it
+      here on your own.
 
 
-      Hey, fun fact...there''s a Unicorn that comes to this
-      Glade occasionally? Have you seen her?"
+      Hey, fun fact...there''s a Unicorn that comes to
+      this Glade occasionally? Have you seen her?"
 
 
       What do you do?'
@@ -1420,8 +1518,50 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
     m_RewardItem: {fileID: 0}
   - m_Keywords:
+    - unicorn
+    - date
+    m_KeywordGroups:
+    - m_Synonyms:
+      - more
+      - continue
+      - confirm
+    - m_Synonyms:
+      - talk
+      - unicorn
+    m_Response: 'The Fairy responds with delight.
+
+
+      "That''s amazing! The Unicorn
+      certainly doesn''t appear before just ANYONE. You must have caught her attention
+      somehow.
+
+
+      I know that she''s lonely, recently single. Perhaps you could
+      cheer her up a little bit?"
+
+
+      ...you think far too hard about what exactly
+      the Fairy means by that.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 50
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_GatingObject: {fileID: 1054753401}
+    m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_RewardItem: {fileID: 0}
+  - m_Keywords:
     - talk
     - unicorn
+    m_KeywordGroups:
+    - m_Synonyms:
+      - talk
+      - move
+      - go
+    - m_Synonyms:
+      - unicorn
     m_Response: 'You approach the majestic Unicorn.
 
 
@@ -1444,43 +1584,77 @@ MonoBehaviour:
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 904842806}
     m_PresenceRequirement: 0
-    m_TriggerSFX: {fileID: 0}
+    m_TriggerSFX: {fileID: 8300000, guid: 1996ad0d223b428979e2cbfdb2e33b65, type: 3}
     m_RewardItem: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
-    m_Response: 'You ask the Unicorn, Light, out on a date.
+    m_KeywordGroups:
+    - m_Synonyms:
+      - date
+      - romance
+      - kiss
+      - pet
+    - m_Synonyms:
+      - unicorn
+      - light
+    m_Response: 'You attempt to flirt with Light, the Unicorn.
 
 
       "W- ...what?
-      You''re asking ME out on a DATE?
+      Are you really asking ME out on a DATE?
 
 
-      I would be DELIGHTED! I have no doubts
-      in my mind that you''ll treat me well, like any respectable Hero should."'
+      I would be DELIGHTED! I have
+      no doubts in my mind that you''ll treat me well, like any respectable Hero
+      should."'
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_GatingObject: {fileID: 904842806}
     m_PresenceRequirement: 0
-    m_TriggerSFX: {fileID: 0}
+    m_TriggerSFX: {fileID: 8300000, guid: 1996ad0d223b428979e2cbfdb2e33b65, type: 3}
     m_RewardItem: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - move
     - forest
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - transition
+      - go
+    - m_Synonyms:
+      - forest
     m_Response: You decide to pivot back into the Forest.
     m_RequiredIntentThreshold: 100
     m_TargetLevelID: 0
   - m_Keywords:
     - move
     - bridge
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - transition
+      - go
+    - m_Synonyms:
+      - bridge
     m_Response: You decide to exit the Glade and head towards the Bridge.
     m_RequiredIntentThreshold: 100
     m_TargetLevelID: 2
   - m_Keywords:
     - move
     - cave
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - transition
+      - go
+    - m_Synonyms:
+      - cave
     m_Response: You decide to exit the Glade and brave the Cave.
     m_RequiredIntentThreshold: 100
     m_TargetLevelID: 3
@@ -1488,6 +1662,12 @@ MonoBehaviour:
   - m_Keywords:
     - open
     - eyes
+    m_KeywordGroups:
+    - m_Synonyms:
+      - open
+    - m_Synonyms:
+      - eyes
+      - eye
     m_Response: 
     m_RequiredIntentThreshold: 100
   m_FallbackResponse: Nothing happens.

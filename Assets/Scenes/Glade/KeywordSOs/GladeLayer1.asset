@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: GladeLayer1
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
+  - drink
+  - sip
   - pond
   - water
   - cave
   - bridge
   - forest
-  - date
   - unicorn
-  - fairy
+  - light
+  - date
+  - romance
+  - kiss
+  - pet
+  - stand
   - stump
+  - up
+  - fairy
+  - more
+  - continue
+  - confirm
