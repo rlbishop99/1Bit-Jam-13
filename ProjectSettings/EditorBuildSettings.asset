@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: f1eb16a815dd34d7384368aad1053717
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: be68ca3d981866677b790c22e90eee01
+  - enabled: 1
     path: Assets/Scenes/Forest/Forest.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -21,11 +27,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Cemetery/Cemetery.unity
     guid: c330fdb8c25d39fd695cc3a035f8ed42
   - enabled: 1
-    path: Assets/Scenes/Wizard Tower/Wizard Tower.unity
-    guid: e3d586d1e1e5609fabcf11373623899a
-  - enabled: 1
     path: Assets/Scenes/Fairy House/Fairy House.unity
     guid: e6aceffe1a8144c92984f2c7f41589f0
+  - enabled: 1
+    path: Assets/Scenes/Wizard Tower/Wizard Tower.unity
+    guid: e3d586d1e1e5609fabcf11373623899a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
