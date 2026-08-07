@@ -84,19 +84,7 @@ public class ForestTutorialController : MonoBehaviour
     [SerializeField, TextArea(2, 5), Tooltip("Shown for any input other than heading to the Glade once the Player is free to venture onward.")]
     private string m_Fallback5_Glade = "\"The Glade, remember? That way.\"";
 
-    private enum eStep
-    {
-        FreePrompts,
-        AwaitingEyeOpen1,
-        AwaitingEyeOpen2,
-        AwaitingEyeOpen3,
-        AwaitingTakeFragment,
-        AwaitingContinueKeypress,
-        AwaitingGladeTravel,
-        Done,
-    }
-
-    private eStep m_Step = eStep.FreePrompts;
+    private GameEnums.eForestTutorialStep m_Step = GameEnums.eForestTutorialStep.FreePrompts;
     private int m_PromptCount;
     private bool m_bJustCompletedTakeFragment;
 
@@ -135,10 +123,10 @@ public class ForestTutorialController : MonoBehaviour
 
     private void Update()
     {
-        if (m_Step != eStep.AwaitingContinueKeypress || Keyboard.current == null) return;
+        if (m_Step != GameEnums.eForestTutorialStep.AwaitingContinueKeypress || Keyboard.current == null) return;
         if (!Keyboard.current.anyKey.wasPressedThisFrame) return;
 
-        m_Step = eStep.Done;
+        m_Step = GameEnums.eForestTutorialStep.Done;
 
         // Suppressing the unlock after the take-fragment response also suppressed the buffer clear that would
         // normally have happened then, so the take-fragment text would otherwise still be sitting in the input line.
@@ -150,13 +138,13 @@ public class ForestTutorialController : MonoBehaviour
 
     private void _OnPromptSubmitted(string rawInput)
     {
-        if (m_Step != eStep.FreePrompts) return;
+        if (m_Step != GameEnums.eForestTutorialStep.FreePrompts) return;
 
         m_PromptCount++;
         if (m_PromptCount < 2) return;
 
         // Plasmalot: The 3rd submission (about to happen) is replaced entirely by the Fairy's forced first line.
-        m_Step = eStep.AwaitingEyeOpen1;
+        m_Step = GameEnums.eForestTutorialStep.AwaitingEyeOpen1;
         m_DialogueProcessor.SetNextResponseOverride(m_FairyPrompt1_ExplainEyeOpen, m_FairyPrompt1SFX);
 
         // Safe to arm now: eyes are still closed and can't open until the Player acts on that forced line.
@@ -169,16 +157,16 @@ public class ForestTutorialController : MonoBehaviour
     {
         switch (m_Step)
         {
-            case eStep.AwaitingEyeOpen1:
+            case GameEnums.eForestTutorialStep.AwaitingEyeOpen1:
                 return bIsEyeOpen ? null : m_Fallback1_EyeOpen;
 
-            case eStep.AwaitingEyeOpen2:
+            case GameEnums.eForestTutorialStep.AwaitingEyeOpen2:
                 return bIsEyeOpen ? null : m_Fallback2_EyeOpen;
 
-            case eStep.AwaitingEyeOpen3:
+            case GameEnums.eForestTutorialStep.AwaitingEyeOpen3:
                 return bIsEyeOpen ? null : m_Fallback3_EyeOpen;
 
-            case eStep.AwaitingTakeFragment:
+            case GameEnums.eForestTutorialStep.AwaitingTakeFragment:
                 if (bFoundMatch && !bIsTransition && !bIsEyeOpen)
                 {
                     m_bJustCompletedTakeFragment = true;
@@ -186,7 +174,7 @@ public class ForestTutorialController : MonoBehaviour
                 }
                 return m_Fallback4_TakeFragment;
 
-            case eStep.AwaitingGladeTravel:
+            case GameEnums.eForestTutorialStep.AwaitingGladeTravel:
                 return bIsTransition ? null : m_Fallback5_Glade;
 
             default:
@@ -198,20 +186,20 @@ public class ForestTutorialController : MonoBehaviour
     {
         switch (m_Step)
         {
-            case eStep.AwaitingEyeOpen1: // Close after eye-open #1 (nothing visible) just finished showing "try again".
-                m_Step = eStep.AwaitingEyeOpen2;
+            case GameEnums.eForestTutorialStep.AwaitingEyeOpen1: // Close after eye-open #1 (nothing visible) just finished showing "try again".
+                m_Step = GameEnums.eForestTutorialStep.AwaitingEyeOpen2;
                 m_EyeModeController.SetForcedVariationOverride(m_FairyOnlyVariationIndex);
                 m_DialogueProcessor.SetNextEyesClosedResponse(m_FairyPrompt3_TakeFragment, m_FairyPrompt3SFX);
                 break;
 
-            case eStep.AwaitingEyeOpen2: // Close after eye-open #2 (Fairy only) just finished showing "take my fragment".
-                m_Step = eStep.AwaitingEyeOpen3;
+            case GameEnums.eForestTutorialStep.AwaitingEyeOpen2: // Close after eye-open #2 (Fairy only) just finished showing "take my fragment".
+                m_Step = GameEnums.eForestTutorialStep.AwaitingEyeOpen3;
                 m_EyeModeController.SetForcedVariationOverride(m_FairyAndFragmentVariationIndex);
                 m_DialogueProcessor.SetNextEyesClosedResponse(m_FairyPrompt4_YouSawIt, m_FairyPrompt4SFX);
                 break;
 
-            case eStep.AwaitingEyeOpen3: // Close after eye-open #3 (Fairy + Fragment) just finished confirming it's takeable.
-                m_Step = eStep.AwaitingTakeFragment;
+            case GameEnums.eForestTutorialStep.AwaitingEyeOpen3: // Close after eye-open #3 (Fairy + Fragment) just finished confirming it's takeable.
+                m_Step = GameEnums.eForestTutorialStep.AwaitingTakeFragment;
                 break;
         }
     }
@@ -222,12 +210,12 @@ public class ForestTutorialController : MonoBehaviour
 
         m_bJustCompletedTakeFragment = false;
         m_DialogueProcessor.SuppressNextUnlock();
-        m_Step = eStep.AwaitingContinueKeypress;
+        m_Step = GameEnums.eForestTutorialStep.AwaitingContinueKeypress;
     }
 
     private void _OnFairyPrompt5Complete()
     {
-        m_Step = eStep.AwaitingGladeTravel;
+        m_Step = GameEnums.eForestTutorialStep.AwaitingGladeTravel;
         m_InputHandler.UnlockInput();
     }
 

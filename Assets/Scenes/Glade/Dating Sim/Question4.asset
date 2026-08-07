@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c112a512212c01c948d60d7ff1de50, type: 3}
+  m_Name: Question4
+  m_EditorClassIdentifier: Assembly-CSharp::DatingSimQuestionSO
+  m_QuestionText: What's your favorite way to spend a rainy day?
+  m_AnswerOptions:
+  - Standing outside getting soaked
+  - Reading old Hero legends by candlelight
+  - Arguing with the Fairy
+  - Digging holes in the mud
+  m_CorrectAnswerIndex: 1

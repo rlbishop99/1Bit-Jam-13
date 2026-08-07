@@ -20,15 +20,20 @@ public class DialogueProcessor : MonoBehaviour
     [SerializeField, Tooltip("Owns the Text-RPG to Spot-the-Difference mode swap triggered by an EyeOpenEntry.")]
     private EyeModeController m_EyeModeController;
 
+    [SerializeField, Tooltip("Owns the Dating Sim mini-game triggered by an Entry with Starts Dating Sim set.")]
+    private DatingSimController m_DatingSimController;
+
     private bool m_bHasPlayedIntro;
     private bool m_bPendingTransition;
     private GameEnums.eLevelID m_PendingTargetLevelID;
     private bool m_bPendingEyeOpen;
+    private bool m_bPendingDatingSimStart;
     private bool m_bPendingLayerAdvance;
     private int m_PendingLayerToAdvanceTo;
     private ItemSO m_PendingRewardItem;
     private PromptResponses m_PendingRewardItemSource;
     private int m_PendingRewardItemEntryIndex;
+    private GameObject m_PendingMarkerToActivate;
     private string m_EyesClosedResponseOverride;
     private AudioClip m_EyesClosedResponseOverrideSFX;
     private string m_NextResponseOverride;
@@ -81,6 +86,19 @@ public class DialogueProcessor : MonoBehaviour
 
     /// <summary>Suppresses the input unlock that would otherwise follow the OnBeforeInputUnlock this frame.</summary>
     public void SuppressNextUnlock() => m_bSuppressNextUnlock = true;
+
+    /// <summary>
+    /// Plasmalot: Re-plays the currently active Layer's Intro Response, e.g. after returning from a side activity
+    /// like the Dating Sim. Locks input for the duration, same as the very first intro played from Start().
+    /// </summary>
+    public void PlayCurrentLayerIntro()
+    {
+        int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
+        PromptResponses activeLevelSource = _ResolveActiveLevelSource(currentLayer);
+
+        m_InputHandler.LockInput();
+        m_TypewriterDisplay.PlayTypewriter(activeLevelSource.IntroResponse, () => m_InputHandler.UnlockInput());
+    }
 
     private void OnEnable()
     {
@@ -143,8 +161,10 @@ public class DialogueProcessor : MonoBehaviour
             m_bPendingTransition = false;
             m_bPendingEyeOpen = false;
             m_bPendingLayerAdvance = false;
+            m_bPendingDatingSimStart = false;
             m_PendingRewardItem = null;
             m_PendingRewardItemSource = null;
+            m_PendingMarkerToActivate = null;
 
             AudioManager.Instance.PlaySFXOneShot(m_NextResponseOverrideSFX);
             m_NextResponseOverrideSFX = null;
@@ -163,12 +183,14 @@ public class DialogueProcessor : MonoBehaviour
         bool bBestIsTransition = false;
         bool bBestIsEyeOpen = false;
         bool bBestAdvancesLayer = false;
+        bool bBestStartsDatingSim = false;
         GameEnums.eLevelID bestTargetLevelID = default;
         int bestLayerToAdvanceTo = default;
         ItemSO bestRewardItem = null;
         PromptResponses bestRewardItemSource = null;
         int bestRewardItemEntryIndex = default;
         AudioClip bestTriggerSFX = null;
+        GameObject bestMarkerToActivate = null;
 
         foreach (PromptResponses source in m_ActivePromptResponsesSources)
         {
@@ -190,10 +212,12 @@ public class DialogueProcessor : MonoBehaviour
                     bBestIsEyeOpen = false;
                     bBestAdvancesLayer = entry.AdvancesLayer;
                     bestLayerToAdvanceTo = entry.LayerToAdvanceTo;
+                    bBestStartsDatingSim = entry.StartsDatingSim;
                     bestRewardItem = entry.RewardItem;
                     bestRewardItemSource = source;
                     bestRewardItemEntryIndex = i;
                     bestTriggerSFX = entry.TriggerSFX;
+                    bestMarkerToActivate = entry.MarkerToActivate;
                 }
             }
 
@@ -210,9 +234,11 @@ public class DialogueProcessor : MonoBehaviour
                     bestTargetLevelID = entry.TargetLevelID;
                     bBestAdvancesLayer = false;
                     bestLayerToAdvanceTo = default;
+                    bBestStartsDatingSim = false;
                     bestRewardItem = null;
                     bestRewardItemSource = null;
                     bestTriggerSFX = null;
+                    bestMarkerToActivate = null;
                 }
             }
 
@@ -228,9 +254,11 @@ public class DialogueProcessor : MonoBehaviour
                     bBestIsEyeOpen = true;
                     bBestAdvancesLayer = false;
                     bestLayerToAdvanceTo = default;
+                    bBestStartsDatingSim = false;
                     bestRewardItem = null;
                     bestRewardItemSource = null;
                     bestTriggerSFX = null;
+                    bestMarkerToActivate = null;
                 }
             }
         }
@@ -245,9 +273,11 @@ public class DialogueProcessor : MonoBehaviour
             bBestIsEyeOpen = false;
             bBestAdvancesLayer = false;
             bestLayerToAdvanceTo = default;
+            bBestStartsDatingSim = false;
             bestRewardItem = null;
             bestRewardItemSource = null;
             bestTriggerSFX = null;
+            bestMarkerToActivate = null;
         }
 
         string chosenResponse = bFoundEligibleMatch
@@ -266,9 +296,11 @@ public class DialogueProcessor : MonoBehaviour
         m_bPendingEyeOpen = bFoundEligibleMatch && bBestIsEyeOpen;
         m_bPendingLayerAdvance = bFoundEligibleMatch && bBestAdvancesLayer;
         m_PendingLayerToAdvanceTo = bestLayerToAdvanceTo;
+        m_bPendingDatingSimStart = bFoundEligibleMatch && bBestStartsDatingSim;
         m_PendingRewardItem = bFoundEligibleMatch ? bestRewardItem : null;
         m_PendingRewardItemSource = bFoundEligibleMatch ? bestRewardItemSource : null;
         m_PendingRewardItemEntryIndex = bestRewardItemEntryIndex;
+        m_PendingMarkerToActivate = bFoundEligibleMatch ? bestMarkerToActivate : null;
 
         if (bFoundEligibleMatch && bestTriggerSFX != null)
         {
@@ -300,6 +332,12 @@ public class DialogueProcessor : MonoBehaviour
             Debug.Log($"[DialogueProcessor] Granted Reward Item '{rewardItem.ItemName}' from PromptResponses source '{rewardItemSource.name}' at Entry index {rewardItemEntryIndex}.");
         }
 
+        if (m_PendingMarkerToActivate != null)
+        {
+            m_PendingMarkerToActivate.SetActive(true);
+            m_PendingMarkerToActivate = null;
+        }
+
         if (m_bPendingTransition)
         {
             m_bPendingTransition = false;
@@ -311,6 +349,13 @@ public class DialogueProcessor : MonoBehaviour
         {
             m_bPendingEyeOpen = false;
             m_EyeModeController.OpenEyes();
+            return;
+        }
+
+        if (m_bPendingDatingSimStart)
+        {
+            m_bPendingDatingSimStart = false;
+            m_DatingSimController.StartDatingSim();
             return;
         }
 

@@ -8,10 +8,31 @@ using UnityEngine;
 /// </summary>
 public class PromptResponses : MonoBehaviour
 {
-    public enum ePresenceRequirement
+    [Serializable]
+    public struct GatingCondition
     {
-        MustBePresent,
-        MustBeAbsent,
+        [SerializeField, Tooltip("The object whose presence is checked. Leave unset to remove this condition.")]
+        private GameObject m_GatingObject;
+
+        [SerializeField, Tooltip("Whether the Gating Object must currently be present or absent for this condition to be satisfied.")]
+        private GameEnums.ePresenceRequirement m_PresenceRequirement;
+
+        public GatingCondition(GameObject gatingObject, GameEnums.ePresenceRequirement presenceRequirement)
+        {
+            m_GatingObject = gatingObject;
+            m_PresenceRequirement = presenceRequirement;
+        }
+
+        public GameObject GatingObject => m_GatingObject;
+        public GameEnums.ePresenceRequirement PresenceRequirement => m_PresenceRequirement;
+
+        public bool IsSatisfied()
+        {
+            if (m_GatingObject == null) return true;
+
+            bool bIsPresent = m_GatingObject.activeSelf;
+            return m_PresenceRequirement == GameEnums.ePresenceRequirement.MustBePresent ? bIsPresent : !bIsPresent;
+        }
     }
 
     [Serializable]
@@ -35,11 +56,17 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Min(1), Tooltip("The Layer the current Level advances to when this Entry triggers. Only used if Advances Layer is true.")]
         private int m_LayerToAdvanceTo;
 
-        [SerializeField, Tooltip("If set, this Entry is only eligible when this object's presence (last rolled when eyes were opened) matches Presence Requirement. Leave unset for an ungated Entry.")]
+        [SerializeField, Tooltip("If true, triggering this Entry launches the Dating Sim instead of unlocking input once the Response finishes typing.")]
+        private bool m_bStartsDatingSim;
+
+        [SerializeField, Tooltip("Legacy single gating object, kept only so old data can be migrated into Gating Conditions on load. No longer edited directly.")]
         private GameObject m_GatingObject;
 
-        [SerializeField, Tooltip("Whether the Gating Object must currently be present or absent for this Entry to be eligible. Ignored if Gating Object is unset.")]
-        private ePresenceRequirement m_PresenceRequirement;
+        [SerializeField, Tooltip("Legacy single gating requirement, kept only so old data can be migrated into Gating Conditions on load. No longer edited directly.")]
+        private GameEnums.ePresenceRequirement m_PresenceRequirement;
+
+        [SerializeField, Tooltip("Every condition that must be satisfied (AND) for this Entry to be eligible. Leave empty for an ungated Entry.")]
+        private List<GatingCondition> m_GatingConditions;
 
         [SerializeField, Tooltip("The SFX that plays when this Entry is triggered. Optional.")]
         private AudioClip m_TriggerSFX;
@@ -47,22 +74,29 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("If set, triggering this Entry grants this Item to the Player's inventory and removes this Entry from future consideration, so it can only be granted once. Leave unset for an Entry with no reward.")]
         private ItemSO m_RewardItem;
 
+        [SerializeField, Tooltip("If set, triggering this Entry activates this marker GameObject. Optional.")]
+        private GameObject m_MarkerToActivate;
+
         public List<KeywordGroup> KeywordGroups => m_KeywordGroups;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
         public bool AdvancesLayer => m_bAdvancesLayer;
         public int LayerToAdvanceTo => m_LayerToAdvanceTo;
-        public GameObject GatingObject => m_GatingObject;
-        public ePresenceRequirement PresenceRequirement => m_PresenceRequirement;
+        public bool StartsDatingSim => m_bStartsDatingSim;
+        public IReadOnlyList<GatingCondition> GatingConditions => m_GatingConditions;
         public AudioClip TriggerSFX => m_TriggerSFX;
         public ItemSO RewardItem => m_RewardItem;
+        public GameObject MarkerToActivate => m_MarkerToActivate;
 
         public bool IsGateSatisfied()
         {
-            if (m_GatingObject == null) return true;
+            if (m_GatingConditions == null) return true;
 
-            bool bIsPresent = m_GatingObject.activeSelf;
-            return m_PresenceRequirement == ePresenceRequirement.MustBePresent ? bIsPresent : !bIsPresent;
+            foreach (GatingCondition condition in m_GatingConditions)
+            {
+                if (!condition.IsSatisfied()) return false;
+            }
+            return true;
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize() { }
@@ -70,6 +104,7 @@ public class PromptResponses : MonoBehaviour
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
             KeywordGroupMigration.MigrateLegacyKeywords(m_Keywords, ref m_KeywordGroups);
+            GatingConditionMigration.MigrateLegacyGatingObject(m_GatingObject, m_PresenceRequirement, ref m_GatingConditions);
         }
     }
 

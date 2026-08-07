@@ -428,6 +428,14 @@ PrefabInstance:
       propertyPath: m_DialogueUIRoot
       value: 
       objectReference: {fileID: 464055675}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: 'm_LayerSources.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1993061892}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: 'm_LayerSources.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1527785722}
     - target: {fileID: 2380025603971431600, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1423,7 +1431,7 @@ GameObject:
   - component: {fileID: 1527785721}
   - component: {fileID: 1527785722}
   m_Layer: 0
-  m_Name: CaveVariation1
+  m_Name: CaveLayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1712,7 +1720,7 @@ GameObject:
   - component: {fileID: 1993061891}
   - component: {fileID: 1993061892}
   m_Layer: 0
-  m_Name: CaveDefault
+  m_Name: CaveLayer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

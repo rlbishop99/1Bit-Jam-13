@@ -16,10 +16,11 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty thresholdProp = property.FindPropertyRelative("m_RequiredIntentThreshold");
         SerializedProperty advancesLayerProp = property.FindPropertyRelative("m_bAdvancesLayer");
         SerializedProperty layerToAdvanceToProp = property.FindPropertyRelative("m_LayerToAdvanceTo");
-        SerializedProperty gatingObjectProp = property.FindPropertyRelative("m_GatingObject");
-        SerializedProperty presenceRequirementProp = property.FindPropertyRelative("m_PresenceRequirement");
+        SerializedProperty startsDatingSimProp = property.FindPropertyRelative("m_bStartsDatingSim");
+        SerializedProperty gatingConditionsProp = property.FindPropertyRelative("m_GatingConditions");
         SerializedProperty entrySFXProp = property.FindPropertyRelative("m_TriggerSFX");
         SerializedProperty rewardItemProp = property.FindPropertyRelative("m_RewardItem");
+        SerializedProperty markerToActivateProp = property.FindPropertyRelative("m_MarkerToActivate");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
@@ -53,16 +54,14 @@ public class PromptResponseEntryDrawer : PropertyDrawer
             y += m_kLineHeight + m_kLineSpacing;
         }
 
-        Rect gatingObjectRect = new Rect(position.x, y, position.width, m_kLineHeight);
-        EditorGUI.PropertyField(gatingObjectRect, gatingObjectProp, new GUIContent("Gating Object"));
+        Rect startsDatingSimRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(startsDatingSimRect, startsDatingSimProp, new GUIContent("Starts Dating Sim"));
         y += m_kLineHeight + m_kLineSpacing;
 
-        if (gatingObjectProp.objectReferenceValue != null)
-        {
-            Rect presenceRequirementRect = new Rect(position.x, y, position.width, m_kLineHeight);
-            EditorGUI.PropertyField(presenceRequirementRect, presenceRequirementProp, new GUIContent("Presence Requirement"));
-            y += m_kLineHeight + m_kLineSpacing;
-        }
+        float gatingConditionsHeight = EditorGUI.GetPropertyHeight(gatingConditionsProp, true);
+        Rect gatingConditionsRect = new Rect(position.x, y, position.width, gatingConditionsHeight);
+        EditorGUI.PropertyField(gatingConditionsRect, gatingConditionsProp, new GUIContent("Gating Conditions"), true);
+        y += gatingConditionsHeight + m_kLineSpacing;
 
         Rect triggerSFXRect = new Rect(position.x, y, position.width, m_kLineHeight);
         EditorGUI.PropertyField(triggerSFXRect, entrySFXProp, new GUIContent("Trigger SFX"));
@@ -70,6 +69,10 @@ public class PromptResponseEntryDrawer : PropertyDrawer
 
         Rect rewardItemRect = new Rect(position.x, y, position.width, m_kLineHeight);
         EditorGUI.PropertyField(rewardItemRect, rewardItemProp, new GUIContent("Reward Item"));
+        y += m_kLineHeight + m_kLineSpacing;
+
+        Rect markerToActivateRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(markerToActivateRect, markerToActivateProp, new GUIContent("Marker To Activate"));
         y += m_kLineHeight + m_kLineSpacing;
 
         KeywordListDrawerUtility.DrawKeywordGroupList(position, y, keywordGroupsProp, bank, baseBank);
@@ -85,7 +88,7 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty responseProp = property.FindPropertyRelative("m_Response");
         SerializedProperty keywordGroupsProp = property.FindPropertyRelative("m_KeywordGroups");
         SerializedProperty advancesLayerProp = property.FindPropertyRelative("m_bAdvancesLayer");
-        SerializedProperty gatingObjectProp = property.FindPropertyRelative("m_GatingObject");
+        SerializedProperty gatingConditionsProp = property.FindPropertyRelative("m_GatingConditions");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
@@ -97,10 +100,8 @@ public class PromptResponseEntryDrawer : PropertyDrawer
             height += m_kLineHeight + m_kLineSpacing;
         }
         height += m_kLineHeight + m_kLineSpacing;
-        if (gatingObjectProp.objectReferenceValue != null)
-        {
-            height += m_kLineHeight + m_kLineSpacing;
-        }
+        height += EditorGUI.GetPropertyHeight(gatingConditionsProp, true) + m_kLineSpacing;
+        height += m_kLineHeight + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
         height += KeywordListDrawerUtility.GetKeywordGroupListHeight(keywordGroupsProp, bank, baseBank);

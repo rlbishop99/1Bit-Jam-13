@@ -22,4 +22,57 @@ public static class GameEnums
         Variation2 = 2,
     }
     #endregion
+
+    #region PromptResponses Enums
+    public enum ePresenceRequirement
+    {
+        MustBePresent,
+        MustBeAbsent,
+    }
+    #endregion
+
+    #region Dating Sim Enums
+    public enum eDatingSimState
+    {
+        Inactive,
+        AwaitingLaunchKeypress,
+        Typing,
+        AwaitingAnswerSelection,
+        AwaitingResultContinueKeypress,
+        AwaitingFrontFacingTransitionKeypress,
+        AwaitingFinalContinueKeypress,
+    }
+
+    public enum eDatingSimSpriteTier
+    {
+        Normal,
+        Blush,
+        HeavyBlush,
+        FrontFacingNormal,
+        FrontFacingBlush,
+        FrontFacingHeavyBlush,
+        Horse,
+    }
+
+    public enum eDatingSimSideEffect
+    {
+        None,
+        Hearts,
+        Anger,
+    }
+    #endregion
+
+    #region Forest Tutorial Enums
+    public enum eForestTutorialStep
+    {
+        FreePrompts,
+        AwaitingEyeOpen1,
+        AwaitingEyeOpen2,
+        AwaitingEyeOpen3,
+        AwaitingTakeFragment,
+        AwaitingContinueKeypress,
+        AwaitingGladeTravel,
+        Done,
+    }
+    #endregion
 }
