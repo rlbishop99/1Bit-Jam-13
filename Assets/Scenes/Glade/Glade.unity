@@ -2686,26 +2686,56 @@ MonoBehaviour:
     m_KeywordGroups:
     - m_Synonyms:
       - look
-      - move
-      - examine
+      - around
+      - walk
     - m_Synonyms:
       - glade
       - area
-      - around
-    m_Response: 'You walk a lap around the Glade.
+    m_Response: 'You walk a lap around the Glade. You see a couple of destinations:
 
 
-      The Pond is filled with
-      crystal clear water. You grab one of the cattails and eat it like a hot dog....
+      One
+      pathway leads to an arid outcropping with a large Bridge, and the other pathway
+      leads to the mouth of a Cave. It looks like you could probably reach both of
+      these places with a little bit of walking.
 
 
-      Your
-      mouth is instantly filled with hundreds of fluffy seeds. It certainly does
-      not taste like a hot dog.
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions: []
+    m_TriggerSFX: {fileID: 8300000, guid: 5d8519ee34095c1918055f9aa5c05c64, type: 3}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords:
+    - look
+    - around
+    - examine
+    - area
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+    - m_Synonyms:
+      - cattails
+      - plants
+    m_Response: 'The Pond is filled with crystal clear water. You grab one of the
+      cattails and eat it like a hot dog....
 
 
-      You leave the cattails alone, all the hungrier
-      for it.
+      Your mouth is instantly filled
+      with hundreds of fluffy seeds. It certainly does not taste like a hot dog.
+
+
+      You
+      leave the cattails alone, all the hungrier for it.
 
 
       What do you do?'
@@ -2774,6 +2804,43 @@ MonoBehaviour:
 
       What
       do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions: []
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords:
+    - unicorn
+    - date
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+    - m_Synonyms:
+      - reflection
+      - helmet
+    m_Response: 'You look more closely at your reflection in the water.
+
+
+      Your
+      whole life, you''ve prepared for this moment. You''ve known it was your purpose
+      to defeat the Illusionist and you''re more determined than ever to take him
+      down.
+
+
+      You stand up, ready to take him down and be welcomed home as
+      a real Hero. It''s time to move on.
+
+
+      What do you do?'
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0

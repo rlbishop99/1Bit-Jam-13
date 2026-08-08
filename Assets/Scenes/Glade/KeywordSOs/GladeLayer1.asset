@@ -17,6 +17,8 @@ MonoBehaviour:
   - sip
   - pond
   - water
+  - cattails
+  - plants
   - cave
   - bridge
   - forest
@@ -36,3 +38,6 @@ MonoBehaviour:
   - in
   - seen
   - flirt
+  - reflection
+  - helmet
+  - contemplate
