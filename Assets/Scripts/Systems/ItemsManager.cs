@@ -85,7 +85,7 @@ public class ItemsManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Plasmalot: Wipes the entire session's inventory and collection progress, e.g. when the Player quits back to the Title Screen.
+    /// Plasmalot: Wipes the entire session's inventory and collection progress, like when the Player quits back to the Title Screen.
     /// </summary>
     public void ResetProgress()
     {

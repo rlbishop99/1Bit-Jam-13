@@ -33,7 +33,7 @@ public class DialogueProcessor : MonoBehaviour
     private float m_QuitFadeOutDuration = 1.0f;
 
     [SerializeField, TextArea(2, 4), Tooltip("Shown when awaiting quit confirmation and the Player's answer isn't recognized as yes or no.")]
-    private string m_QuitConfirmationInvalidResponse = "\"...I'll need a yes or a no.\"";
+    private string m_QuitConfirmationInvalidResponse = "...I'll need a yes or a no.";
 
     private bool m_bHasPlayedIntro;
     private bool m_bAwaitingQuitConfirmation;
