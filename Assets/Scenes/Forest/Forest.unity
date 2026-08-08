@@ -1141,6 +1141,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - look
     - flower
@@ -1169,6 +1171,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - look
     - stump
@@ -1198,6 +1202,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - fragment
     - grab
@@ -1231,6 +1237,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
     m_RewardItem: {fileID: 11400000, guid: 076789cc441446b1fa6a9234960cad47, type: 2}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - move
@@ -1243,6 +1251,7 @@ MonoBehaviour:
       - further
       - venture
       - transition
+      - walk
     - m_Synonyms:
       - glade
       - further

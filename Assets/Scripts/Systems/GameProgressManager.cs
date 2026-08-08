@@ -68,6 +68,15 @@ public class GameProgressManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Plasmalot: Wipes all Layer progress and activated markers for the entire session, e.g. when the Player quits back to the Title Screen.
+    /// </summary>
+    public void ResetProgress()
+    {
+        m_CurrentLayerByLevel.Clear();
+        m_ActivatedMarkerKeys.Clear();
+    }
+
     private static string _GetMarkerKey(GameObject marker)
     {
         string path = marker.name;

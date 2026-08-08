@@ -17,7 +17,7 @@ public class ProgressGlobalCommand : GlobalCommand
 
     public override string GetResponse(GlobalCommandContext context)
     {
-        int collected = ItemsManager.Instance.Items.Count;
+        int collected = ItemsManager.Instance.EverCollectedCount;
         int total = ItemsManager.Instance.TotalCollectibleCount;
         return $"Progress: {collected}/{total} items collected.";
     }

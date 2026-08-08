@@ -10,29 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4e2083ac72bf150baa549c5c55b5c59, type: 3}
-  m_Name: GladeLayer1
+  m_Name: CaveLayer2
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
-  - drink
-  - sip
-  - pond
-  - water
-  - cave
-  - bridge
-  - forest
-  - unicorn
-  - light
-  - date
-  - romance
-  - kiss
-  - pet
-  - stand
-  - stump
+  - sit
+  - chair
+  - pick
   - up
-  - fairy
-  - more
-  - continue
-  - confirm
-  - in
-  - seen
-  - flirt
+  - food
+  - meat
+  - touch
+  - fire
+  - eat
+  - hands
+  - hand
+  - glade
+  - bridge
+  - flames
+  - campfire
+  - stool
+  - grab
+  - stone
+  - rock
+  - orb
+  - circle

@@ -22,6 +22,8 @@ public class TypewriterDisplay : MonoBehaviour
 
     private bool m_bIsTypewriting;
     private Coroutine m_TypewriterCoroutine;
+    private string m_PendingFullText;
+    private Action m_PendingOnComplete;
 
     public bool IsTypewriting => m_bIsTypewriting;
 
@@ -32,7 +34,29 @@ public class TypewriterDisplay : MonoBehaviour
             StopCoroutine(m_TypewriterCoroutine);
         }
 
+        m_PendingFullText = fullText;
+        m_PendingOnComplete = onComplete;
         m_TypewriterCoroutine = StartCoroutine(_TypewriterRoutine(fullText, onComplete));
+    }
+
+    /// <summary>
+    /// Plasmalot: Immediately finishes the in-progress typewriter effect, showing the full text and firing the
+    /// same onComplete callback that would have fired naturally. No-op if nothing is currently typewriting.
+    /// </summary>
+    public void SkipTypewriter()
+    {
+        if (!m_bIsTypewriting) return;
+
+        StopCoroutine(m_TypewriterCoroutine);
+        m_TypewriterCoroutine = null;
+        m_bIsTypewriting = false;
+
+        m_OutputText.text = m_PendingFullText;
+
+        Action onComplete = m_PendingOnComplete;
+        m_PendingFullText = null;
+        m_PendingOnComplete = null;
+        onComplete?.Invoke();
     }
 
     private IEnumerator _TypewriterRoutine(string fullText, Action onComplete)
@@ -61,6 +85,8 @@ public class TypewriterDisplay : MonoBehaviour
 
         m_bIsTypewriting = false;
         m_TypewriterCoroutine = null;
+        m_PendingFullText = null;
+        m_PendingOnComplete = null;
         onComplete?.Invoke();
     }
 }

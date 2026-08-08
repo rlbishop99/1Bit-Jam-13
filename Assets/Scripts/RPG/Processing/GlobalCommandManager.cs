@@ -12,14 +12,14 @@ public static class GlobalCommandManager
         new ItemsGlobalCommand(),
         new ProgressGlobalCommand(),
         new HelpGlobalCommand(),
+        new QuitGlobalCommand(),
     };
 
     public static IReadOnlyList<GlobalCommand> Commands => m_Commands;
 
     /// <summary>
-    /// Plasmalot: Scores every registered GlobalCommand's KeywordSets against words, only reporting a match
-    /// if it beats currentBestScore (whatever the Level/Variation's own Entries already found).
-    /// </summary>
+    /// Plasmalot: Matches every registered GlobalCommand's KeywordSets against words. 
+    /// Unlike PromptResponses, a GlobalCommand only fires when words consists of exactly its keyword set and nothing else.
     public static bool TryFindBestMatch(string[] words, float currentBestScore, GlobalCommandContext context, out string response, out float score)
     {
         response = null;
@@ -30,7 +30,9 @@ public static class GlobalCommandManager
         {
             foreach (IReadOnlyList<string> keywordSet in command.KeywordSets)
             {
-                float commandScore = IntentScorer.CalculateIntentScore(words, keywordSet);
+                if (!IsExactMatch(words, keywordSet)) continue;
+
+                float commandScore = 100.0f;
                 if (commandScore >= command.RequiredIntentThreshold && commandScore > score)
                 {
                     score = commandScore;
@@ -41,5 +43,18 @@ public static class GlobalCommandManager
         }
 
         return bFoundMatch;
+    }
+
+    private static bool IsExactMatch(string[] words, IReadOnlyList<string> keywordSet)
+    {
+        if (keywordSet == null || keywordSet.Count == 0 || words.Length != keywordSet.Count) return false;
+
+        HashSet<string> inputWordSet = new HashSet<string>(words);
+        foreach (string keyword in keywordSet)
+        {
+            if (!inputWordSet.Contains(keyword.ToLowerInvariant())) return false;
+        }
+
+        return true;
     }
 }

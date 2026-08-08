@@ -21,6 +21,8 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         SerializedProperty entrySFXProp = property.FindPropertyRelative("m_TriggerSFX");
         SerializedProperty rewardItemProp = property.FindPropertyRelative("m_RewardItem");
         SerializedProperty markerToActivateProp = property.FindPropertyRelative("m_MarkerToActivate");
+        SerializedProperty requiredItemProp = property.FindPropertyRelative("m_RequiredItem");
+        SerializedProperty itemToRemoveProp = property.FindPropertyRelative("m_ItemToRemove");
         KeywordsSO bank = KeywordListDrawerUtility.ResolveKeywordsSO(property);
         KeywordsSO baseBank = KeywordListDrawerUtility.ResolveBaseKeywordsSO(property);
 
@@ -75,6 +77,14 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         EditorGUI.PropertyField(markerToActivateRect, markerToActivateProp, new GUIContent("Marker To Activate"));
         y += m_kLineHeight + m_kLineSpacing;
 
+        Rect requiredItemRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(requiredItemRect, requiredItemProp, new GUIContent("Required Item"));
+        y += m_kLineHeight + m_kLineSpacing;
+
+        Rect itemToRemoveRect = new Rect(position.x, y, position.width, m_kLineHeight);
+        EditorGUI.PropertyField(itemToRemoveRect, itemToRemoveProp, new GUIContent("Item To Remove"));
+        y += m_kLineHeight + m_kLineSpacing;
+
         KeywordListDrawerUtility.DrawKeywordGroupList(position, y, keywordGroupsProp, bank, baseBank);
 
         EditorGUI.EndProperty();
@@ -101,6 +111,8 @@ public class PromptResponseEntryDrawer : PropertyDrawer
         }
         height += m_kLineHeight + m_kLineSpacing;
         height += EditorGUI.GetPropertyHeight(gatingConditionsProp, true) + m_kLineSpacing;
+        height += m_kLineHeight + m_kLineSpacing;
+        height += m_kLineHeight + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;
         height += m_kLineHeight + m_kLineSpacing;

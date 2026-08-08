@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Plasmalot: Handles the processing of Player input and determines which response to display based on the keywords present in the input. 
@@ -23,7 +25,18 @@ public class DialogueProcessor : MonoBehaviour
     [SerializeField, Tooltip("Owns the Dating Sim mini-game triggered by an Entry with Starts Dating Sim set.")]
     private DatingSimController m_DatingSimController;
 
+    [Header("Quit Confirmation")]
+    [SerializeField, Tooltip("Name of the Scene loaded when the Player confirms they want to quit to the Title Screen.")]
+    private string m_TitleScreenSceneName = "Title Screen";
+
+    [SerializeField, Tooltip("Duration of the fade-to-black played before loading the Title Screen, in seconds.")]
+    private float m_QuitFadeOutDuration = 1.0f;
+
+    [SerializeField, TextArea(2, 4), Tooltip("Shown when awaiting quit confirmation and the Player's answer isn't recognized as yes or no.")]
+    private string m_QuitConfirmationInvalidResponse = "\"...I'll need a yes or a no.\"";
+
     private bool m_bHasPlayedIntro;
+    private bool m_bAwaitingQuitConfirmation;
     private bool m_bPendingTransition;
     private GameEnums.eLevelID m_PendingTargetLevelID;
     private bool m_bPendingEyeOpen;
@@ -34,6 +47,7 @@ public class DialogueProcessor : MonoBehaviour
     private PromptResponses m_PendingRewardItemSource;
     private int m_PendingRewardItemEntryIndex;
     private GameObject m_PendingMarkerToActivate;
+    private ItemSO m_PendingItemToRemove;
     private string m_EyesClosedResponseOverride;
     private AudioClip m_EyesClosedResponseOverrideSFX;
     private string m_NextResponseOverride;
@@ -88,6 +102,13 @@ public class DialogueProcessor : MonoBehaviour
     public void SuppressNextUnlock() => m_bSuppressNextUnlock = true;
 
     /// <summary>
+    /// Plasmalot: Arms quit-confirmation mode - the next submission is intercepted entirely (no keyword scoring)
+    /// and interpreted as a yes/no answer to the Quit global command's prompt, instead of going through the
+    /// normal PromptResponses/GlobalCommand pipeline.
+    /// </summary>
+    public void RequestQuitConfirmation() => m_bAwaitingQuitConfirmation = true;
+
+    /// <summary>
     /// Plasmalot: Re-plays the currently active Layer's Intro Response, e.g. after returning from a side activity
     /// like the Dating Sim. Locks input for the duration, same as the very first intro played from Start().
     /// </summary>
@@ -103,13 +124,20 @@ public class DialogueProcessor : MonoBehaviour
     private void OnEnable()
     {
         m_InputHandler.OnInputSubmitted += _HandleInputSubmitted;
+        m_InputHandler.OnSkipRequested += _HandleSkipRequested;
         m_EyeModeController.OnEyesClosed += _HandleEyesClosed;
     }
 
     private void OnDisable()
     {
         m_InputHandler.OnInputSubmitted -= _HandleInputSubmitted;
+        m_InputHandler.OnSkipRequested -= _HandleSkipRequested;
         m_EyeModeController.OnEyesClosed -= _HandleEyesClosed;
+    }
+
+    private void _HandleSkipRequested()
+    {
+        m_TypewriterDisplay.SkipTypewriter();
     }
 
     private void Start()
@@ -185,6 +213,12 @@ public class DialogueProcessor : MonoBehaviour
 
     private void _HandleInputSubmitted(string rawInput)
     {
+        if (m_bAwaitingQuitConfirmation)
+        {
+            _HandleQuitConfirmationInput(rawInput);
+            return;
+        }
+
         if (m_NextResponseOverride != null)
         {
             string overrideResponse = m_NextResponseOverride;
@@ -197,6 +231,7 @@ public class DialogueProcessor : MonoBehaviour
             m_PendingRewardItem = null;
             m_PendingRewardItemSource = null;
             m_PendingMarkerToActivate = null;
+            m_PendingItemToRemove = null;
 
             AudioManager.Instance.PlaySFXOneShot(m_NextResponseOverrideSFX);
             m_NextResponseOverrideSFX = null;
@@ -210,6 +245,7 @@ public class DialogueProcessor : MonoBehaviour
         PromptResponses activeLevelSource = _ResolveActiveLevelSource(currentLayer);
 
         float bestScore = -1.0f;
+        int bestSourceLayer = int.MinValue;
         string bestResponse = null;
         bool bFoundEligibleMatch = false;
         bool bBestIsTransition = false;
@@ -223,6 +259,7 @@ public class DialogueProcessor : MonoBehaviour
         int bestRewardItemEntryIndex = default;
         AudioClip bestTriggerSFX = null;
         GameObject bestMarkerToActivate = null;
+        ItemSO bestItemToRemove = null;
 
         foreach (PromptResponses source in m_ActivePromptResponsesSources)
         {
@@ -235,9 +272,11 @@ public class DialogueProcessor : MonoBehaviour
                 if (!entry.IsGateSatisfied()) continue;
 
                 float score = IntentScorer.CalculateIntentScore(words, entry.KeywordGroups);
-                if (score >= entry.RequiredIntentThreshold && score > bestScore)
+                if (score >= entry.RequiredIntentThreshold &&
+                    (score > bestScore || (score == bestScore && source.RequiredLayer > bestSourceLayer)))
                 {
                     bestScore = score;
+                    bestSourceLayer = source.RequiredLayer;
                     bestResponse = entry.Response;
                     bFoundEligibleMatch = true;
                     bBestIsTransition = false;
@@ -250,15 +289,18 @@ public class DialogueProcessor : MonoBehaviour
                     bestRewardItemEntryIndex = i;
                     bestTriggerSFX = entry.TriggerSFX;
                     bestMarkerToActivate = entry.MarkerToActivate;
+                    bestItemToRemove = entry.ItemToRemove;
                 }
             }
 
             foreach (PromptResponses.TransitionEntry entry in source.TransitionEntries)
             {
                 float score = IntentScorer.CalculateIntentScore(words, entry.KeywordGroups);
-                if (score >= entry.RequiredIntentThreshold && score > bestScore)
+                if (score >= entry.RequiredIntentThreshold &&
+                    (score > bestScore || (score == bestScore && source.RequiredLayer > bestSourceLayer)))
                 {
                     bestScore = score;
+                    bestSourceLayer = source.RequiredLayer;
                     bestResponse = entry.Response;
                     bFoundEligibleMatch = true;
                     bBestIsTransition = true;
@@ -271,15 +313,18 @@ public class DialogueProcessor : MonoBehaviour
                     bestRewardItemSource = null;
                     bestTriggerSFX = null;
                     bestMarkerToActivate = null;
+                    bestItemToRemove = null;
                 }
             }
 
             foreach (PromptResponses.EyeOpenEntry entry in source.EyeOpenEntries)
             {
                 float score = IntentScorer.CalculateIntentScore(words, entry.KeywordGroups);
-                if (score >= entry.RequiredIntentThreshold && score > bestScore)
+                if (score >= entry.RequiredIntentThreshold &&
+                    (score > bestScore || (score == bestScore && source.RequiredLayer > bestSourceLayer)))
                 {
                     bestScore = score;
+                    bestSourceLayer = source.RequiredLayer;
                     bestResponse = entry.Response;
                     bFoundEligibleMatch = true;
                     bBestIsTransition = false;
@@ -291,11 +336,12 @@ public class DialogueProcessor : MonoBehaviour
                     bestRewardItemSource = null;
                     bestTriggerSFX = null;
                     bestMarkerToActivate = null;
+                    bestItemToRemove = null;
                 }
             }
         }
 
-        GlobalCommandContext globalCommandContext = new GlobalCommandContext(m_ActivePromptResponsesSources, currentLayer);
+        GlobalCommandContext globalCommandContext = new GlobalCommandContext(m_ActivePromptResponsesSources, currentLayer, this);
         if (GlobalCommandManager.TryFindBestMatch(words, bestScore, globalCommandContext, out string globalCommandResponse, out float globalCommandScore))
         {
             bestScore = globalCommandScore;
@@ -310,6 +356,7 @@ public class DialogueProcessor : MonoBehaviour
             bestRewardItemSource = null;
             bestTriggerSFX = null;
             bestMarkerToActivate = null;
+            bestItemToRemove = null;
         }
 
         string chosenResponse = bFoundEligibleMatch
@@ -333,6 +380,7 @@ public class DialogueProcessor : MonoBehaviour
         m_PendingRewardItemSource = bFoundEligibleMatch ? bestRewardItemSource : null;
         m_PendingRewardItemEntryIndex = bestRewardItemEntryIndex;
         m_PendingMarkerToActivate = bFoundEligibleMatch ? bestMarkerToActivate : null;
+        m_PendingItemToRemove = bFoundEligibleMatch ? bestItemToRemove : null;
 
         if (bFoundEligibleMatch && bestTriggerSFX != null)
         {
@@ -368,6 +416,12 @@ public class DialogueProcessor : MonoBehaviour
         {
             GameProgressManager.Instance.ActivateMarker(m_PendingMarkerToActivate);
             m_PendingMarkerToActivate = null;
+        }
+
+        if (m_PendingItemToRemove != null)
+        {
+            ItemsManager.Instance.RemoveItem(m_PendingItemToRemove);
+            m_PendingItemToRemove = null;
         }
 
         if (m_bPendingTransition)
@@ -416,5 +470,35 @@ public class DialogueProcessor : MonoBehaviour
     {
         m_InputHandler.UnlockInput();
         OnEyesClosedResponseComplete?.Invoke();
+    }
+
+    private void _HandleQuitConfirmationInput(string rawInput)
+    {
+        string[] words = InputSanitizer.SanitizeAndSplit(rawInput);
+        bool bSaysYes = Array.IndexOf(words, "yes") >= 0;
+        bool bSaysNo = Array.IndexOf(words, "no") >= 0;
+
+        if (bSaysYes && !bSaysNo)
+        {
+            m_bAwaitingQuitConfirmation = false;
+            m_InputHandler.LockInput();
+            ScreenFadeManager.Instance.FadeOut(m_QuitFadeOutDuration).OnComplete(() =>
+            {
+                ItemsManager.Instance.ResetProgress();
+                GameProgressManager.Instance.ResetProgress();
+                SceneManager.LoadScene(m_TitleScreenSceneName);
+            });
+            return;
+        }
+
+        if (bSaysNo && !bSaysYes)
+        {
+            m_bAwaitingQuitConfirmation = false;
+            PlayCurrentLayerIntro();
+            return;
+        }
+
+        m_InputHandler.LockInput();
+        m_TypewriterDisplay.PlayTypewriter(m_QuitConfirmationInvalidResponse, () => m_InputHandler.UnlockInput());
     }
 }

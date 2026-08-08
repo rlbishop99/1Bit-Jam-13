@@ -197,7 +197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1128068937}
+  m_Father: {fileID: 1127491737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128678629
 GameObject:
@@ -490,7 +490,7 @@ PrefabInstance:
     - target: {fileID: 2380025603971431600, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
     - target: {fileID: 2801221603991218921, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -691,13 +691,16 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 1502826079}
     - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 1054753402}
+      insertIndex: 4
+      addedObject: {fileID: 2021192279}
     - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       insertIndex: 6
-      addedObject: {fileID: 1297066991}
+      addedObject: {fileID: 1054753402}
     - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       insertIndex: 7
+      addedObject: {fileID: 1297066991}
+    - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      insertIndex: 8
       addedObject: {fileID: 904842807}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
@@ -1870,7 +1873,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1128068937}
+  m_Father: {fileID: 1127491737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &680724337
 RectTransform:
@@ -2215,7 +2218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1128068937}
+  m_Father: {fileID: 1127491737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &855399622
 RectTransform:
@@ -2652,7 +2655,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 644609316}
+  - {fileID: 839609022}
+  - {fileID: 15752578}
   m_Father: {fileID: 1128068937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1127491738
@@ -2713,6 +2719,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 5d8519ee34095c1918055f9aa5c05c64, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - look
     - water
@@ -2740,6 +2748,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
@@ -2774,6 +2784,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
@@ -2815,6 +2827,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - stump
     m_KeywordGroups:
@@ -2850,6 +2864,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
@@ -2885,6 +2901,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - fairy
     - talk
@@ -2928,6 +2946,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 15752577}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
@@ -2973,6 +2993,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - talk
     - unicorn
@@ -3017,6 +3039,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 1996ad0d223b428979e2cbfdb2e33b65, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 448123091}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
@@ -3026,6 +3050,7 @@ MonoBehaviour:
       - romance
       - kiss
       - pet
+      - flirt
     - m_Synonyms:
       - unicorn
       - light
@@ -3055,6 +3080,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 1996ad0d223b428979e2cbfdb2e33b65, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - unicorn
     - date
@@ -3092,6 +3119,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 1996ad0d223b428979e2cbfdb2e33b65, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - move
@@ -3102,6 +3131,7 @@ MonoBehaviour:
       - travel
       - transition
       - go
+      - walk
     - m_Synonyms:
       - forest
     m_Response: You decide to pivot back into the Forest.
@@ -3116,6 +3146,7 @@ MonoBehaviour:
       - travel
       - transition
       - go
+      - walk
     - m_Synonyms:
       - bridge
     m_Response: You decide to exit the Glade and head towards the Bridge.
@@ -3130,6 +3161,7 @@ MonoBehaviour:
       - travel
       - transition
       - go
+      - walk
     - m_Synonyms:
       - cave
     m_Response: You decide to exit the Glade and brave the Cave.
@@ -3218,9 +3250,6 @@ Transform:
   m_Children:
   - {fileID: 1127491737}
   - {fileID: 1676374983}
-  - {fileID: 644609316}
-  - {fileID: 839609022}
-  - {fileID: 15752578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1149036517
@@ -4341,7 +4370,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1716369739}
   m_Father: {fileID: 1128068937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1676374984
@@ -4358,14 +4388,372 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 2
   m_bIsLevelSource: 1
-  m_KeywordsSO: {fileID: 11400000, guid: 0be17c2d14580f00a95108a45a88284b, type: 2}
+  m_KeywordsSO: {fileID: 11400000, guid: 64b917f9f8dafbdaa8cdbc800e649e31, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: d8d488e67edf48099795e3d5f9fb4707, type: 2}
-  m_PromptResponseEntries: []
-  m_TransitionEntries: []
+  m_PromptResponseEntries:
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - talk
+      - move
+      - examine
+      - inspect
+    - m_Synonyms:
+      - light
+      - unicorn
+    m_Response: 'Light looks at you endearingly:
+
+
+      "After my last relationship
+      ended so terribly, I wasn''t sure I''d ever be able to find another Man who
+      was worthy of my affection.
+
+
+      My strapping Hero... if you need ANYTHING
+      from me at all, don''t hesitate to let me know. Are you hungry? I could always
+      prepare a nice meal for you."
+
+
+      You get the impression that Light may
+      be willing to help you out, given the right circumstances.
+
+
+      What do
+      you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 904842806}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 1996ad0d223b428979e2cbfdb2e33b65, type: 3}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 1716369738}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - cook
+      - ask
+      - please
+      - give
+    - m_Synonyms:
+      - meat
+      - meal
+      - food
+    m_Response: 'Light looks thrilled.
+
+
+      "Yes, I''ll happily cook for you;
+      anything for my Hero! ...wait, what''s that smell? Ugh, it smells horrible!
+      This Meat is no good, but luckily for you I can purify it."
+
+
+      Light takes
+      the Meat, then purifies and cooks it with the power of Unicorn magic.
+
+
+      PURIFIED
+      MEAT was added to your ITEMS.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 904842806}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 1716369738}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
+    m_RewardItem: {fileID: 11400000, guid: faa6f3ea42ab978b8a824df532c49180, type: 2}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 11400000, guid: 85067f37249db60c692d851a3e3095a9, type: 2}
+    m_ItemToRemove: {fileID: 11400000, guid: 85067f37249db60c692d851a3e3095a9, type: 2}
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - examine
+      - inspect
+    - m_Synonyms:
+      - pond
+    m_Response: 'You take a look at the Pond again. The water softly laps at the
+      edges of the reservoir in a peaceful routine, almost like a dance.
+
+
+      You
+      drink in the sight and the sound, you aren''t sure when you''ll get another
+      chance to feel at ease like this....
+
+
+      You sit there and rest for what
+      must''ve only been minutes, but felt like hours. You needed this.
+
+
+      What
+      do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 242867549}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 2021192278}
+      m_PresenceRequirement: 1
+    m_TriggerSFX: {fileID: 8300000, guid: 796c1728d50ce1c10932a8f57beaea10, type: 3}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - grab
+      - look
+      - inspect
+      - examine
+    - m_Synonyms:
+      - orb
+      - fragment
+      - circle
+      - pond
+    m_Response: 'You attempt to grab the Fragment at the bottom of the Pond.
+
+
+      Suddenly
+      and to your surprise, your hand collides with the water. It isn''t water at
+      all, but ice as hard as rock.
+
+
+      You cannot grab the Fragment through
+      the ice.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 2021192278}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - break
+      - smash
+      - crush
+    - m_Synonyms:
+      - ice
+    m_Response: 'You slam your hands into the Ice as hard as you can with your gauntlets.
+
+
+      The
+      force does nothing to the Ice -- it only hurts your hands as your gauntlets
+      bounce harmlessly off of the surface.
+
+
+      It seems like you will not be
+      able to get the Fragment through brute force alone.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 2021192278}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - talk
+      - look
+      - examine
+    - m_Synonyms:
+      - fairy
+    m_Response: 'The Fairy whispers to you as you move closer to her:
+
+
+      "Hey
+      Hero, have you heard that Gonk and Light used to date each other? Talk about
+      an unlikely pair, it''s no wonder they broke up.
+
+
+      I''ve heard that Gonk
+      is still feeling pretty down in the dumps about it. Have you talked to him
+      lately?"
+
+
+      The Fairy wanders away, pleased at having shared the latest
+      gossip.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 1054753401}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  m_TransitionEntries:
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - transition
+      - walk
+      - go
+    - m_Synonyms:
+      - forest
+    m_Response: You exit the safety of the Glade and head back into the Forest.
+    m_RequiredIntentThreshold: 100
+    m_TargetLevelID: 0
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - transition
+      - walk
+      - go
+    - m_Synonyms:
+      - bridge
+    m_Response: You wander out of the Glade in the direction of the Bridge.
+    m_RequiredIntentThreshold: 100
+    m_TargetLevelID: 2
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - move
+      - travel
+      - transition
+      - walk
+      - go
+    - m_Synonyms:
+      - cave
+    m_Response: You muster your bravery and head back into the Cave.
+    m_RequiredIntentThreshold: 100
+    m_TargetLevelID: 3
   m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
-  m_IntroResponse: 
-  m_Variations: []
+  m_IntroResponse: 'You feel a powerful energy in the Glade, like raw and powerful
+    magic, where there wasn''t any before.
+
+
+    The view is just how you remember
+    it -- Cattails, the Pond, limitless Trees....
+
+
+    Perhaps something has changed.
+
+
+    What
+    do you do?'
+  m_Variations:
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 242867549}
+    - {fileID: 904842806}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 242867549}
+    - {fileID: 1054753401}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 2021192278}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 2021192278}
+    - {fileID: 904842806}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 242867549}
+    - {fileID: 1297066990}
+    - {fileID: 1054753401}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 242867549}
+    - {fileID: 1297066990}
+    - {fileID: 904842806}
+    - {fileID: 1054753401}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 2021192278}
+    - {fileID: 1054753401}
+    - {fileID: 1297066990}
+  - m_VariationImage: {fileID: 21300000, guid: 1658f50595806a06b9acb7b2a40c1e34, type: 3}
+    m_VariationObjects:
+    - {fileID: 904842806}
+    - {fileID: 1297066990}
+    - {fileID: 2021192278}
+--- !u!1 &1716369738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716369739}
+  m_Layer: 0
+  m_Name: LightWillCookFood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1716369739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716369738}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1676374983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1864568780
 GameObject:
   m_ObjectHideFlags: 0
@@ -5110,6 +5498,81 @@ MonoBehaviour:
   m_TargetImage: {fileID: 1947693980}
   m_CycleIntervalSeconds: 1
   m_Index0CycleIntervalSeconds: 0.15
+--- !u!1 &2021192278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021192279}
+  - component: {fileID: 2021192281}
+  - component: {fileID: 2021192280}
+  m_Layer: 0
+  m_Name: Pond3(Frozen)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2021192279
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021192278}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 9.092452, y: 5.7711673, z: 4.063666}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 242867548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -396, y: -404}
+  m_SizeDelta: {x: 94.5, y: 45.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2021192280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021192278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2de1ffb2763ee824aa78fdd8dd9ec69f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2021192281
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021192278}
+  m_CullTransparentMesh: 1
 --- !u!1 &2030983543
 GameObject:
   m_ObjectHideFlags: 0

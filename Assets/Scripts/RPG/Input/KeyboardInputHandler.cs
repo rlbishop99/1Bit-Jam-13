@@ -32,6 +32,7 @@ public class KeyboardInputHandler : MonoBehaviour
     public event Action<string> OnInputSubmitted;
     public event Action OnInputLocked;
     public event Action OnInputUnlocked;
+    public event Action OnSkipRequested;
 
     private void OnEnable()
     {
@@ -51,7 +52,17 @@ public class KeyboardInputHandler : MonoBehaviour
 
     private void Update()
     {
-        if (m_bIsInputLocked || Keyboard.current == null) return;
+        if (Keyboard.current == null) return;
+
+        if (m_bIsInputLocked)
+        {
+            if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                OnSkipRequested?.Invoke();
+            }
+
+            return;
+        }
 
         if (Keyboard.current.backspaceKey.wasPressedThisFrame)
         {

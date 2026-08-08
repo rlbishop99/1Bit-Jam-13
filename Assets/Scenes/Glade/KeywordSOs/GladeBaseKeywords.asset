@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GladeBaseKeywords
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
+  - walk
   - move
   - travel
   - transition
@@ -27,3 +28,6 @@ MonoBehaviour:
   - go
   - talk
   - glade
+  - forest
+  - bridge
+  - cave

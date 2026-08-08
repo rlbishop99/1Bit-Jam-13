@@ -7,10 +7,12 @@ public readonly struct GlobalCommandContext
 {
     public readonly IReadOnlyList<PromptResponses> ActiveSources;
     public readonly int CurrentLayer;
+    public readonly DialogueProcessor DialogueProcessor;
 
-    public GlobalCommandContext(IReadOnlyList<PromptResponses> activeSources, int currentLayer)
+    public GlobalCommandContext(IReadOnlyList<PromptResponses> activeSources, int currentLayer, DialogueProcessor dialogueProcessor)
     {
         ActiveSources = activeSources;
         CurrentLayer = currentLayer;
+        DialogueProcessor = dialogueProcessor;
     }
 }

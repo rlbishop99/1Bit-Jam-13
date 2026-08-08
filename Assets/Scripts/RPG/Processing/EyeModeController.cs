@@ -63,6 +63,7 @@ public class EyeModeController : MonoBehaviour
     private bool m_bIsTransitioning;
     private bool m_bIsInitialized;
     private List<GameObject> m_AllVariationObjects;
+    private Dictionary<GameObject, ItemSO> m_VariationObjectRewardItems;
     private PromptResponses.LayerVariation m_PendingVariation;
     private int? m_ForcedVariationIndexOverride;
 
@@ -97,6 +98,7 @@ public class EyeModeController : MonoBehaviour
 
         m_LastVariationIndexPerLayer = new List<int>();
         m_AllVariationObjects = new List<GameObject>();
+        m_VariationObjectRewardItems = new Dictionary<GameObject, ItemSO>();
         foreach (PromptResponses layer in m_LayerSources)
         {
             m_LastVariationIndexPerLayer.Add(-1);
@@ -108,6 +110,21 @@ public class EyeModeController : MonoBehaviour
                     if (obj != null && !m_AllVariationObjects.Contains(obj))
                     {
                         m_AllVariationObjects.Add(obj);
+                    }
+                }
+            }
+
+            // Plasmalot: An Entry that grants an Item and gates on that Item's world object being present is
+            // that object's pickup - once the Item is collected, the object must not be re-enabled by a reroll.
+            foreach (PromptResponses.Entry entry in layer.PromptResponseEntries)
+            {
+                if (entry.RewardItem == null || entry.GatingConditions == null) continue;
+
+                foreach (PromptResponses.GatingCondition condition in entry.GatingConditions)
+                {
+                    if (condition.GatingObject != null && condition.PresenceRequirement == GameEnums.ePresenceRequirement.MustBePresent)
+                    {
+                        m_VariationObjectRewardItems[condition.GatingObject] = entry.RewardItem;
                     }
                 }
             }
@@ -258,10 +275,14 @@ public class EyeModeController : MonoBehaviour
     {
         foreach (GameObject obj in chosenVariation.VariationObjects)
         {
-            if (obj != null)
+            if (obj == null) continue;
+
+            if (m_VariationObjectRewardItems.TryGetValue(obj, out ItemSO rewardItem) && ItemsManager.Instance.HasEverCollected(rewardItem))
             {
-                obj.SetActive(true);
+                continue;
             }
+
+            obj.SetActive(true);
         }
     }
 }

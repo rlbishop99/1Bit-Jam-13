@@ -613,7 +613,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
-      insertIndex: 5
+      insertIndex: 1
+      addedObject: {fileID: 830501620}
+    - targetCorrespondingSourceObject: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      insertIndex: 6
       addedObject: {fileID: 1227296303}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
@@ -1123,6 +1126,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a210a4dd1deefa5ab927450db4942d8e, type: 3}
+--- !u!1 &830501619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830501620}
+  - component: {fileID: 830501622}
+  - component: {fileID: 830501621}
+  m_Layer: 5
+  m_Name: DousedCampfire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &830501620
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830501619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 25.6, y: 14.4375, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 398167486}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &830501621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830501619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 33dc0bbba00fecfdc90e6573bd3757c2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &830501622
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830501619}
+  m_CullTransparentMesh: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,212 +1547,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1c8d611d82167d5a261b2356e2656d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
-  m_RequiredLayer: 1
+  m_RequiredLayer: 2
   m_bIsLevelSource: 1
-  m_KeywordsSO: {fileID: 11400000, guid: 8c18faa0ee9450dffa9b15813669b5b5, type: 2}
+  m_KeywordsSO: {fileID: 11400000, guid: 70c99d8f49a021d66a1a76c374d70b79, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: a6f6517ffee44a9184d46816533fe062, type: 2}
-  m_PromptResponseEntries:
-  - m_Keywords:
-    - touch
-    - fire
-    - hands
-    - hand
+  m_PromptResponseEntries: []
+  m_TransitionEntries:
+  - m_Keywords: []
     m_KeywordGroups:
     - m_Synonyms:
-      - touch
+      - move
+      - go
+      - travel
+      - transition
     - m_Synonyms:
-      - fire
-    - m_Synonyms:
-      - hands
-    - m_Synonyms:
-      - hand
-    m_Response: 'You stick your hands in the fire. You''re wearing armor, so your
-      metal gauntlets quickly begin to heat up and singe your skin.
-
-
-      It hurts
-      terribly, so you pull your hands out and sadly ponder your choice.
-
-
-      .........
-
-
-      .........why
-      would you do that?
-
-
-      What do you do?'
-    m_RequiredIntentThreshold: 50
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_GatingConditions: []
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-    m_MarkerToActivate: {fileID: 0}
-  - m_Keywords:
-    - look
-    - around
-    - area
-    m_KeywordGroups:
-    - m_Synonyms:
-      - look
-    - m_Synonyms:
-      - around
-    - m_Synonyms:
-      - area
-    m_Response: 'You get a better look around. The fire is still burning brightly,
-      like it has recently been tended to.
-
-
-      There are various bits of food
-      on the table; meats, cheeses, fruits, and more. Why would someone need all
-      of this food?
-
-
-      What do you do?'
-    m_RequiredIntentThreshold: 30
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_GatingConditions: []
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-    m_MarkerToActivate: {fileID: 0}
-  - m_Keywords:
-    - pick
-    - up
-    - food
-    m_KeywordGroups:
-    - m_Synonyms:
-      - pick
-    - m_Synonyms:
-      - up
-    - m_Synonyms:
-      - food
-    m_Response: 'You grab some of the food and attempt to put it in your pocket.
-
-
-      Silly
-      you, Plate Mail doesn''t have pockets.
-
-
-      You sadly put the food back
-      down on the table.
-
-
-      What do you do?'
-    m_RequiredIntentThreshold: 30
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_GatingConditions: []
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-    m_MarkerToActivate: {fileID: 0}
-  - m_Keywords:
-    - look
-    - chair
-    m_KeywordGroups:
-    - m_Synonyms:
-      - look
-    - m_Synonyms:
-      - chair
-    m_Response: 'You look closer at the wooden chair. It''s rather plain, not carpented
-      by a skilled worker. Perhaps this was crafted as a hobby?
-
-
-      You can see
-      there are knots in the wood where the arms are, the legs aren''t quite even
-      so the chair wobbles, and it is cracked down the back.
-
-
-      Poor fella,
-      this chair CAN''T be comfortable.
-
-
-      What do you do?'
+      - bridge
+    m_Response: You exit the Cave and head towards the Bridge.
     m_RequiredIntentThreshold: 100
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_GatingConditions: []
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-    m_MarkerToActivate: {fileID: 0}
-  - m_Keywords:
-    - chair
-    - sit
+    m_TargetLevelID: 2
+  - m_Keywords: []
     m_KeywordGroups:
     - m_Synonyms:
-      - chair
+      - go
+      - move
+      - travel
+      - transition
     - m_Synonyms:
-      - sit
-    m_Response: 'You sit down in the chair.
-
-
-      This chair sucks. You feel worse
-      for having sat down in it.
-
-
-      What do you do?'
+      - glade
+    m_Response: You back out of the Cave and head back to the Glade.
     m_RequiredIntentThreshold: 100
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_GatingConditions: []
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-    m_MarkerToActivate: {fileID: 0}
-  - m_Keywords:
-    - food
-    - eat
-    m_KeywordGroups:
-    - m_Synonyms:
-      - food
-    - m_Synonyms:
-      - eat
-    m_Response: 'You pick up some of the food and attempt to eat it.
-
-
-      Wouldn''t
-      you know it? Your helmet is getting in the way -- you can''t put the food in
-      your mouth.
-
-
-      Sadly, you put the food back down on the table.
-
-
-      What
-      do you do?'
-    m_RequiredIntentThreshold: 75
-    m_bAdvancesLayer: 0
-    m_LayerToAdvanceTo: 0
-    m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 0}
-    m_PresenceRequirement: 0
-    m_GatingConditions: []
-    m_TriggerSFX: {fileID: 0}
-    m_RewardItem: {fileID: 0}
-    m_MarkerToActivate: {fileID: 0}
-  m_TransitionEntries: []
+    m_TargetLevelID: 1
   m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: "You enter the mouth of the Cave. It's dank, humid, and musty.\n\nInside
     you can see a small wooden table and chair, with a campfire slowly crackling
     nearby on a bed of rocks. \n\nThere is some food on the table.\n\nWhat do you
     do?"
-  m_Variations: []
+  m_Variations:
+  - m_VariationImage: {fileID: 0}
+    m_VariationObjects: []
+  - m_VariationImage: {fileID: 0}
+    m_VariationObjects: []
+  - m_VariationImage: {fileID: 0}
+    m_VariationObjects: []
+  - m_VariationImage: {fileID: 0}
+    m_VariationObjects: []
 --- !u!1001 &1948658895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1808,7 +1725,7 @@ MonoBehaviour:
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 30
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_bStartsDatingSim: 0
@@ -1818,6 +1735,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - look
     - chair
@@ -1855,6 +1774,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - chair
     - sit
@@ -1863,7 +1784,7 @@ MonoBehaviour:
       - sit
     - m_Synonyms:
       - chair
-    m_Response: 'You sit down in the chair.
+    m_Response: 'You sit down on the chair.
 
 
       This chair sucks. You feel worse
@@ -1881,6 +1802,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - food
     - eat
@@ -1890,6 +1813,7 @@ MonoBehaviour:
       - up
       - eat
       - look
+      - inspect
     - m_Synonyms:
       - food
       - meat
@@ -1922,6 +1846,8 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
     m_RewardItem: {fileID: 11400000, guid: 85067f37249db60c692d851a3e3095a9, type: 2}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - touch
     - fire
@@ -1929,42 +1855,28 @@ MonoBehaviour:
     - hand
     m_KeywordGroups:
     - m_Synonyms:
-      - touch
-      - hand
-      - hands
+      - inspect
+      - examine
+      - look
     - m_Synonyms:
       - fire
       - flames
       - campfire
-    m_Response: 'You notice a tiny little Rock tucked behind some crates that you
-      could easily have missed. You pick it up.
-
-
-      Upon closer inspection, you
-      can see that it has some text etched into it, but the text is fragmented and
-      impossible to decipher.
-
-
-      Perhaps it is a small piece of a larger stone?
-
-
-      ETCHED
-      STONE was added to your ITEMS.
-
-
-      What do you do?'
-    m_RequiredIntentThreshold: 50
+    m_Response: "You nuzzle up close to the fire. It radiates gentle comforting warmth
+      and you're able to warm your hands.\n\nThe fire is burning healthily and it
+      looks like some wood was recently added to it. \n"
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_bStartsDatingSim: 0
-    m_GatingObject: {fileID: 398167488}
+    m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
-    m_GatingConditions:
-    - m_GatingObject: {fileID: 398167488}
-      m_PresenceRequirement: 0
-    m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
-    m_RewardItem: {fileID: 11400000, guid: 36386064f1873c1cea24663897dd884f, type: 2}
+    m_GatingConditions: []
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   - m_Keywords:
     - touch
     - fire
@@ -1995,7 +1907,7 @@ MonoBehaviour:
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 50
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
     m_bStartsDatingSim: 0
@@ -2005,6 +1917,57 @@ MonoBehaviour:
     m_TriggerSFX: {fileID: 8300000, guid: c66e3741f9a2846de86a4facf9dea026, type: 3}
     m_RewardItem: {fileID: 0}
     m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
+  - m_Keywords:
+    - touch
+    - fire
+    - hands
+    - hand
+    m_KeywordGroups:
+    - m_Synonyms:
+      - grab
+      - look
+      - pick
+      - up
+      - inspect
+      - examine
+    - m_Synonyms:
+      - stone
+      - rock
+      - orb
+      - circle
+    m_Response: 'You notice a tiny little Rock tucked behind some crates that you
+      could easily have missed. You pick it up.
+
+
+      Upon closer inspection, you
+      can see that it has some text etched into it, but the text is fragmented and
+      impossible to decipher.
+
+
+      Perhaps it is a small piece of a larger stone?
+
+
+      ETCHED
+      STONE was added to your ITEMS.
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 398167488}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 398167488}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
+    m_RewardItem: {fileID: 11400000, guid: 36386064f1873c1cea24663897dd884f, type: 2}
+    m_MarkerToActivate: {fileID: 0}
+    m_RequiredItem: {fileID: 0}
+    m_ItemToRemove: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -2015,12 +1978,10 @@ MonoBehaviour:
     m_KeywordGroups:
     - m_Synonyms:
       - go
-    - m_Synonyms:
-      - travel
-    - m_Synonyms:
-      - transition
-    - m_Synonyms:
+      - walk
       - move
+      - travel
+      - transition
     - m_Synonyms:
       - bridge
     m_Response: You decide to exit the Cave and head to the Bridge.
@@ -2035,12 +1996,10 @@ MonoBehaviour:
     m_KeywordGroups:
     - m_Synonyms:
       - move
-    - m_Synonyms:
-      - transition
-    - m_Synonyms:
-      - travel
-    - m_Synonyms:
+      - walk
       - go
+      - travel
+      - transition
     - m_Synonyms:
       - glade
     m_Response: You decide to exit the Cave and go back to the Glade.

@@ -77,6 +77,12 @@ public class PromptResponses : MonoBehaviour
         [SerializeField, Tooltip("If set, triggering this Entry activates this marker GameObject. Optional.")]
         private GameObject m_MarkerToActivate;
 
+        [SerializeField, Tooltip("If set, this Entry is only eligible while the Player's inventory contains this Item. Leave unset for an ungated Entry.")]
+        private ItemSO m_RequiredItem;
+
+        [SerializeField, Tooltip("If set, triggering this Entry removes this Item from the Player's inventory. Leave unset for an Entry that removes nothing.")]
+        private ItemSO m_ItemToRemove;
+
         public List<KeywordGroup> KeywordGroups => m_KeywordGroups;
         public string Response => m_Response;
         public float RequiredIntentThreshold => m_RequiredIntentThreshold;
@@ -87,9 +93,13 @@ public class PromptResponses : MonoBehaviour
         public AudioClip TriggerSFX => m_TriggerSFX;
         public ItemSO RewardItem => m_RewardItem;
         public GameObject MarkerToActivate => m_MarkerToActivate;
+        public ItemSO RequiredItem => m_RequiredItem;
+        public ItemSO ItemToRemove => m_ItemToRemove;
 
         public bool IsGateSatisfied()
         {
+            if (m_RequiredItem != null && !ItemsManager.Instance.HasItem(m_RequiredItem)) return false;
+
             if (m_GatingConditions == null) return true;
 
             foreach (GatingCondition condition in m_GatingConditions)
