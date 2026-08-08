@@ -897,7 +897,7 @@ MonoBehaviour:
 
 
       You are a brave, valiant Hero.'
-    m_SFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_SFX: {fileID: 8300000, guid: 9bf6ce7afd549423094d81b1f5472171, type: 3}
   - m_Text: 'For as long as you can remember, you''ve lived in the shadow of the
       Illusionist.
 
@@ -908,7 +908,7 @@ MonoBehaviour:
 
       ....you
       can guess what happened to them.'
-    m_SFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_SFX: {fileID: 8300000, guid: 9bf6ce7afd549423094d81b1f5472171, type: 3}
   - m_Text: 'You aren''t like the dozens of other Heroes who have come before you.
 
 
@@ -919,7 +919,7 @@ MonoBehaviour:
 
       You can avenge all of those who
       have fallen before you.'
-    m_SFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_SFX: {fileID: 8300000, guid: 9bf6ce7afd549423094d81b1f5472171, type: 3}
   - m_Text: 'You must make it to the Illusionists Tower and destroy him....once and
       for all.
 
@@ -930,7 +930,7 @@ MonoBehaviour:
 
       Despite this,
       you must find a way to reach him. There is nobody else.'
-    m_SFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_SFX: {fileID: 8300000, guid: 9bf6ce7afd549423094d81b1f5472171, type: 3}
   - m_Text: 'Without you, the Illusionist will never be vanquished.
 
 
@@ -945,7 +945,7 @@ MonoBehaviour:
 
       The Illusionist will be no more. You''ll make sure
       of it. '
-    m_SFX: {fileID: 8300000, guid: 01d79b620857f88ee934961ab8defc64, type: 3}
+    m_SFX: {fileID: 8300000, guid: 9bf6ce7afd549423094d81b1f5472171, type: 3}
   m_TypewriterDisplay: {fileID: 765368606}
   m_InputPanel: {fileID: 765368605}
   m_ForestSceneName: Forest

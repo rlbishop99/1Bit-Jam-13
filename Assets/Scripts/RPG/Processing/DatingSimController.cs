@@ -416,7 +416,7 @@ public class DatingSimController : MonoBehaviour
 
         if (m_HasAttemptedDateMarker != null)
         {
-            m_HasAttemptedDateMarker.SetActive(true);
+            GameProgressManager.Instance.ActivateMarker(m_HasAttemptedDateMarker);
         }
 
         m_DatingSimTypewriter.PlayTypewriter(m_FailureResponseText, _OnFinalMessageTyped);

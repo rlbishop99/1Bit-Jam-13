@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using System.Collections;
 
 /// <summary>
 /// Plasmalot: Drives the Intro Scene's scripted 5 Ws exposition. Prints each Prompt in order via TypewriterDisplay,
@@ -59,7 +61,7 @@ public class IntroController : MonoBehaviour
 
         if (m_PromptIndex >= m_Prompts.Count - 1)
         {
-            SceneManager.LoadScene(m_ForestSceneName);
+            StartCoroutine(_StartForestScene());
             return;
         }
 
@@ -73,5 +75,13 @@ public class IntroController : MonoBehaviour
         Prompt prompt = m_Prompts[m_PromptIndex];
         AudioManager.Instance.PlaySFXOneShot(prompt.SFX);
         m_TypewriterDisplay.PlayTypewriter(prompt.Text, null);
+    }
+
+    private IEnumerator _StartForestScene()
+    {
+        ScreenFadeManager.Instance.FadeOut(1f).WaitForCompletion();
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(m_ForestSceneName);
     }
 }

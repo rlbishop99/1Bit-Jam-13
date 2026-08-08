@@ -131,13 +131,129 @@ PrefabInstance:
       propertyPath: m_InputHandler
       value: 
       objectReference: {fileID: 4157061373525960828}
+    - target: {fileID: 254014047845354943, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 919bb6ec65893f308a10d7666a00e718, type: 3}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1093.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 451.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92008346
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.87627
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.87627
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560016504953954624, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -195
+      objectReference: {fileID: 0}
     - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_DialogueUIRoot
       value: 
       objectReference: {fileID: 2529701240372256704}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LayerSources.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: 'm_LayerSources.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1127491738}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: 'm_LayerSources.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1676374984}
+    - target: {fileID: 2233793705061502199, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: 'm_LayerSources.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1989090570}
+    - target: {fileID: 2380025603971431600, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71b0ce41fe51afd12b2eaf2b8e9abaab, type: 3}
+    - target: {fileID: 2801221603991218921, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057213119069071671, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Name
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057213119069071671, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3972794148059128704, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Name
       value: SpotDifferenceCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3972794148059128704, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Name
+      value: BrokenBridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 570
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 770
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -915
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846514335711108926, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985240767529007237, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115900193634999308, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Name
+      value: Gonk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5115900193634999308, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5798396802991894499, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
       propertyPath: m_Pivot.x
@@ -219,6 +335,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5837892509929926947, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fd92f2615ac6a8d90ba7ca95732ccfeb, type: 3}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 944
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888780758951229661, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417449992742104951, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e2ce4216d9d0ed838ff81306b4b2127, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -235,6 +379,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e03aba41de4c7f5887b2738e731c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeModeController
+--- !u!1 &3420765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5115900193634999308, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 3420763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3420766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3057213119069071671, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 3420763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3420767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4148457961724021786, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 3420763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &305325897
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +750,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &446058754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 446058755}
+  m_Layer: 0
+  m_Name: TaskedWithGettingWood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &446058755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446058754}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128068937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768116180
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +909,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 305325898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1000791820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1000791821}
+  m_Layer: 0
+  m_Name: HasTalkedToGonk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1000791821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000791820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128068937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1127491736
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +951,7 @@ GameObject:
   - component: {fileID: 1127491737}
   - component: {fileID: 1127491738}
   m_Layer: 0
-  m_Name: BridgeDefault
+  m_Name: BridgeLayer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 1
-  m_bIsLevelSource: 0
+  m_bIsLevelSource: 1
   m_KeywordsSO: {fileID: 11400000, guid: 2943e3a8b8c6e6ab58b3253a588c936e, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: dfaec42fbfd441e4b036f21e916b82c7, type: 2}
   m_PromptResponseEntries:
@@ -773,6 +994,14 @@ MonoBehaviour:
     - around
     - area
     - inspect
+    m_KeywordGroups:
+    - m_Synonyms:
+      - look
+      - around
+    - m_Synonyms:
+      - around
+      - area
+      - bridge
     m_Response: 'You take a better look at the broken Bridge. The fact that any of
       the Bridge is standing at all is shocking.
 
@@ -788,18 +1017,28 @@ MonoBehaviour:
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 40
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - cross
     - walk
     - across
     - bridge
+    m_KeywordGroups:
+    - m_Synonyms:
+      - cross
+      - walk
+      - across
+    - m_Synonyms:
+      - bridge
     m_Response: 'In spite of the fact that there is a massive chasm, you attempt
       to cross the "Bridge".
 
@@ -813,16 +1052,25 @@ MonoBehaviour:
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 30
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - laughter
     - listen
+    m_KeywordGroups:
+    - m_Synonyms:
+      - listen
+      - focus
+    - m_Synonyms:
+      - laughter
     m_Response: 'You concentrate and try to focus on the laughter, attempting to
       discern if it is real or imaginary.
 
@@ -837,17 +1085,27 @@ MonoBehaviour:
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 50
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - climb
     - valley
     - gulley
+    m_KeywordGroups:
+    - m_Synonyms:
+      - climb
+      - into
+    - m_Synonyms:
+      - valley
+      - gulley
     m_Response: 'You climb down the cliff face into the valley. You see there are
       shards of wood splintered on the rocks -- seems like the bridge collapsed a
       while ago.
@@ -863,13 +1121,188 @@ MonoBehaviour:
 
 
       What do you do?'
-    m_RequiredIntentThreshold: 30
+    m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
+  - m_Keywords:
+    - climb
+    - valley
+    - gulley
+    m_KeywordGroups:
+    - m_Synonyms:
+      - talk
+      - inspect
+      - examine
+      - look
+    - m_Synonyms:
+      - creature
+      - monster
+      - troll
+    m_Response: 'You walk towards the tall lumbering Creature.
+
+
+      "No! Back..."
+      he utters meekly.
+
+
+      You hold your hands up to show that you aren''t a
+      threat.
+
+
+      "....enemy? ....no enemy? .......no enemy. Me Gonk."
+
+
+      What
+      do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 3420765}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 1000791820}
+  - m_Keywords:
+    - climb
+    - valley
+    - gulley
+    m_KeywordGroups:
+    - m_Synonyms:
+      - talk
+      - more
+      - ask
+      - shake
+      - found
+    - m_Synonyms:
+      - troll
+      - gonk
+      - creature
+      - monster
+      - hand
+      - bridge
+    m_Response: 'You ask Gonk the Troll what he''s doing here.
+
+
+      ".....broken
+      Bridge. No get across canyon."
+
+
+      Gonk want repair....but no Wood. Need
+      Wood.
+
+
+      ...scary Hero get Wood for Gonk?"
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 3420765}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 1000791820}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 1768883235}
+  - m_Keywords:
+    - climb
+    - valley
+    - gulley
+    m_KeywordGroups:
+    - m_Synonyms:
+      - collect
+      - agree
+      - offer
+    - m_Synonyms:
+      - gonk
+      - wood
+    m_Response: 'Gonk looks relieved that you''ve agreed to get Wood for him.
+
+
+      "....whew.
+      Gonk afraid go into Forest again.
+
+
+      Get Wood means go through Glade....
+
+
+      ....Ex-girlfriend
+      there. She no want see Gonk."
+
+
+      What do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 3420765}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 1000791820}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 1768883235}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 446058754}
+  - m_Keywords:
+    - climb
+    - valley
+    - gulley
+    m_KeywordGroups:
+    - m_Synonyms:
+      - talk
+      - ask
+    - m_Synonyms:
+      - girlfriend
+      - glade
+      - unicorn
+      - ex
+      - exgirlfriend
+    m_Response: '"......no want talk about her.
+
+
+      Get Wood for Gonk?"
+
+
+      What
+      do you do?'
+    m_RequiredIntentThreshold: 100
+    m_bAdvancesLayer: 0
+    m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
+    m_GatingObject: {fileID: 0}
+    m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 3420765}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 1000791820}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 1768883235}
+      m_PresenceRequirement: 0
+    - m_GatingObject: {fileID: 446058754}
+      m_PresenceRequirement: 0
+    m_TriggerSFX: {fileID: 0}
+    m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 446058754}
   m_TransitionEntries:
   - m_Keywords:
     - travel
@@ -877,8 +1310,17 @@ MonoBehaviour:
     - move
     - go
     - cave
-    m_Response: You decide to leave the Bridge area and head to the Cave.
-    m_RequiredIntentThreshold: 60
+    m_KeywordGroups:
+    - m_Synonyms:
+      - travel
+      - move
+      - into
+      - transition
+      - go
+    - m_Synonyms:
+      - cave
+    m_Response: You decide to leave the Bridge behind and head to the Cave.
+    m_RequiredIntentThreshold: 100
     m_TargetLevelID: 3
   - m_Keywords:
     - travel
@@ -886,10 +1328,28 @@ MonoBehaviour:
     - move
     - go
     - glade
+    m_KeywordGroups:
+    - m_Synonyms:
+      - travel
+      - move
+      - into
+      - transition
+      - go
+    - m_Synonyms:
+      - glade
     m_Response: You decide to leave the Bridge area and head back to the Glade.
-    m_RequiredIntentThreshold: 60
+    m_RequiredIntentThreshold: 100
     m_TargetLevelID: 1
-  m_EyeOpenEntries: []
+  m_EyeOpenEntries:
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - open
+    - m_Synonyms:
+      - eye
+      - eyes
+    m_Response: 
+    m_RequiredIntentThreshold: 100
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 'You exit the Glade and make your way to a dilapidated and broken
     Bridge.
@@ -904,7 +1364,23 @@ MonoBehaviour:
 
 
     What do you do?'
-  m_Variations: []
+  m_Variations:
+  - m_VariationImage: {fileID: 21300000, guid: 71b0ce41fe51afd12b2eaf2b8e9abaab, type: 3}
+    m_VariationObjects:
+    - {fileID: 3420767}
+  - m_VariationImage: {fileID: 21300000, guid: 71b0ce41fe51afd12b2eaf2b8e9abaab, type: 3}
+    m_VariationObjects:
+    - {fileID: 3420767}
+    - {fileID: 3420766}
+  - m_VariationImage: {fileID: 21300000, guid: 71b0ce41fe51afd12b2eaf2b8e9abaab, type: 3}
+    m_VariationObjects:
+    - {fileID: 3420767}
+    - {fileID: 3420765}
+  - m_VariationImage: {fileID: 21300000, guid: 71b0ce41fe51afd12b2eaf2b8e9abaab, type: 3}
+    m_VariationObjects:
+    - {fileID: 3420767}
+    - {fileID: 3420765}
+    - {fileID: 3420766}
 --- !u!1 &1128068936
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +1413,9 @@ Transform:
   - {fileID: 1127491737}
   - {fileID: 1676374983}
   - {fileID: 1989090569}
+  - {fileID: 1000791821}
+  - {fileID: 1768883236}
+  - {fileID: 446058755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308622344
@@ -1049,7 +1528,7 @@ GameObject:
   - component: {fileID: 1676374983}
   - component: {fileID: 1676374984}
   m_Layer: 0
-  m_Name: BridgeVariation1
+  m_Name: BridgeLayer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,6 +1571,37 @@ MonoBehaviour:
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 
   m_Variations: []
+--- !u!1 &1768883235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768883236}
+  m_Layer: 0
+  m_Name: AskedIfHeroGetWood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1768883236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768883235}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128068937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1989090568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1613,7 @@ GameObject:
   - component: {fileID: 1989090569}
   - component: {fileID: 1989090570}
   m_Layer: 0
-  m_Name: BridgeVariation2
+  m_Name: BridgeLayer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1138,7 +1648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 1
   m_bIsLevelSource: 0
-  m_KeywordsSO: {fileID: 11400000, guid: 0be17c2d14580f00a95108a45a88284b, type: 2}
+  m_KeywordsSO: {fileID: 11400000, guid: 2943e3a8b8c6e6ab58b3253a588c936e, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: dfaec42fbfd441e4b036f21e916b82c7, type: 2}
   m_PromptResponseEntries: []
   m_TransitionEntries: []
@@ -1146,6 +1656,103 @@ MonoBehaviour:
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: 
   m_Variations: []
+--- !u!1001 &2135356470
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 692229103170077999, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048149522119916545, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
+      propertyPath: m_Name
+      value: ScreenFadeManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbaa8762f9da4c2eaa01657f63046367, type: 3}
 --- !u!1001 &334084525260614290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1558,6 +2165,7 @@ SceneRoots:
   - {fileID: 5326950005293754335}
   - {fileID: 311646997}
   - {fileID: 1519245994}
+  - {fileID: 2135356470}
   - {fileID: 2529701240372256703}
   - {fileID: 3420763}
   - {fileID: 1128068937}

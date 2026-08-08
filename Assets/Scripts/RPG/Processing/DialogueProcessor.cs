@@ -114,6 +114,8 @@ public class DialogueProcessor : MonoBehaviour
 
     private void Start()
     {
+        _RestoreMarkerStates();
+
         if (m_bHasPlayedIntro || m_ActivePromptResponsesSources == null || m_ActivePromptResponsesSources.Count == 0) return;
 
         int currentLayer = GameProgressManager.Instance.GetCurrentLayer(LevelContext.Instance.CurrentLevelID);
@@ -143,6 +145,36 @@ public class DialogueProcessor : MonoBehaviour
             }
         }
         return activeSource;
+    }
+
+    /// <summary>
+    /// Plasmalot: Re-activates any marker GameObject referenced by this Level/Variation's Entries either as a
+    /// MarkerToActivate or as a GatingCondition's GatingObject that was already activated on a previous visit.
+    /// </summary>
+    private void _RestoreMarkerStates()
+    {
+        if (m_ActivePromptResponsesSources == null) return;
+
+        foreach (PromptResponses source in m_ActivePromptResponsesSources)
+        {
+            foreach (PromptResponses.Entry entry in source.PromptResponseEntries)
+            {
+                if (entry.MarkerToActivate != null)
+                {
+                    GameProgressManager.Instance.ApplyPersistedMarkerState(entry.MarkerToActivate);
+                }
+
+                if (entry.GatingConditions == null) continue;
+
+                foreach (PromptResponses.GatingCondition condition in entry.GatingConditions)
+                {
+                    if (condition.GatingObject != null)
+                    {
+                        GameProgressManager.Instance.ApplyPersistedMarkerState(condition.GatingObject);
+                    }
+                }
+            }
+        }
     }
 
     private void _OnIntroComplete()
@@ -334,7 +366,7 @@ public class DialogueProcessor : MonoBehaviour
 
         if (m_PendingMarkerToActivate != null)
         {
-            m_PendingMarkerToActivate.SetActive(true);
+            GameProgressManager.Instance.ActivateMarker(m_PendingMarkerToActivate);
             m_PendingMarkerToActivate = null;
         }
 

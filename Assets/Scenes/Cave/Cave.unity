@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &75064692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3057213119069071671, guid: 44438e6e460a5276e84563fff35cffab, type: 3}
+  m_PrefabInstance: {fileID: 398167484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &239020837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1465,7 +1470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 1
-  m_bIsLevelSource: 0
+  m_bIsLevelSource: 1
   m_KeywordsSO: {fileID: 11400000, guid: 8c18faa0ee9450dffa9b15813669b5b5, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: a6f6517ffee44a9184d46816533fe062, type: 2}
   m_PromptResponseEntries:
@@ -1502,10 +1507,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 50
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - look
     - around
@@ -1530,10 +1538,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 30
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - pick
     - up
@@ -1560,10 +1571,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 30
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - look
     - chair
@@ -1589,10 +1603,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - chair
     - sit
@@ -1612,10 +1629,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - food
     - eat
@@ -1640,10 +1660,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 75
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   m_TransitionEntries: []
   m_EyeOpenEntries: []
   m_FallbackResponse: Nothing happens.
@@ -1754,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PromptResponses
   m_RequiredLayer: 1
-  m_bIsLevelSource: 0
+  m_bIsLevelSource: 1
   m_KeywordsSO: {fileID: 11400000, guid: 8c18faa0ee9450dffa9b15813669b5b5, type: 2}
   m_BaseKeywordsSO: {fileID: 11400000, guid: a6f6517ffee44a9184d46816533fe062, type: 2}
   m_PromptResponseEntries:
@@ -1788,10 +1811,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 30
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - look
     - chair
@@ -1822,10 +1848,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - chair
     - sit
@@ -1845,10 +1874,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - food
     - eat
@@ -1881,10 +1913,15 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 75
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 398167487}
     m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 398167487}
+      m_PresenceRequirement: 0
     m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
     m_RewardItem: {fileID: 11400000, guid: 85067f37249db60c692d851a3e3095a9, type: 2}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - touch
     - fire
@@ -1919,10 +1956,15 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 50
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 398167488}
     m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 398167488}
+      m_PresenceRequirement: 0
     m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
     m_RewardItem: {fileID: 11400000, guid: 36386064f1873c1cea24663897dd884f, type: 2}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - touch
     - fire
@@ -1956,10 +1998,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 50
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 8300000, guid: c66e3741f9a2846de86a4facf9dea026, type: 3}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - go
@@ -2001,13 +2046,55 @@ MonoBehaviour:
     m_Response: You decide to exit the Cave and go back to the Glade.
     m_RequiredIntentThreshold: 60
     m_TargetLevelID: 1
-  m_EyeOpenEntries: []
+  m_EyeOpenEntries:
+  - m_Keywords: []
+    m_KeywordGroups:
+    - m_Synonyms:
+      - open
+    - m_Synonyms:
+      - eye
+      - eyes
+    m_Response: 
+    m_RequiredIntentThreshold: 100
   m_FallbackResponse: Nothing happens.
   m_IntroResponse: "You enter the mouth of the Cave. It's dank, humid, and musty.\n\nInside
     you can see a small wooden table and chair, with a campfire slowly crackling
     nearby on a bed of rocks. \n\nThere is some food on the table.\n\nWhat do you
     do?"
-  m_Variations: []
+  m_Variations:
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 0}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 75064692}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 75064692}
+    - {fileID: 398167488}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 398167488}
+    - {fileID: 398167487}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 1227296302}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 1227296302}
+    - {fileID: 398167487}
+    - {fileID: 398167488}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 1227296302}
+    - {fileID: 398167487}
+    - {fileID: 398167488}
+    - {fileID: 398167488}
+    - {fileID: 75064692}
+  - m_VariationImage: {fileID: 21300000, guid: add47d6a52fceae67bf6aa77e6fd33ea, type: 3}
+    m_VariationObjects:
+    - {fileID: 1227296302}
+    - {fileID: 398167488}
 --- !u!1001 &2082806049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2069,7 +2156,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 464055674}
     - target: {fileID: 5857888040257436050, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: m_ActivePromptResponsesSources.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5857888040257436050, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
       propertyPath: 'm_ActivePromptResponsesSources.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1993061892}
+    - target: {fileID: 5857888040257436050, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}
+      propertyPath: 'm_ActivePromptResponsesSources.Array.data[1]'
       value: 
       objectReference: {fileID: 1993061892}
     - target: {fileID: 6669329658371288838, guid: 6f6b1297d9975ad0481d3f472187c739, type: 3}

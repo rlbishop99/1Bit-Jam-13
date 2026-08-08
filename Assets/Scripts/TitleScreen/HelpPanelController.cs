@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Plasmalot: Owns the Title Screen's Credits panel. Original scale is cached on scene load; Open() scales
+/// Plasmalot: Owns the Title Screen's Help panel. Original scale is cached on scene load; Open() scales
 /// the panel up from zero with a small dip-then-bounce, Close() scales it back to zero and deactivates it
 /// until Open() is called again. Open() also disables the primary menu buttons underneath and enables this
 /// panel's own buttons, so both can't be interacted with at once; Close() disables this panel's buttons
 /// immediately (so they can't be clicked again mid-animation) and re-enables the primary menu buttons only
 /// once the close animation has fully finished.
 /// </summary>
-public class CreditsPanelController : MonoBehaviour
+public class HelpPanelController : MonoBehaviour
 {
     [SerializeField, Tooltip("Seconds for the initial scale-up on Open().")]
     private float m_OpenDuration = 0.4f;
@@ -27,7 +27,7 @@ public class CreditsPanelController : MonoBehaviour
     [SerializeField, Tooltip("The 3 primary menu buttons (Play Game, Credits, Quit Game) underneath this panel. Disabled while this panel is open.")]
     private Button[] m_PrimaryMenuButtons;
 
-    [SerializeField, Tooltip("This panel's own buttons (e.g. CreditsCancel, Itch, YouTube). Enabled only while this panel is open.")]
+    [SerializeField, Tooltip("This panel's own buttons. Enabled only while this panel is open.")]
     private Button[] m_PanelButtons;
 
     private Vector3 m_OriginalScale;

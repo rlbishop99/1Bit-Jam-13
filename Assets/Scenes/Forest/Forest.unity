@@ -1134,10 +1134,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 34
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - look
     - flower
@@ -1159,10 +1162,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - look
     - stump
@@ -1185,10 +1191,13 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 0}
     m_PresenceRequirement: 0
+    m_GatingConditions: []
     m_TriggerSFX: {fileID: 0}
     m_RewardItem: {fileID: 0}
+    m_MarkerToActivate: {fileID: 0}
   - m_Keywords:
     - fragment
     - grab
@@ -1213,10 +1222,15 @@ MonoBehaviour:
     m_RequiredIntentThreshold: 100
     m_bAdvancesLayer: 0
     m_LayerToAdvanceTo: 0
+    m_bStartsDatingSim: 0
     m_GatingObject: {fileID: 289454281}
     m_PresenceRequirement: 0
+    m_GatingConditions:
+    - m_GatingObject: {fileID: 289454281}
+      m_PresenceRequirement: 0
     m_TriggerSFX: {fileID: 8300000, guid: 827586c2d4ac589479dad547e2a51f0b, type: 3}
     m_RewardItem: {fileID: 11400000, guid: 076789cc441446b1fa6a9234960cad47, type: 2}
+    m_MarkerToActivate: {fileID: 0}
   m_TransitionEntries:
   - m_Keywords:
     - move
@@ -1231,6 +1245,8 @@ MonoBehaviour:
       - transition
     - m_Synonyms:
       - glade
+      - further
+      - deeper
     m_Response: You decide to venture deeper into the forest towards the Glade.
     m_RequiredIntentThreshold: 100
     m_TargetLevelID: 1

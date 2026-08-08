@@ -11,6 +11,7 @@ public class GameProgressManager : MonoBehaviour
     public static GameProgressManager Instance => m_Instance;
 
     private readonly Dictionary<GameEnums.eLevelID, int> m_CurrentLayerByLevel = new Dictionary<GameEnums.eLevelID, int>();
+    private readonly HashSet<string> m_ActivatedMarkerKeys = new HashSet<string>();
 
     private void Awake()
     {
@@ -41,5 +42,39 @@ public class GameProgressManager : MonoBehaviour
             m_CurrentLayerByLevel[levelID] = newLayer;
             Debug.Log($"[GameProgressManager] {levelID} advanced to Layer {newLayer}.");
         }
+    }
+
+    /// <summary>
+    /// Plasmalot: Records that the given marker GameObject has been activated, and activates it now.
+    /// Call ApplyPersistedMarkerState() on scene load to re-apply this to markers that start inactive in the scene.
+    /// </summary>
+    public void ActivateMarker(GameObject marker)
+    {
+        if (marker == null) return;
+
+        m_ActivatedMarkerKeys.Add(_GetMarkerKey(marker));
+        marker.SetActive(true);
+    }
+
+    /// <summary>
+    /// Plasmalot: Re-activates marker if it was previously activated.
+    /// Safe to call every time a marker's owning scene loads, even if marker was never activated.
+    /// </summary>
+    public void ApplyPersistedMarkerState(GameObject marker)
+    {
+        if (marker != null && m_ActivatedMarkerKeys.Contains(_GetMarkerKey(marker)))
+        {
+            marker.SetActive(true);
+        }
+    }
+
+    private static string _GetMarkerKey(GameObject marker)
+    {
+        string path = marker.name;
+        for (Transform parent = marker.transform.parent; parent != null; parent = parent.parent)
+        {
+            path = parent.name + "/" + path;
+        }
+        return marker.scene.name + "/" + path;
     }
 }

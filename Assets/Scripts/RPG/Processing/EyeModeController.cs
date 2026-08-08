@@ -224,9 +224,13 @@ public class EyeModeController : MonoBehaviour
             chosenVariationIndex = m_ForcedVariationIndexOverride.Value;
             m_ForcedVariationIndexOverride = null;
         }
-        else if (lastVariationIndex == -1 || variations.Count == 1)
+        else if (variations.Count == 1)
         {
             chosenVariationIndex = 0;
+        }
+        else if (lastVariationIndex == -1)
+        {
+            chosenVariationIndex = UnityEngine.Random.Range(0, variations.Count);
         }
         else
         {

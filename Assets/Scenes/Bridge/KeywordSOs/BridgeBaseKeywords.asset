@@ -14,11 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KeywordsSO
   m_Keywords:
   - move
+  - into
   - travel
   - transition
+  - inspect
+  - examine
   - look
   - around
   - area
   - open
   - eye
   - eyes
+  - talk
+  - monster
+  - creature
+  - troll
+  - gonk
+  - more
+  - ask
+  - him
+  - hand
+  - shake
+  - water
+  - found

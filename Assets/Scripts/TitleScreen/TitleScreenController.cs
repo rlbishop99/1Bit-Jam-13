@@ -14,8 +14,17 @@ public class TitleScreenController : MonoBehaviour
     [SerializeField, Tooltip("Duration of the Play Game fade-to-black, in seconds.")]
     private float m_FadeOutDuration = 1.0f;
 
+    [Header("Audio")]
+    [SerializeField, Tooltip("SFX played when the Play Game button is pressed.")]
+    private AudioClip m_PlayGameSFX;
+
     public void PlayGame()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFXOneShot(m_PlayGameSFX);
+        }
+
         ScreenFadeManager.Instance.FadeOut(m_FadeOutDuration).OnComplete(() => SceneManager.LoadScene(m_IntroSceneName));
     }
 
